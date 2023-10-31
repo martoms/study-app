@@ -5,12 +5,11 @@
 @import 'breakpoints';
 @import 'base';
 
-// colors
-
 // components (button, card, navbar etc)
 @import 'component_styles/buttons';
 
 // utilities (margin, padding, opacity, etc)
 
-// Page Styles 
+// Page/Feature Styles 
+@import 'feature_styles/home';
 

@@ -14,16 +14,16 @@ html, body {
 
 h1 {
   font-weight: 900;
-  color: #1B6B93;
+  color: #75C2F6;
   line-height: 1.92rem;
   margin-bottom: 2rem; }
 
 h4 {
   font-weight: 600;
-  color: #1B6B93; }
+  color: #75C2F6; }
 
 p {
-  color: #164B60;
+  color: #1D5D9B;
   margin-bottom: 1rem; }
 
 a {
@@ -50,11 +50,11 @@ input {
     font-style: italic;
     margin-left: 10px; }
   input:focus {
-    border-color: #A2FF86 !important;
-    outline-color: #A2FF86 !important; }
+    border-color: #FBEEAC !important;
+    outline-color: #FBEEAC !important; }
 
 .main-container {
-  background-color: #f8f8ff;
+  background-color: #faf7e6;
   min-height: calc(100vh - 56px); }
   .main-container > div {
     padding: 2rem; }
@@ -68,15 +68,15 @@ input {
 
 .navbar {
   padding: 1rem 2rem;
-  background-color: #f8f8ff; }
+  background-color: #faf7e6; }
   .navbar a {
     font-weight: 800;
-    color: #1B6B93; }
+    color: #75C2F6; }
 
 .feature-container {
   height: calc(100vh - 269px - 56px);
   position: relative;
-  background-color: #fff5ee; }
+  background-color: #F4D160; }
   @media (min-width: 768px) {
     .feature-container {
       height: calc(100vh - 246.71px - 56px); } }
@@ -86,7 +86,7 @@ input {
 
 .feature-container.expand {
   position: relative;
-  background-color: #fff5ee;
+  background-color: #F4D160;
   height: calc(100vh - 56px); }
 
 .expand-toggle {
@@ -94,17 +94,18 @@ input {
   margin-top: -1rem;
   margin-bottom: 1rem; }
   .expand-toggle img {
-    animation: pulse 0.3s ease;
     cursor: pointer;
     display: block;
     margin-left: auto; }
+    .expand-toggle img:active {
+      animation: pulse 0.3s ease; }
   @media (min-width: 768px) {
     .expand-toggle {
       position: absolute;
       right: 4rem; } }
 
 .hr-left {
-  border: solid 4px #A2FF86;
+  border: solid 4px #FBEEAC;
   border-radius: 5px;
   opacity: 1;
   width: 40%; }
@@ -124,7 +125,7 @@ input {
     margin-right: 5px; }
 
 footer {
-  color: #164B60;
+  color: #1D5D9B;
   background-color: white;
   padding: 1rem;
   font-size: 0.75rem;
@@ -132,8 +133,26 @@ footer {
   font-weight: 700;
   text-align: center; }
   footer hr {
-    border: solid 2px #A2FF86;
+    border: solid 2px #FBEEAC;
     border-radius: 5px;
     opacity: 1;
     margin: 0 auto;
     width: 50%; }
+
+.center-btn {
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: 800;
+  margin: auto;
+  margin-top: 5rem; }
+  .center-btn:active {
+    animation: pulse 0.3s ease; }
+
+.create-study-set {
+  background-color: white;
+  color: #505050; }
+  .create-study-set:hover {
+    background-color: #fafafa;
+    filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1)); }
