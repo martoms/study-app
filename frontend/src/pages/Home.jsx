@@ -1,26 +1,18 @@
-import { useState } from 'react';
-import set from '../images/set.svg';
-import CreateSet from '../components/modals/CreateSet';
+import CreateSet from "../features/studySet/CreateStudySet";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  const [createSet, setCreateSet] = useState(false);
-  const handleCloseCreateSet = () => setCreateSet(false);
-  const handleShowCreateSet = () => setCreateSet(true);
+
+    const newSet = useSelector(state => state.studySetList.list);
+    
+    if (newSet.length !== 0) {
+        console.log(newSet[newSet.length - 1]);
+    }
 
     return ( 
         <div className="main-container">
             <div className="initial-setup d-flex">
-                <button
-                    type="button"
-                    className="center-btn create-study-set"
-                    onClick={handleShowCreateSet}
-                >
-                    <img src={set} alt="create set" /> Create Study Set
-                </button>
-                <CreateSet 
-                    createSet={createSet}
-                    handleCloseCreateSet={handleCloseCreateSet}
-                />
+                <CreateSet />
             </div>
         </div>
     );
