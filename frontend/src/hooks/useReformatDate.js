@@ -1,14 +1,18 @@
 const useReformatDate = () => {
 
-    const dateMonthYear = (dateString) => {
+    const dateMonthYearLong = (dateString) => {
         return new Date(dateString).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    };
+
+    const dateMonthYearShort = (dateString) => {
+        return new Date(dateString).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
     };
 
     const minuteHour = (dateString) => {
         return new Date(dateString).toLocaleTimeString('en-US', { minute: 'numeric', hour: 'numeric' });
     };
 
-    return { dateMonthYear, minuteHour }
+    return { dateMonthYearLong, dateMonthYearShort, minuteHour }
 }
  
 export default useReformatDate;
