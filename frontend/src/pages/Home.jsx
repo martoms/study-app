@@ -1,9 +1,10 @@
 import CreateSet from "../features/studySet/CreateStudySet";
 import { useSelector } from "react-redux";
+import StudyTable from "../features/studySet/StudyTable";
 
 const Home = () => {
 
-    const newSet = useSelector(state => state.studySetList.list);
+    const newSet = useSelector(state => state.studySetList);
     
     return ( 
         <div className="main-container">
@@ -13,8 +14,8 @@ const Home = () => {
                     <CreateSet />
                 </div>
                 :
-                <div className="">
-
+                <div className="main-panel">
+                    <StudyTable />
                 </div>
             }
             

@@ -2,23 +2,25 @@
 import { Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { created } from '../../features/studySet/studySetSlice';
+import { createSet } from '../../features/studySet/studySetSlice';
 import Modal from 'react-bootstrap/Modal';
 
-const InputSetName = ({ createSet, handleCloseCreateSet }) => {
+const InputSetName = ({ createNewSet, handleCloseCreateSet }) => {
 
     const [setName, setSetName] = useState('');
-    const dispatch = useDispatch();
-
+    const dispatch = useDispatch()
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(created(setName));
-        setSetName('');
-        handleCloseCreateSet();
+        dispatch(createSet({
+            setName,
+            items: [],
+            createdOn: Date.now()
+        }));
+        setSetName('')
     }
 
     return (
-        <Modal show={createSet} onHide={handleCloseCreateSet}>
+        <Modal show={createNewSet} onHide={handleCloseCreateSet}>
             <Form onSubmit={handleSubmit}>
                 <Modal.Header closeButton>
                     <Modal.Title>Input Set Name</Modal.Title>

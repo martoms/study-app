@@ -4,9 +4,9 @@ import InputSetName from '../../components/modals/InputSetName';
 
 const CreateSet = () => {
 
-    const [createSet, setCreateSet] = useState(false);
-    const handleCloseCreateSet = () => setCreateSet(false);
-    const handleShowCreateSet = () => setCreateSet(true);
+    const [createNewSet, setCreateNewSet] = useState(false);
+    const handleCloseCreateSet = () => setCreateNewSet(false);
+    const handleShowCreateSet = () => setCreateNewSet(true);
     
     return ( 
         <>
@@ -18,7 +18,7 @@ const CreateSet = () => {
             <img src={set} alt="create set" /> Create Study Set
         </button>
         <InputSetName 
-            createSet={createSet}
+            createNewSet={createNewSet}
             handleCloseCreateSet={handleCloseCreateSet}
         />
         </>
