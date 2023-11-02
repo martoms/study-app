@@ -5,6 +5,18 @@
 }
 
 .study-table {
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: $b-radius-1;
+
+    @include md {
+        max-height: 75vh;
+    }
+
+    @include lg {
+        max-height: 70vh;
+    }
 
     .setName {
         width: 40%;
@@ -33,7 +45,6 @@
 
         span {
             display: inline-block;
-            // margin-right: -100px;
         }
 
         div {
@@ -85,6 +96,9 @@
         
     };
     thead {
+        position: sticky;
+        top: 0;
+        z-index: 1;
         text-align: center;
         vertical-align: middle;
         
@@ -99,6 +113,7 @@
         border-radius: 0 10px 0 0;
     };
     tbody {
+        
         tr {
             border: transparent;
 
@@ -117,5 +132,30 @@
                 border-radius: 0 0 10px 0;
             };
         }
+
+        .lg {
+            display: none;
+            @include md {
+                display: block;
+            }
+        }
+
+        .sm {
+            @include md {
+                display: none;
+            }
+        }
     }
-};
+}
+
+.main-panel {
+
+    .addNewSet {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: $base-margin * 3;
+        display: flex;
+        justify-self: center;
+    }
+}

@@ -1,22 +1,40 @@
 /* eslint-disable react/prop-types */
 import { Button, Form } from 'react-bootstrap';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { createSet } from '../../features/studySet/studySetSlice';
 import Modal from 'react-bootstrap/Modal';
 
-const InputSetName = ({ createNewSet, handleCloseCreateSet }) => {
+const InputSetName = ({ createNewSet, setCreateNewSet }) => {
 
+    
     const [setName, setSetName] = useState('');
-    const dispatch = useDispatch()
+    const [duplicate, setDuplicate] = useState(false);
+    const dispatch = useDispatch();
+
+    const studySet = useSelector(state => state.studySetList);
+    const setNames = studySet.map(studySet => studySet.setName);
+
+    const handleCloseCreateSet = () => {
+        setCreateNewSet(false);
+        setSetName('');
+        setDuplicate(false);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(createSet({
-            setName,
-            items: [],
-            createdOn: Date.now()
-        }));
-        setSetName('')
+
+        if (setNames.includes(setName)) {
+            setDuplicate(true);
+        } else {
+            dispatch(createSet({
+                setName,
+                items: [],
+                createdOn: Date.now()
+            }));
+            setSetName('');
+            handleCloseCreateSet(true);
+        }
     }
 
     return (
@@ -29,8 +47,15 @@ const InputSetName = ({ createNewSet, handleCloseCreateSet }) => {
                     <Form.Control
                         value={setName}
                         onChange={e => setSetName(e.target.value)}
+                        maxLength={15}
                         autoFocus
                     />
+                    {
+                        duplicate &&
+                        <p className='error-message'>
+                            The name you entered is already taken. 
+                        </p>
+                    }
                 </Modal.Body>
                 <Modal.Footer>
                     <Button

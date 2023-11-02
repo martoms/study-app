@@ -5,7 +5,6 @@ import InputSetName from '../../components/modals/InputSetName';
 const CreateSet = () => {
 
     const [createNewSet, setCreateNewSet] = useState(false);
-    const handleCloseCreateSet = () => setCreateNewSet(false);
     const handleShowCreateSet = () => setCreateNewSet(true);
     
     return ( 
@@ -19,7 +18,7 @@ const CreateSet = () => {
         </button>
         <InputSetName 
             createNewSet={createNewSet}
-            handleCloseCreateSet={handleCloseCreateSet}
+            setCreateNewSet={setCreateNewSet}
         />
         </>
     );

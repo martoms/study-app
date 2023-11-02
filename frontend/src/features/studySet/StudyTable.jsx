@@ -5,11 +5,12 @@ import useReformatDate from '../../hooks/useReformatDate';
 const StudyTable = () => {
 
     const studySet = useSelector(state => state.studySetList);
-    const { dateMonthYearShort, minuteHour } = useReformatDate()
+    const { dateMonthYearShort, toMMDDYY, minuteHour } = useReformatDate()
 
     const setNames = studySet.map(studySet => studySet.setName);
     const setItems = studySet.map(studySet => studySet.items);
     const dateCreated = studySet.map(studySet => dateMonthYearShort(studySet.createdOn));
+    const shortDate = studySet.map(studySet => toMMDDYY(studySet.createdOn));
     const timeCreated = studySet.map(studySet => minuteHour(studySet.createdOn));
     
     const studyData = setNames.map((setName, i) => {
@@ -17,7 +18,8 @@ const StudyTable = () => {
             <tr key={ setName }>
                 <td className='setName'>{ setName }</td>
                 <td className='createdOn'>
-                    <p>{ dateCreated[i] }</p>
+                    <p className='lg'>{ dateCreated[i] }</p>
+                    <p className='sm'>{ shortDate[i] }</p>
                     <p>{ timeCreated[i] }</p>
                 </td>
                 <td className='items'>
@@ -59,22 +61,23 @@ const StudyTable = () => {
     });
 
     return (
-        <Table
-            className='study-table'
-            striped
-            hover
-        >
-            <thead>
-                <tr>
-                    <th className='setName'>Study Set</th>
-                    <th>Created On</th>
-                    <th>Items</th>
-                </tr>
-            </thead>
-            <tbody>
-                { studyData }
-            </tbody>
-        </Table>
+        <div className='study-table'>
+            <Table
+                striped
+                hover
+            >
+                <thead>
+                    <tr>
+                        <th className='setName'>Study Set</th>
+                        <th>Created On</th>
+                        <th>Items</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { studyData }
+                </tbody>
+            </Table>
+        </div>
     );
 }
 

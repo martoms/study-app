@@ -16,6 +16,9 @@ const Home = () => {
                 :
                 <div className="main-panel">
                     <StudyTable />
+                    <div className="addNewSet">
+                        <CreateSet />
+                    </div>
                 </div>
             }
             

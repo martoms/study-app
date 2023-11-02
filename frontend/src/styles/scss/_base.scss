@@ -116,6 +116,11 @@ input {
     border-color: transparent;
 }
 
+.error-message {
+    color: $error;
+    margin-top: $base-margin / 3;
+}
+
 // Basic Layout
 .main-container {
     background-color: $bg-1;
