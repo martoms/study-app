@@ -17,7 +17,7 @@ const InputRename = ({renameItem, setRenameItem, targetItem, newName, duplicate,
                 </Modal.Header>
                 <Modal.Body>
                     <p>
-                        {`Rename ${targetItem} to:`}
+                        {`Rename "${targetItem}" to:`}
                     </p>
                     <Form.Control
                         value={newName}

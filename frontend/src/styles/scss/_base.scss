@@ -124,7 +124,7 @@ input {
 .delete {
     @include toggle;
     position: absolute;
-    top: 60px;
+    top: -45px;
     font-weight: 700;
 
     p {
@@ -132,8 +132,19 @@ input {
     }
 
     @include md {
-        top: 70px;
+        top: -45px;
     }
+
+    @include lg {
+        top: -40px;
+    }
+}
+
+.sort-control {
+    position: absolute;
+    top: -50px;
+    right: 0;
+
 }
 
 .master-checkbox {

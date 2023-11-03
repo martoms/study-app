@@ -5,6 +5,7 @@ import { useState } from 'react';
 import DeleteBtn from '../../components/buttons/deletebtn';
 import { deleteSet } from '../../features/studySet/studySetSlice';
 import RenameBtn from '../../components/buttons/RenameBtn';
+import SortBtn from '../../components/buttons/SortBtn';
 
 const StudyTable = () => {
 
@@ -12,14 +13,39 @@ const StudyTable = () => {
     const dispatch = useDispatch();
     const { dateMonthYearShort, toMMDDYY, minuteHour } = useReformatDate()
 
-    const setNames = studySet.map(studySet => studySet.setName);
-    const setItems = studySet.map(studySet => studySet.items);
-    const dateCreated = studySet.map(studySet => dateMonthYearShort(studySet.createdOn));
-    const shortDate = studySet.map(studySet => toMMDDYY(studySet.createdOn));
-    const timeCreated = studySet.map(studySet => minuteHour(studySet.createdOn));
-
     const [selection, setSelection] = useState([]);
+    const [sortOrder, setSortOrder] = useState(studySet);
     const deleteItems = selection.length;
+
+    const handleSort = (order) => {
+        let sortedStudySet;
+
+        if (order === 'latest') {
+            sortedStudySet = studySet.slice().sort((a, b) => b.createdOn - a.createdOn);
+            setSortOrder(sortedStudySet);
+        } else if (order === 'oldest') {
+            sortedStudySet = studySet.slice().sort((a, b) => a.createdOn - b.createdOn);
+            setSortOrder(sortedStudySet);
+        } else if (order === 'a-z') {
+            sortedStudySet = studySet.slice().sort((a, b) => a.setName.localeCompare(b.setName));
+            setSortOrder(sortedStudySet);
+        } else if (order === 'z-a') {
+            sortedStudySet = studySet.slice().sort((a, b) => b.setName.localeCompare(a.setName));
+            setSortOrder(sortedStudySet);
+        } else if (order === 'moreItems') {
+            sortedStudySet = studySet.slice().sort((a, b) => b.items.length - a.items.length);
+            setSortOrder(sortedStudySet);
+        } else if (order === 'lessItems') {
+            sortedStudySet = studySet.slice().sort((a, b) => a.items.length - b.items.length);
+            setSortOrder(sortedStudySet);
+        }
+    }
+
+    const setNames = sortOrder.map(studySet => studySet.setName);
+    const setItems = sortOrder.map(studySet => studySet.items);
+    const dateCreated = sortOrder.map(studySet => dateMonthYearShort(studySet.createdOn));
+    const shortDate = sortOrder.map(studySet => toMMDDYY(studySet.createdOn));
+    const timeCreated = sortOrder.map(studySet => minuteHour(studySet.createdOn));
 
     const handleCheckbox = (e) => {
 
@@ -137,38 +163,41 @@ const StudyTable = () => {
 
     return (
         <>
+        <div className='study-table'>
         {
             deleteItems > 0 &&
             <DeleteBtn deleteItems={deleteItems} handleDelete={handleDelete} selection={selection} />
         }
-        <div className='study-table'>
+            <SortBtn handleSort={handleSort} />
             
-            <Table
-                striped
-                hover
-            >
-                <thead>
-                    <tr>
-                        <th className='setName'>
-                            {
-                                deleteItems > 0 &&
-                                <Form.Check
-                                    className='master-checkbox'
-                                    type="checkbox"
-                                    name="selection"
-                                    onChange={(e) => handleMasterCheckbox(e)}
-                                />
-                            }
-                            Study Set
-                        </th>
-                        <th>Created On</th>
-                        <th>Items</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    { studyData }
-                </tbody>
-            </Table>
+            <div className='study-table-container'>
+                <Table
+                    striped
+                    hover
+                >
+                    <thead>
+                        <tr>
+                            <th className='setName'>
+                                {
+                                    deleteItems > 0 &&
+                                    <Form.Check
+                                        className='master-checkbox'
+                                        type="checkbox"
+                                        name="selection"
+                                        onChange={(e) => handleMasterCheckbox(e)}
+                                    />
+                                }
+                                Study Set
+                            </th>
+                            <th>Created On</th>
+                            <th>Items</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        { studyData }
+                    </tbody>
+                </Table>
+            </div>
         </div>
         </>
     );
