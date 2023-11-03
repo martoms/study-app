@@ -4,6 +4,7 @@ import useReformatDate from '../../hooks/useReformatDate';
 import { useState } from 'react';
 import DeleteBtn from '../../components/buttons/deletebtn';
 import { deleteSet } from '../../features/studySet/studySetSlice';
+import RenameBtn from '../../components/buttons/RenameBtn';
 
 const StudyTable = () => {
 
@@ -59,7 +60,11 @@ const StudyTable = () => {
         setSelection([]);
     };
 
+
     const studyData = setNames.map((setName, i) => {
+
+        const targetItem = setName;
+
         return (
             <tr key={ setName }>
                 <td className='setName'>
@@ -76,6 +81,14 @@ const StudyTable = () => {
                     <span>
                         { setName }
                     </span>
+                    {
+                        deleteItems === 0 &&
+                        <RenameBtn
+                            setNames={setNames}
+                            targetItem={targetItem}
+                        />
+                    }
+                    
                 </td>
                 <td className='createdOn'>
                     <p className='lg'>{ dateCreated[i] }</p>

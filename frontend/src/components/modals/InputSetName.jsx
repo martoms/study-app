@@ -33,7 +33,7 @@ const InputSetName = ({ createNewSet, setCreateNewSet }) => {
                 createdOn: Date.now()
             }));
             setSetName('');
-            handleCloseCreateSet(true);
+            setCreateNewSet(false);
         }
     }
 
@@ -47,7 +47,7 @@ const InputSetName = ({ createNewSet, setCreateNewSet }) => {
                     <Form.Control
                         value={setName}
                         onChange={e => setSetName(e.target.value)}
-                        maxLength={15}
+                        maxLength={30}
                         autoFocus
                     />
                     {

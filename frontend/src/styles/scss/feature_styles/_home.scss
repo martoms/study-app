@@ -37,6 +37,21 @@
         span {
             display: inline-block;
         }
+
+        .edit-btn {
+            @include toggle;
+            display: none;
+            position: relative;
+            left: 85px;
+
+            @include md {
+                left: 230px
+            }
+
+            @include lg {
+                left: 520px
+            }
+        }
     };
 
     .createdOn {
@@ -76,6 +91,7 @@
 
             button {
                 padding: 5px 10px;
+                font-size: $font-s-3;
                 height: 35px;
                 border-radius: $b-radius-1;
                 border: transparent;
@@ -85,6 +101,7 @@
 
                 @include md {
                     width: 100px;
+                    font-size: 1rem;
                 }
 
                 @include lg {
@@ -138,6 +155,10 @@
                 @include lg {
                     display: inline-block;
                 }
+            }
+
+            &:hover .edit-btn {
+                display: inline-block;
             }
         };
         tr:last-child {

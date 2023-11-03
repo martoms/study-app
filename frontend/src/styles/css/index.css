@@ -209,6 +209,19 @@ footer {
       width: 10px; }
     .study-table .setName span {
       display: inline-block; }
+    .study-table .setName .edit-btn {
+      cursor: pointer;
+      display: none;
+      position: relative;
+      left: 85px; }
+      .study-table .setName .edit-btn:active {
+        animation: pulse 0.3s ease; }
+      @media (min-width: 768px) {
+        .study-table .setName .edit-btn {
+          left: 230px; } }
+      @media (min-width: 992px) {
+        .study-table .setName .edit-btn {
+          left: 520px; } }
   .study-table .createdOn {
     font-size: 0.75rem;
     vertical-align: middle; }
@@ -239,6 +252,7 @@ footer {
       background-color: white; }
       .study-table .items div button {
         padding: 5px 10px;
+        font-size: 0.85rem;
         height: 35px;
         border-radius: 10px;
         border: transparent;
@@ -247,7 +261,8 @@ footer {
         font-weight: 600; }
         @media (min-width: 768px) {
           .study-table .items div button {
-            width: 100px; } }
+            width: 100px;
+            font-size: 1rem; } }
         @media (min-width: 992px) {
           .study-table .items div button {
             width: auto;
@@ -283,6 +298,8 @@ footer {
       @media (min-width: 992px) {
         .study-table tbody tr:hover div {
           display: inline-block; } }
+    .study-table tbody tr:hover .edit-btn {
+      display: inline-block; }
   .study-table tbody tr:last-child td:first-child {
     border-radius: 0 0 0 10px; }
   .study-table tbody tr:last-child td:last-child {
