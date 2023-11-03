@@ -57,6 +57,19 @@ input {
   color: #ff2a00;
   margin-top: 0.33333rem; }
 
+.delete {
+  position: absolute;
+  top: 60px;
+  font-weight: 700; }
+  .delete p {
+    color: #505050; }
+  @media (min-width: 768px) {
+    .delete {
+      top: 70px; } }
+
+.master-checkbox {
+  position: absolute; }
+
 .main-container {
   background-color: #faf7e6;
   min-height: calc(100vh - 56px); }
@@ -173,9 +186,18 @@ footer {
     .study-table {
       max-height: 70vh; } }
   .study-table .setName {
-    width: 40%;
+    width: 50% !important;
     vertical-align: middle;
-    padding-left: 1rem; }
+    padding-left: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+    .study-table .setName span:first-child {
+      margin-right: 1rem; }
+    .study-table .setName span:nth-child(2) {
+      width: 10px; }
+    .study-table .setName span {
+      display: inline-block; }
   .study-table .createdOn {
     font-size: 0.75rem;
     vertical-align: middle; }

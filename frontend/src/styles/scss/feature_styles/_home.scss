@@ -19,10 +19,26 @@
     }
 
     .setName {
-        width: 40%;
+        width: 50% !important;
         vertical-align: middle;
         padding-left: $base-padding;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        span:first-child {
+            margin-right: $base-margin;
+        }
+
+        span:nth-child(2) {
+            width: 10px;
+        }
+        
+        span {
+            display: inline-block;
+        }
     };
+
     .createdOn {
         font-size: $font-s-1;
         vertical-align: middle;

@@ -121,6 +121,24 @@ input {
     margin-top: $base-margin / 3;
 }
 
+.delete {
+    position: absolute;
+    top: 60px;
+    font-weight: 700;
+
+    p {
+        color: $text-2;
+    }
+
+    @include md {
+        top: 70px;
+    }
+}
+
+.master-checkbox {
+    position: absolute;
+}
+
 // Basic Layout
 .main-container {
     background-color: $bg-1;
