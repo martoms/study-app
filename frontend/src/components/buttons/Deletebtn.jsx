@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 
-const DeleteBtn = ({deleteItems}) => {
+const DeleteBtn = ({deleteItems, handleDelete}) => {
     return ( 
-        <div className='delete'>
+        <div className='delete' onClick={() => handleDelete()}>
             <p>{`Delete ${deleteItems > 1 ? `selections (${deleteItems})` : `selection (${deleteItems})`}` }</p>
         </div>
     );

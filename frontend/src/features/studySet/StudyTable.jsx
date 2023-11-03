@@ -1,12 +1,14 @@
 import { Table, Form } from 'react-bootstrap';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import useReformatDate from '../../hooks/useReformatDate';
 import { useState } from 'react';
 import DeleteBtn from '../../components/buttons/deletebtn';
+import { deleteSet } from '../../features/studySet/studySetSlice';
 
 const StudyTable = () => {
 
     const studySet = useSelector(state => state.studySetList);
+    const dispatch = useDispatch();
     const { dateMonthYearShort, toMMDDYY, minuteHour } = useReformatDate()
 
     const setNames = studySet.map(studySet => studySet.setName);
@@ -52,6 +54,11 @@ const StudyTable = () => {
         }
     }
 
+    const handleDelete = () => {
+        dispatch(deleteSet(selection));
+        setSelection([]);
+    };
+
     const studyData = setNames.map((setName, i) => {
         return (
             <tr key={ setName }>
@@ -61,13 +68,12 @@ const StudyTable = () => {
                             className='setName-checkbox'
                             type="checkbox"
                             name="selection"
-                            for={setName}
                             key={setName}
                             value={setName}
                             onChange={(e) => handleCheckbox(e)}
                         />
                     </span>
-                    <span id={setName}>
+                    <span>
                         { setName }
                     </span>
                 </td>
@@ -120,7 +126,7 @@ const StudyTable = () => {
         <>
         {
             deleteItems > 0 &&
-            <DeleteBtn deleteItems={deleteItems} />
+            <DeleteBtn deleteItems={deleteItems} handleDelete={handleDelete} />
         }
         <div className='study-table'>
             

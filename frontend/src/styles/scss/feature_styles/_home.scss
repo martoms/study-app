@@ -169,9 +169,14 @@
     .addNewSet {
         position: absolute;
         width: 100%;
+        height: 65px;
         left: 0;
         bottom: $base-margin * 3;
         display: flex;
         justify-self: center;
+
+        button {
+            margin-top: 0;
+        }
     }
 }

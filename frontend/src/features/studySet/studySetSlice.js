@@ -20,9 +20,19 @@ const studySetSlice = createSlice({
             localStorage.setItem("studySet", JSON.stringify(updatedState));
 
             return updatedState;
+        },
+        deleteSet: (state, action) => {
+            
+            const setsToDelete = action.payload.map(setName => setName.toString());
+
+            const newSetList = state.filter(set => !setsToDelete.includes(set.setName));
+
+            localStorage.setItem("studySet", JSON.stringify(newSetList));
+
+            return newSetList;
         }
     }
 });
 
-export const { createSet } = studySetSlice.actions;
+export const { createSet, deleteSet } = studySetSlice.actions;
 export default studySetSlice.reducer;

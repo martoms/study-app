@@ -122,6 +122,7 @@ input {
 }
 
 .delete {
+    @include toggle;
     position: absolute;
     top: 60px;
     font-weight: 700;
