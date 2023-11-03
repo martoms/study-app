@@ -140,6 +140,16 @@ input {
     position: absolute;
 }
 
+.items-to-be-deleted {
+    list-style-type: disc;
+    margin-left: $base-margin;
+    font-weight: 700;
+}
+
+.delete-warning-txt {
+    color: $text-2;
+}
+
 // Basic Layout
 .main-container {
     background-color: $bg-1;

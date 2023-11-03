@@ -126,7 +126,7 @@ const StudyTable = () => {
         <>
         {
             deleteItems > 0 &&
-            <DeleteBtn deleteItems={deleteItems} handleDelete={handleDelete} />
+            <DeleteBtn deleteItems={deleteItems} handleDelete={handleDelete} selection={selection} />
         }
         <div className='study-table'>
             

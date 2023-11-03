@@ -73,6 +73,14 @@ input {
 .master-checkbox {
   position: absolute; }
 
+.items-to-be-deleted {
+  list-style-type: disc;
+  margin-left: 1rem;
+  font-weight: 700; }
+
+.delete-warning-txt {
+  color: #505050; }
+
 .main-container {
   background-color: #faf7e6;
   min-height: calc(100vh - 56px); }
