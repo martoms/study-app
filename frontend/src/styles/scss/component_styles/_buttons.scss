@@ -6,10 +6,19 @@
     font-weight: 800;
 };
 
-@mixin btn-hover($bg-color) {
+@mixin btn-hover-1($bg-color) {
     &:hover {
         background-color: mix(black, $bg-color, 2%);
-        filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1))
+        filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
+        color: $text-2
+    }
+};
+
+@mixin btn-hover-2 {
+    &:hover {
+        background-color: $c-2;
+        filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
+        color: white
     }
 };
 
@@ -17,4 +26,16 @@
     @include btn;
     margin: auto;
     margin-top: $base-margin * 5;
+}
+
+.opt-btn-1 {
+    @include btn;
+    @include boxshadow-1;
+    @include btn-hover-2;
+    text-align: center;
+    display: block;
+    width: 60%;
+    margin: auto;
+    background-color: white;
+    color: $text-2;
 }

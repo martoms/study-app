@@ -37,6 +37,11 @@ a {
   100% {
     transform: scale(1); } }
 
+.toggle {
+  cursor: pointer; }
+  .toggle:active {
+    animation: pulse 0.3s ease; }
+
 ul {
   padding: 0; }
 
@@ -186,12 +191,33 @@ footer {
   .center-btn:active {
     animation: pulse 0.3s ease; }
 
+.opt-btn-1 {
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: 800;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: block;
+  width: 60%;
+  margin: auto;
+  background-color: white;
+  color: #505050; }
+  .opt-btn-1:active {
+    animation: pulse 0.3s ease; }
+  .opt-btn-1:hover {
+    background-color: #75C2F6;
+    filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
+    color: white; }
+
 .create-study-set {
   background-color: white;
   color: #505050; }
   .create-study-set:hover {
     background-color: #fafafa;
-    filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1)); }
+    filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
+    color: #505050; }
 
 .study-table {
   position: relative; }

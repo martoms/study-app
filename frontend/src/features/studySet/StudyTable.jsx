@@ -6,6 +6,7 @@ import DeleteBtn from '../../components/buttons/deletebtn';
 import { deleteSet } from '../../features/studySet/studySetSlice';
 import RenameBtn from '../../components/buttons/RenameBtn';
 import SortBtn from '../../components/buttons/SortBtn';
+import AddItemCategory from '../../components/modals/AddItemCategory';
 
 const StudyTable = () => {
 
@@ -14,6 +15,7 @@ const StudyTable = () => {
     const { dateMonthYearShort, toMMDDYY, minuteHour } = useReformatDate()
 
     const [selection, setSelection] = useState([]);
+    const [addItem, setAddItem] = useState(false);
     const deleteItems = selection.length;
 
     const setNames = studySet.map(studySet => studySet.setName);
@@ -59,6 +61,10 @@ const StudyTable = () => {
     const handleDelete = () => {
         dispatch(deleteSet(selection));
         setSelection([]);
+    };
+
+    const handleShowAddItem = () => {
+        setAddItem(true);
     };
 
 
@@ -108,7 +114,7 @@ const StudyTable = () => {
                     <div style={{display: deleteItems > 0 && window.innerWidth <= 800 && 'none'}}>
                         <button
                             type='button'
-                            className='view'
+                            className={`view ${setItems[i].length === 0 || deleteItems === 0 && 'toggle'}`}
                             style={{backgroundColor: (setItems[i].length === 0 && 'lightgrey') || (deleteItems > 0 && 'lightgrey')}}
                             disabled={setItems[i].length === 0}
                         >
@@ -116,21 +122,26 @@ const StudyTable = () => {
                         </button>
                         <button
                             type='button'
-                            className='add'
+                            className={`add ${deleteItems === 0 && 'toggle'}`}
                             style={{backgroundColor: deleteItems > 0 && 'lightgrey'}}
                             disabled={deleteItems > 0}
+                            onClick={handleShowAddItem}
                         >
                             add
                         </button>
                         <button
                             type='button'
-                            className='study'
+                            className={`study ${setItems[i].length === 0 || deleteItems === 0 && 'toggle'}`}
                             style={{backgroundColor: (setItems[i].length === 0 && 'lightgrey') || (deleteItems > 0 && 'lightgrey')}}
                             disabled={(setItems[i].length === 0) || deleteItems > 0}
                         >
                             study
                         </button>
                     </div>
+                    <AddItemCategory
+                        addItem={addItem}
+                        setAddItem={setAddItem}
+                    />
                 </td>
             </tr>
         )
