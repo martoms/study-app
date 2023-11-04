@@ -1,0 +1,12 @@
+.add-items-modal {
+    .modal-dialog {
+        .modal-content {
+            @include md {
+                border-radius: $b-radius-1;
+                width: 80vw;
+                height: 95vh;
+                margin: $base-margin auto;
+            }
+        }
+    }
+};

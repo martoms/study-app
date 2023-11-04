@@ -211,6 +211,13 @@ footer {
     filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
     color: white; }
 
+@media (min-width: 768px) {
+  .add-items-modal .modal-dialog .modal-content {
+    border-radius: 10px;
+    width: 80vw;
+    height: 95vh;
+    margin: 1rem auto; } }
+
 .create-study-set {
   background-color: white;
   color: #505050; }

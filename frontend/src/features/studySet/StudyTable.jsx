@@ -141,6 +141,7 @@ const StudyTable = () => {
                     <AddItemCategory
                         addItem={addItem}
                         setAddItem={setAddItem}
+                        setName={setName}
                     />
                 </td>
             </tr>

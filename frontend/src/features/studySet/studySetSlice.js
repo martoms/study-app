@@ -4,7 +4,7 @@ const storedState = JSON.parse(localStorage.getItem("studySet"));
 const initialState = storedState ? storedState : [];
 
 const studySetSlice = createSlice({
-    name: 'set',
+    name: 'studySetList',
     initialState,
     reducers: {
         createSet: (state, action) => {

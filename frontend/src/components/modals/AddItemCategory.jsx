@@ -1,10 +1,23 @@
 /* eslint-disable react/prop-types */
 import { Modal, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import slugify from 'slugify';
+import { useDispatch } from "react-redux";
+import { addItems, currentSet, category } from "../../features/generalState/generalStateSlice";
 
-const AddItemCategory = ({addItem, setAddItem}) => {
+const AddItemCategory = ({addItem, setAddItem, setName}) => {
+
+    const slug = slugify(setName).toLocaleLowerCase();
+    const dispatch = useDispatch();
 
     const handleCloseAddItem = () => {
         setAddItem(false);
+    };
+
+    const handleCategory = (e) => {
+        dispatch(addItems(true));
+        dispatch(currentSet(setName));
+        dispatch(category(e.target.innerHTML));
     };
 
     return ( 
@@ -14,7 +27,9 @@ const AddItemCategory = ({addItem, setAddItem}) => {
             </Modal.Header>
             <Modal.Body>
                 <ul>
-                    <li className="opt-btn-1">Identification</li>
+                    <Link to={`/${slug}`} target="_self" onClick={handleCategory}>
+                        <li className="opt-btn-1">Identification</li>
+                    </Link>
                 </ul>
             </Modal.Body>
             <Modal.Footer>
