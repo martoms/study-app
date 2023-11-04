@@ -4,6 +4,7 @@ import useReformatDate from '../../hooks/useReformatDate';
 import { useState } from 'react';
 import DeleteBtn from '../../components/buttons/deletebtn';
 import { deleteSet } from '../../features/studySet/studySetSlice';
+import { currentSet } from '../../features/generalState/generalStateSlice';
 import RenameBtn from '../../components/buttons/RenameBtn';
 import SortBtn from '../../components/buttons/SortBtn';
 import AddItemCategory from '../../components/modals/AddItemCategory';
@@ -63,7 +64,8 @@ const StudyTable = () => {
         setSelection([]);
     };
 
-    const handleShowAddItem = () => {
+    const handleShowAddItem = (setName) => {
+        dispatch(currentSet(setName));
         setAddItem(true);
     };
 
@@ -73,7 +75,7 @@ const StudyTable = () => {
         const targetItem = setName;
 
         return (
-            <tr key={ setName }>
+            <tr key={ setName } >
                 <td className='setName'>
                     <span>
                         <Form.Check
@@ -105,10 +107,10 @@ const StudyTable = () => {
                 <td className='items'>
                     <span>
                     {
-                        setItems[i].length === 0 ?
+                        setItems[i].length == 0 ?
                         '0'
                         :
-                        setItems[i]
+                        setItems[i].length
                     }
                     </span>
                     <div style={{display: deleteItems > 0 && window.innerWidth <= 800 && 'none'}}>
@@ -121,11 +123,12 @@ const StudyTable = () => {
                             view
                         </button>
                         <button
+                            id={`${setName}-add-btn`}
                             type='button'
                             className={`add ${deleteItems === 0 && 'toggle'}`}
                             style={{backgroundColor: deleteItems > 0 && 'lightgrey'}}
                             disabled={deleteItems > 0}
-                            onClick={handleShowAddItem}
+                            onClick={() => handleShowAddItem(setName)}
                         >
                             add
                         </button>
@@ -138,11 +141,6 @@ const StudyTable = () => {
                             study
                         </button>
                     </div>
-                    <AddItemCategory
-                        addItem={addItem}
-                        setAddItem={setAddItem}
-                        setName={setName}
-                    />
                 </td>
             </tr>
         )
@@ -185,6 +183,11 @@ const StudyTable = () => {
                     </tbody>
                 </Table>
             </div>
+
+            <AddItemCategory
+                addItem={addItem}
+                setAddItem={setAddItem}
+            />
         </div>
         </>
     );

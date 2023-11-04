@@ -218,6 +218,83 @@ footer {
     height: 95vh;
     margin: 1rem auto; } }
 
+.add-items-modal .modal-dialog .modal-content .modal-title {
+  color: #75C2F6; }
+
+.add-items-modal .modal-dialog .modal-content .modal-body {
+  background-color: #e5e4e2;
+  overflow: hidden; }
+  @media (min-width: 992px) {
+    .add-items-modal .modal-dialog .modal-content .modal-body {
+      padding: 2rem 5rem; } }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container .itemNo {
+  font-weight: 900;
+  color: #505050; }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container label {
+  font-weight: 600;
+  color: #505050; }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container .input-info {
+  font-size: 0.85rem;
+  margin-bottom: 0; }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container .statement {
+  position: relative; }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container .answer {
+  display: inline-block; }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container .case-sensitive {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container .case-sensitive label {
+  font-weight: 400; }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container textarea {
+  height: 400px;
+  resize: none;
+  margin-bottom: 1rem; }
+  @media (min-width: 768px) {
+    .add-items-modal .modal-dialog .modal-content .add-items-container textarea {
+      height: 500px; } }
+  @media (min-width: 992px) {
+    .add-items-modal .modal-dialog .modal-content .add-items-container textarea {
+      height: 300px; } }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container .item-btns {
+  margin: auto;
+  margin-top: 2rem;
+  width: 80%;
+  display: flex;
+  justify-content: space-between; }
+  @media (min-width: 768px) {
+    .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns {
+      margin-top: 2rem; } }
+  @media (min-width: 992px) {
+    .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns {
+      margin-top: 1rem;
+      margin-left: auto;
+      margin-right: 0;
+      margin-bottom: 0;
+      width: 40%; } }
+  .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button {
+    cursor: pointer;
+    border-radius: 50px; }
+    .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button:active {
+      animation: pulse 0.3s ease; }
+    @media (min-width: 768px) {
+      .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button {
+        width: 49%; } }
+  .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button:first-child {
+    margin-bottom: 1rem; }
+    @media (min-width: 768px) {
+      .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button:first-child {
+        margin-bottom: 0; } }
+
 .create-study-set {
   background-color: white;
   color: #505050; }

@@ -7,6 +7,95 @@
                 height: 95vh;
                 margin: $base-margin auto;
             }
+
+            .modal-title {
+                color: $c-2;
+            }
+
+            .modal-body {
+                background-color: $bg-5;
+                overflow: hidden;
+                @include lg {
+                    padding: 2rem 5rem;
+                }
+            }
+
+            .add-items-container {
+                .itemNo {
+                    font-weight: 900;
+                    color: $text-2;
+                }
+                label {
+                    font-weight: 600;
+                    color: $text-2;
+                }
+                .input-info {
+                    font-size: $font-s-3;
+                    margin-bottom: 0;
+                }
+                .statement {
+                    position: relative;
+                }
+                .answer {
+                    display: inline-block;
+                }
+                .case-sensitive {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+                .case-sensitive label {
+                    font-weight: 400;
+                }
+                textarea {
+                    height: 400px;
+                    resize: none;
+                    margin-bottom: $base-margin;
+
+                    @include md {
+                        height: 500px;
+                    }
+
+                    @include lg {
+                        height: 300px;
+                    }
+                }
+
+                .item-btns {
+                    margin: auto;
+                    margin-top: $base-margin * 2;
+                    width: 80%;
+                    display: flex;
+                    justify-content: space-between;
+
+                    @include md {
+                        margin-top: $base-margin * 2
+                    }
+
+                    @include lg {
+                        margin-top: $base-margin;
+                        margin-left: auto;
+                        margin-right: 0;
+                        margin-bottom: 0;
+                        width: 40%
+                    }
+
+                    button {
+                        @include toggle;
+                        border-radius: $b-radius-round;
+                        @include md {
+                            width: 49%;
+                        }
+                    }
+                    button:first-child {
+                        margin-bottom: $base-margin;
+                        @include md {
+                            margin-bottom: 0;
+                            // margin-right: 10px
+                        }
+                    }
+                }
+            }
         }
     }
 };

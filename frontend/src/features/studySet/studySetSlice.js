@@ -58,17 +58,34 @@ const studySetSlice = createSlice({
             } else if (order === 'z-a') {
                 sortedStudySet = state.slice().sort((a, b) => b.setName.localeCompare(a.setName));
             } else if (order === 'moreItems') {
-                sortedStudySet = state.slice().sort((a, b) => b.items.length - a.items.length);
-            } else if (order === 'lessItems') {
                 sortedStudySet = state.slice().sort((a, b) => a.items.length - b.items.length);
+            } else if (order === 'lessItems') {
+                sortedStudySet = state.slice().sort((a, b) => b.items.length - a.items.length);
             }
 
             localStorage.setItem("studySet", JSON.stringify(sortedStudySet));
 
             return sortedStudySet;
+        },
+        addIdentificationItems: (state, action) => {
+            const {newItems, currentSet} = action.payload;
+            
+            const updatedState = state.map(set => {
+                if (set.setName === currentSet) {
+                    return {
+                        ...set,
+                        items: [...set.items, ...newItems]
+                    }
+                }
+                return set;
+            });
+
+            localStorage.setItem("studySet", JSON.stringify(updatedState));
+
+            return updatedState;
         }
     }
 });
 
-export const { createSet, deleteSet, renameSet, sortSet } = studySetSlice.actions;
+export const { createSet, deleteSet, renameSet, sortSet, addIdentificationItems } = studySetSlice.actions;
 export default studySetSlice.reducer;

@@ -2,11 +2,12 @@
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import slugify from 'slugify';
-import { useDispatch } from "react-redux";
-import { addItems, currentSet, category } from "../../features/generalState/generalStateSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { addItems, category } from "../../features/generalState/generalStateSlice";
 
-const AddItemCategory = ({addItem, setAddItem, setName}) => {
+const AddItemCategory = ({addItem, setAddItem}) => {
 
+    const setName = useSelector(state => state.generalState.currentSet)
     const slug = slugify(setName).toLocaleLowerCase();
     const dispatch = useDispatch();
 
@@ -16,7 +17,6 @@ const AddItemCategory = ({addItem, setAddItem, setName}) => {
 
     const handleCategory = (e) => {
         dispatch(addItems(true));
-        dispatch(currentSet(setName));
         dispatch(category(e.target.innerHTML));
     };
 
