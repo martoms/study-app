@@ -21,10 +21,125 @@
             }
 
             .add-items-container {
+
+                .current-set {
+                    position: relative;
+
+                    img {
+                        @include toggle;
+                        position: absolute;
+                        right: 0;
+                    }
+                }
                 .itemNo {
                     font-weight: 900;
                     color: $text-2;
                 }
+                .navigation {
+                    position: relative;
+                    p {
+                        text-align: center;
+                        font-weight: 800;
+                        margin: -1rem 0;
+                    }
+                    img {
+                        position: absolute;
+                        top: 2px;
+                        @include dropshadow-1;
+                        @include toggle;
+                    }
+
+                    img[alt="next"] {
+                        right: 100px;
+
+                        @include md {
+                            right: 200px;
+                        }
+
+                        @include lg {
+                            right: 400px;
+                        }
+                    }
+
+                    img[alt="previous"] {
+                        left: 100px;
+
+                        @include md {
+                            left: 200px;
+                        }
+
+                        @include lg {
+                            left: 400px;
+                        }
+                    }
+                }
+                
+                ul {
+                    border: 1px solid $c-1;
+                    padding: $base-padding;
+                    border-radius: $b-radius-1;
+
+                    @include md {
+                        padding: $base-padding * 2;
+                    }
+                }
+
+                @mixin item-slide {
+                    transition: transform 0.5s ease-in-out;
+                }
+
+                @keyframes left-out {
+                    0% {
+                        transform: translateY(-103.1%)
+                    }
+                    100% {
+                        transform: translate(-110%, -103.1%);
+                    }
+                }
+
+                @keyframes left-in {
+                    0% {
+                        transform: translateX(110%)
+                    }
+                    100% {
+                        transform: translateX(0%);
+                    }
+                }
+
+                @keyframes right-out {
+                    0% {
+                        transform: translateY(0%)
+                    }
+                    100% {
+                        transform: translate(110%, 0%);
+                    }
+                }
+
+                @keyframes right-in {
+                    0% {
+                        transform: translate(-110%,-103.1%)
+                    }
+                    100% {
+                        transform: translate(0%, -103.1%);
+                    }
+                }
+
+                .slide-left-out {
+                    animation: left-out 0.5s ease-in-out;
+                }
+
+                .slide-left-in {
+                    animation: left-in 0.5s ease-in-out;
+                }
+                
+                .slide-right-out {
+                    animation: right-out 0.5s ease-in-out;
+                }
+  
+                .slide-right-in {
+                    animation: right-in 0.5s ease-in-out;
+                }
+
                 label {
                     font-weight: 600;
                     color: $text-2;
@@ -48,22 +163,24 @@
                     font-weight: 400;
                 }
                 textarea {
-                    height: 400px;
+                    height: 300px;
                     resize: none;
                     margin-bottom: $base-margin;
 
                     @include md {
-                        height: 500px;
+                        height: 400px;
                     }
 
                     @include lg {
-                        height: 300px;
+                        height: 200px;
                     }
                 }
 
                 .item-btns {
+                    // position: relative;
                     margin: auto;
                     margin-top: $base-margin * 2;
+                    top: 550px;
                     width: 80%;
                     display: flex;
                     justify-content: space-between;

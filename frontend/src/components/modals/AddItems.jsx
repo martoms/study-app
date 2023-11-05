@@ -36,7 +36,14 @@ const AddItems = () => {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                { currentCategory === 'Identification' && <Identification currentSet={currentSet} studySetItems={studySetItems} />}
+                {
+                    currentCategory === 'Identification' &&
+                    <Identification
+                        currentSet={currentSet}
+                        studySetItems={studySetItems}
+                        handleCloseAddItems={handleCloseAddItems}
+                    />
+                }
             </Modal.Body>
             <Modal.Footer>
                 <Button

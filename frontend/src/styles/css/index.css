@@ -228,9 +228,92 @@ footer {
     .add-items-modal .modal-dialog .modal-content .modal-body {
       padding: 2rem 5rem; } }
 
+.add-items-modal .modal-dialog .modal-content .add-items-container .current-set {
+  position: relative; }
+  .add-items-modal .modal-dialog .modal-content .add-items-container .current-set img {
+    cursor: pointer;
+    position: absolute;
+    right: 0; }
+    .add-items-modal .modal-dialog .modal-content .add-items-container .current-set img:active {
+      animation: pulse 0.3s ease; }
+
 .add-items-modal .modal-dialog .modal-content .add-items-container .itemNo {
   font-weight: 900;
   color: #505050; }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container .navigation {
+  position: relative; }
+  .add-items-modal .modal-dialog .modal-content .add-items-container .navigation p {
+    text-align: center;
+    font-weight: 800;
+    margin: -1rem 0; }
+  .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img {
+    position: absolute;
+    top: 2px;
+    filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
+    cursor: pointer; }
+    .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img:active {
+      animation: pulse 0.3s ease; }
+  .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="next"] {
+    right: 100px; }
+    @media (min-width: 768px) {
+      .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="next"] {
+        right: 200px; } }
+    @media (min-width: 992px) {
+      .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="next"] {
+        right: 400px; } }
+  .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="previous"] {
+    left: 100px; }
+    @media (min-width: 768px) {
+      .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="previous"] {
+        left: 200px; } }
+    @media (min-width: 992px) {
+      .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="previous"] {
+        left: 400px; } }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container ul {
+  border: 1px solid #1D5D9B;
+  padding: 1rem;
+  border-radius: 10px; }
+  @media (min-width: 768px) {
+    .add-items-modal .modal-dialog .modal-content .add-items-container ul {
+      padding: 2rem; } }
+
+@keyframes left-out {
+  0% {
+    transform: translateY(-103.1%); }
+  100% {
+    transform: translate(-110%, -103.1%); } }
+
+@keyframes left-in {
+  0% {
+    transform: translateX(110%); }
+  100% {
+    transform: translateX(0%); } }
+
+@keyframes right-out {
+  0% {
+    transform: translateY(0%); }
+  100% {
+    transform: translate(110%, 0%); } }
+
+@keyframes right-in {
+  0% {
+    transform: translate(-110%, -103.1%); }
+  100% {
+    transform: translate(0%, -103.1%); } }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container .slide-left-out {
+  animation: left-out 0.5s ease-in-out; }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container .slide-left-in {
+  animation: left-in 0.5s ease-in-out; }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container .slide-right-out {
+  animation: right-out 0.5s ease-in-out; }
+
+.add-items-modal .modal-dialog .modal-content .add-items-container .slide-right-in {
+  animation: right-in 0.5s ease-in-out; }
 
 .add-items-modal .modal-dialog .modal-content .add-items-container label {
   font-weight: 600;
@@ -255,19 +338,20 @@ footer {
   font-weight: 400; }
 
 .add-items-modal .modal-dialog .modal-content .add-items-container textarea {
-  height: 400px;
+  height: 300px;
   resize: none;
   margin-bottom: 1rem; }
   @media (min-width: 768px) {
     .add-items-modal .modal-dialog .modal-content .add-items-container textarea {
-      height: 500px; } }
+      height: 400px; } }
   @media (min-width: 992px) {
     .add-items-modal .modal-dialog .modal-content .add-items-container textarea {
-      height: 300px; } }
+      height: 200px; } }
 
 .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns {
   margin: auto;
   margin-top: 2rem;
+  top: 550px;
   width: 80%;
   display: flex;
   justify-content: space-between; }
