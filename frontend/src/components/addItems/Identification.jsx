@@ -13,13 +13,15 @@ const Identification = ({currentSet, studySetItems, handleCloseAddItems}) => {
     const initialFormState = [{
         statement: '',
         answer: '',
-        caseSensitive: false
+        caseSensitive: false,
+        createdOn: Date.now(),
+        itemType: 'identification'
     }];
     const [newItems, setNewItems] = useState(initialFormState);
     const [itemCount, setItemCount] = useState(1);
     const [currentItem, setCurrentItem] = useState(itemCount - 1);
-    const [slideLeft, setSlideLeft] = useState(false);
-    const [slideRight, setSlideRight] = useState(false);
+    // const [slideLeft, setSlideLeft] = useState(false);
+    // const [slideRight, setSlideRight] = useState(false);
 
     const handleForm = (e, i) => {
         const { name, value, type, checked } = e.target;
@@ -29,15 +31,11 @@ const Identification = ({currentSet, studySetItems, handleCloseAddItems}) => {
             updatedItems[i] = {
                 ...updatedItems[i],
                 [name]: checked,
-                category: 'identification',
-                itemNo: studySetItems + 1 + i
             };
         } else {
             updatedItems[i] = {
                 ...updatedItems[i],
                 [name]: value,
-                category: 'identification',
-                itemNo: studySetItems + 1 + i
             };
         }
 
@@ -65,13 +63,15 @@ const Identification = ({currentSet, studySetItems, handleCloseAddItems}) => {
             ...updatedItems[itemCount],
             statement: '',
             answer: '',
-            caseSensitive: false
+            caseSensitive: false,
+            createdOn: Date.now(),
+            itemType: 'identification'
         };
 
         setNewItems(updatedItems);
         setItemCount(itemCount + 1);
-        setSlideLeft(true);
-        setSlideRight(false);
+        // setSlideLeft(true);
+        // setSlideRight(false);
         setTimeout(() => {
             setCurrentItem(currentItem + 1);
         }, 500)
@@ -82,8 +82,8 @@ const Identification = ({currentSet, studySetItems, handleCloseAddItems}) => {
         if (alt === 'next') {
             if (currentItem + 1 === itemCount) return false
             else {
-                setSlideLeft(true);
-                setSlideRight(false);
+                // setSlideLeft(true);
+                // setSlideRight(false);
                 setTimeout(() => {
                     setCurrentItem(currentItem + 1);
                 }, 500)
@@ -91,8 +91,8 @@ const Identification = ({currentSet, studySetItems, handleCloseAddItems}) => {
         } else {
             if (currentItem + 1 === 1) return false
             else {
-                setSlideRight(true);
-                setSlideLeft(false);
+                // setSlideRight(true);
+                // setSlideLeft(false);
                 setTimeout(() => {
                     setCurrentItem(currentItem - 1);
                 }, 500)

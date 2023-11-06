@@ -1,14 +1,14 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useSelector, useDispatch } from 'react-redux';
-import { addItems, category } from '../../features/generalState/generalStateSlice';
+import { addItems, itemType } from '../../features/generalState/generalStateSlice';
 import { useNavigate } from 'react-router-dom';
 import Identification from '../addItems/Identification';
 
 const AddItems = () => {
   
     const addNewItems = useSelector(state => state.generalState.addItems);
-    const currentCategory = useSelector(state => state.generalState.category);
+    const currentItemType = useSelector(state => state.generalState.itemType);
     const currentSet = useSelector(state => state.generalState.currentSet);
     const studySetItems = useSelector(state => state.studySetList).filter(set => set.setName === currentSet)[0].items.length;
 
@@ -17,7 +17,7 @@ const AddItems = () => {
 
     const handleCloseAddItems = () => {
         dispatch(addItems(false));
-        dispatch(category(''));
+        dispatch(itemType(''));
         studySetItems === 0 && navigate('/');
     };
 
@@ -32,12 +32,12 @@ const AddItems = () => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="example-custom-modal-styling-title">
-                    { currentCategory }
+                    { currentItemType }
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 {
-                    currentCategory === 'Identification' &&
+                    currentItemType === 'Identification' &&
                     <Identification
                         currentSet={currentSet}
                         studySetItems={studySetItems}

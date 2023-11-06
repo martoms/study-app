@@ -1,0 +1,76 @@
+@mixin table-container {
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: $b-radius-1;
+    margin-top: $base-margin * 2;
+
+    thead {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        text-align: center;
+        vertical-align: middle;
+        
+        th {
+            color: $text-2
+        }
+    };
+    th:first-child {
+        border-radius: 10px 0 0 0;
+    };
+    th:last-child {
+        border-radius: 0 10px 0 0;
+    };
+    tbody {
+        
+        tr {
+            border: transparent;
+
+            &:hover div {
+                display: flex;
+                @include lg {
+                    display: inline-block;
+                }
+            }
+
+            &:hover .edit-btn {
+                display: inline-block;
+            }
+        };
+        tr:last-child {
+            td:first-child {
+                border-radius: 0 0 0 10px;
+            };
+            td:last-child {
+                border-radius: 0 0 10px 0;
+            };
+        }
+
+        .lg {
+            display: none;
+            @include md {
+                display: block;
+            }
+        }
+
+        .sm {
+            @include md {
+                display: none;
+            }
+        }
+    }
+
+    .checkbox-td {
+
+        span {
+            display: inline-block;
+        }
+
+        .delete-checkbox {
+            margin-right: $base-margin;
+        }
+        
+    }
+    
+}

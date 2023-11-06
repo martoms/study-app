@@ -1,0 +1,29 @@
+.items-table {
+    position: relative;
+
+    .delete {
+        top: 30px;
+    }
+    .items-table-container {
+        @include table-container;
+    
+        .item-no {
+            font-weight: 700;
+            color: $text-2;
+            width: 20%;
+        }
+    
+        .item-preview {
+            max-width: 50px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    
+        .item-type {
+            width: 40%;
+            color: $c-1;
+        }
+    
+    }
+}

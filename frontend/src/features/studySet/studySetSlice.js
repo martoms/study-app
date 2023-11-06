@@ -31,6 +31,27 @@ const studySetSlice = createSlice({
 
             return updatedState;
         },
+        deleteItems: (state, action) => {
+
+            const { selection, currentSet } = action.payload;
+
+            const updatedState = state.map(set => {
+                if (set.setName === currentSet) {
+
+                    const updatedSet = set.items.filter(item =>
+                        !selection.includes(String(item.createdOn))
+                    );
+        
+                    return { ...set, items: updatedSet };
+                }
+                return set;
+            });
+
+
+            localStorage.setItem("studySet", JSON.stringify(updatedState));
+        
+            return updatedState;
+        },
         renameSet: (state, action) => {
             const { targetItem, newName } = action.payload;
 
@@ -87,5 +108,5 @@ const studySetSlice = createSlice({
     }
 });
 
-export const { createSet, deleteSet, renameSet, sortSet, addIdentificationItems } = studySetSlice.actions;
+export const { createSet, deleteSet, deleteItems, renameSet, sortSet, addIdentificationItems } = studySetSlice.actions;
 export default studySetSlice.reducer;

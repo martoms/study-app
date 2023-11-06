@@ -8,9 +8,11 @@
 // components (button, card, navbar etc)
 @import 'component_styles/buttons';
 @import 'component_styles/modals';
+@import 'component_styles/tables';
 
 // utilities (margin, padding, opacity, etc)
 
 // Page/Feature Styles 
 @import 'feature_styles/home';
+@import 'feature_styles/items-panel';
 

@@ -7,7 +7,8 @@ import { deleteSet } from '../../features/studySet/studySetSlice';
 import { currentSet } from '../../features/generalState/generalStateSlice';
 import RenameBtn from '../../components/buttons/RenameBtn';
 import SortBtn from '../../components/buttons/SortBtn';
-import AddItemCategory from '../../components/modals/AddItemCategory';
+import AddItemType from '../../components/modals/AddItemType';
+import { handleCheckbox, handleMasterCheckbox } from '../../components/handlers/formHandlers';
 
 const StudyTable = () => {
 
@@ -17,47 +18,13 @@ const StudyTable = () => {
 
     const [selection, setSelection] = useState([]);
     const [addItem, setAddItem] = useState(false);
-    const deleteItems = selection.length;
+    const deleteItem = selection.length;
 
     const setNames = studySet.map(studySet => studySet.setName);
     const setItems = studySet.map(studySet => studySet.items);
     const dateCreated = studySet.map(studySet => dateMonthYearShort(studySet.createdOn));
     const shortDate = studySet.map(studySet => toMMDDYY(studySet.createdOn));
     const timeCreated = studySet.map(studySet => minuteHour(studySet.createdOn));
-
-    const handleCheckbox = (e) => {
-
-        const value = e.target.value;
-
-        if (selection.includes(value)) {
-
-            const updatedSelection = selection.filter(item => item !== value);
-            setSelection(updatedSelection);
-
-        } else {
-            setSelection([...selection, value]);
-        }
-    };
-
-    const handleMasterCheckbox = (e) => {
-        const checkboxes = document.querySelectorAll('.setName-checkbox input');
-        const allSelections = []
-
-        if (e.target.checked == true) {
-
-            checkboxes.forEach((checkbox) => {
-                const value = checkbox.value;
-                checkbox.checked = true;
-                allSelections.push(value)
-                setSelection(allSelections);
-            });
-        } else {
-            checkboxes.forEach((checkbox) => {
-                checkbox.checked = false;
-                setSelection([]);
-            });
-        }
-    }
 
     const handleDelete = () => {
         dispatch(deleteSet(selection));
@@ -76,22 +43,20 @@ const StudyTable = () => {
 
         return (
             <tr key={ setName } >
-                <td className='setName'>
-                    <span>
+                <td className='setName checkbox-td'>
+                    <span className='delete-checkbox'>
                         <Form.Check
-                            className='setName-checkbox'
                             type="checkbox"
                             name="selection"
-                            key={setName}
                             value={setName}
-                            onChange={(e) => handleCheckbox(e)}
+                            onChange={(e) => handleCheckbox(e, selection, setSelection)}
                         />
                     </span>
                     <span>
                         { setName }
                     </span>
                     {
-                        deleteItems === 0 &&
+                        deleteItem === 0 &&
                         <RenameBtn
                             setNames={setNames}
                             targetItem={targetItem}
@@ -113,11 +78,11 @@ const StudyTable = () => {
                         setItems[i].length
                     }
                     </span>
-                    <div style={{display: deleteItems > 0 && window.innerWidth <= 800 && 'none'}}>
+                    <div style={{display: deleteItem > 0 && window.innerWidth <= 800 && 'none'}}>
                         <button
                             type='button'
-                            className={`view ${setItems[i].length === 0 || deleteItems === 0 && 'toggle'}`}
-                            style={{backgroundColor: (setItems[i].length === 0 && 'lightgrey') || (deleteItems > 0 && 'lightgrey')}}
+                            className={`view ${setItems[i].length === 0 || deleteItem === 0 && 'toggle'}`}
+                            style={{backgroundColor: (setItems[i].length === 0 && 'lightgrey') || (deleteItem > 0 && 'lightgrey')}}
                             disabled={setItems[i].length === 0}
                         >
                             view
@@ -125,18 +90,18 @@ const StudyTable = () => {
                         <button
                             id={`${setName}-add-btn`}
                             type='button'
-                            className={`add ${deleteItems === 0 && 'toggle'}`}
-                            style={{backgroundColor: deleteItems > 0 && 'lightgrey'}}
-                            disabled={deleteItems > 0}
+                            className={`add ${deleteItem === 0 && 'toggle'}`}
+                            style={{backgroundColor: deleteItem > 0 && 'lightgrey'}}
+                            disabled={deleteItem > 0}
                             onClick={() => handleShowAddItem(setName)}
                         >
                             add
                         </button>
                         <button
                             type='button'
-                            className={`study ${setItems[i].length === 0 || deleteItems === 0 && 'toggle'}`}
-                            style={{backgroundColor: (setItems[i].length === 0 && 'lightgrey') || (deleteItems > 0 && 'lightgrey')}}
-                            disabled={(setItems[i].length === 0) || deleteItems > 0}
+                            className={`study ${setItems[i].length === 0 || deleteItem === 0 && 'toggle'}`}
+                            style={{backgroundColor: (setItems[i].length === 0 && 'lightgrey') || (deleteItem > 0 && 'lightgrey')}}
+                            disabled={(setItems[i].length === 0) || deleteItem > 0}
                         >
                             study
                         </button>
@@ -150,8 +115,8 @@ const StudyTable = () => {
         <>
         <div className='study-table'>
         {
-            deleteItems > 0 &&
-            <DeleteBtn deleteItems={deleteItems} handleDelete={handleDelete} selection={selection} />
+            deleteItem > 0 &&
+            <DeleteBtn deleteItem={deleteItem} handleDelete={handleDelete} selection={selection} deleteCategory={'setName'} />
         }
             <SortBtn />
             
@@ -164,12 +129,12 @@ const StudyTable = () => {
                         <tr>
                             <th className='setName'>
                                 {
-                                    deleteItems > 0 &&
+                                    deleteItem > 0 &&
                                     <Form.Check
                                         className='master-checkbox'
                                         type="checkbox"
                                         name="selection"
-                                        onChange={(e) => handleMasterCheckbox(e)}
+                                        onChange={(e) => handleMasterCheckbox(e, setSelection)}
                                     />
                                 }
                                 Study Set
@@ -184,7 +149,7 @@ const StudyTable = () => {
                 </Table>
             </div>
 
-            <AddItemCategory
+            <AddItemType
                 addItem={addItem}
                 setAddItem={setAddItem}
             />

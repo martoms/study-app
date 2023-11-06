@@ -395,6 +395,43 @@ footer {
     overflow-x: hidden;
     border-radius: 10px;
     margin-top: 2rem; }
+    .study-table .study-table-container thead {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      text-align: center;
+      vertical-align: middle; }
+      .study-table .study-table-container thead th {
+        color: #505050; }
+    .study-table .study-table-container th:first-child {
+      border-radius: 10px 0 0 0; }
+    .study-table .study-table-container th:last-child {
+      border-radius: 0 10px 0 0; }
+    .study-table .study-table-container tbody tr {
+      border: transparent; }
+      .study-table .study-table-container tbody tr:hover div {
+        display: flex; }
+        @media (min-width: 992px) {
+          .study-table .study-table-container tbody tr:hover div {
+            display: inline-block; } }
+      .study-table .study-table-container tbody tr:hover .edit-btn {
+        display: inline-block; }
+    .study-table .study-table-container tbody tr:last-child td:first-child {
+      border-radius: 0 0 0 10px; }
+    .study-table .study-table-container tbody tr:last-child td:last-child {
+      border-radius: 0 0 10px 0; }
+    .study-table .study-table-container tbody .lg {
+      display: none; }
+      @media (min-width: 768px) {
+        .study-table .study-table-container tbody .lg {
+          display: block; } }
+    @media (min-width: 768px) {
+      .study-table .study-table-container tbody .sm {
+        display: none; } }
+    .study-table .study-table-container .checkbox-td span {
+      display: inline-block; }
+    .study-table .study-table-container .checkbox-td .delete-checkbox {
+      margin-right: 1rem; }
     @media (min-width: 768px) {
       .study-table .study-table-container {
         max-height: 70vh; } }
@@ -408,12 +445,8 @@ footer {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis; }
-      .study-table .study-table-container .setName span:first-child {
-        margin-right: 1rem; }
       .study-table .study-table-container .setName span:nth-child(2) {
         width: 10px; }
-      .study-table .study-table-container .setName span {
-        display: inline-block; }
       .study-table .study-table-container .setName .edit-btn {
         cursor: pointer;
         display: none;
@@ -484,39 +517,6 @@ footer {
             position: relative;
             width: auto;
             background-color: transparent; } }
-    .study-table .study-table-container thead {
-      position: sticky;
-      top: 0;
-      z-index: 1;
-      text-align: center;
-      vertical-align: middle; }
-      .study-table .study-table-container thead th {
-        color: #505050; }
-    .study-table .study-table-container th:first-child {
-      border-radius: 10px 0 0 0; }
-    .study-table .study-table-container th:last-child {
-      border-radius: 0 10px 0 0; }
-    .study-table .study-table-container tbody tr {
-      border: transparent; }
-      .study-table .study-table-container tbody tr:hover div {
-        display: flex; }
-        @media (min-width: 992px) {
-          .study-table .study-table-container tbody tr:hover div {
-            display: inline-block; } }
-      .study-table .study-table-container tbody tr:hover .edit-btn {
-        display: inline-block; }
-    .study-table .study-table-container tbody tr:last-child td:first-child {
-      border-radius: 0 0 0 10px; }
-    .study-table .study-table-container tbody tr:last-child td:last-child {
-      border-radius: 0 0 10px 0; }
-    .study-table .study-table-container tbody .lg {
-      display: none; }
-      @media (min-width: 768px) {
-        .study-table .study-table-container tbody .lg {
-          display: block; } }
-    @media (min-width: 768px) {
-      .study-table .study-table-container tbody .sm {
-        display: none; } }
 
 .main-panel .addNewSet {
   position: absolute;
@@ -528,3 +528,63 @@ footer {
   justify-self: center; }
   .main-panel .addNewSet button {
     margin-top: 0; }
+
+.items-table {
+  position: relative; }
+  .items-table .delete {
+    top: 30px; }
+  .items-table .items-table-container {
+    max-height: 70vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 10px;
+    margin-top: 2rem; }
+    .items-table .items-table-container thead {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      text-align: center;
+      vertical-align: middle; }
+      .items-table .items-table-container thead th {
+        color: #505050; }
+    .items-table .items-table-container th:first-child {
+      border-radius: 10px 0 0 0; }
+    .items-table .items-table-container th:last-child {
+      border-radius: 0 10px 0 0; }
+    .items-table .items-table-container tbody tr {
+      border: transparent; }
+      .items-table .items-table-container tbody tr:hover div {
+        display: flex; }
+        @media (min-width: 992px) {
+          .items-table .items-table-container tbody tr:hover div {
+            display: inline-block; } }
+      .items-table .items-table-container tbody tr:hover .edit-btn {
+        display: inline-block; }
+    .items-table .items-table-container tbody tr:last-child td:first-child {
+      border-radius: 0 0 0 10px; }
+    .items-table .items-table-container tbody tr:last-child td:last-child {
+      border-radius: 0 0 10px 0; }
+    .items-table .items-table-container tbody .lg {
+      display: none; }
+      @media (min-width: 768px) {
+        .items-table .items-table-container tbody .lg {
+          display: block; } }
+    @media (min-width: 768px) {
+      .items-table .items-table-container tbody .sm {
+        display: none; } }
+    .items-table .items-table-container .checkbox-td span {
+      display: inline-block; }
+    .items-table .items-table-container .checkbox-td .delete-checkbox {
+      margin-right: 1rem; }
+    .items-table .items-table-container .item-no {
+      font-weight: 700;
+      color: #505050;
+      width: 20%; }
+    .items-table .items-table-container .item-preview {
+      max-width: 50px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+    .items-table .items-table-container .item-type {
+      width: 40%;
+      color: #1D5D9B; }
