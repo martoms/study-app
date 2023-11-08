@@ -9,12 +9,17 @@ import RenameBtn from '../../components/buttons/RenameBtn';
 import SortBtn from '../../components/buttons/SortBtn';
 import AddItemType from '../../components/modals/AddItemType';
 import { handleCheckbox, handleMasterCheckbox } from '../../components/handlers/formHandlers';
+import slugify from 'slugify';
+import { useNavigate } from 'react-router-dom';
 
 const StudyTable = () => {
 
-    const studySet = useSelector(state => state.studySetList);
     const dispatch = useDispatch();
-    const { dateMonthYearShort, toMMDDYY, minuteHour } = useReformatDate()
+    const navigate = useNavigate();
+    const studySet = useSelector(state => state.studySetList);
+    const selectedSet = useSelector(state => state.generalState.currentSet);
+    const slug = slugify(selectedSet).toLocaleLowerCase();
+    const { dateMonthYearShort, toMMDDYY, minuteHour } = useReformatDate();
 
     const [selection, setSelection] = useState([]);
     const [addItem, setAddItem] = useState(false);
@@ -34,6 +39,11 @@ const StudyTable = () => {
     const handleShowAddItem = (setName) => {
         dispatch(currentSet(setName));
         setAddItem(true);
+    };
+
+    const handleView = (setName) => {
+        dispatch(currentSet(setName));
+        navigate(`/${slug}`);
     };
 
 
@@ -84,6 +94,7 @@ const StudyTable = () => {
                             className={`view ${setItems[i].length === 0 || deleteItem === 0 && 'toggle'}`}
                             style={{backgroundColor: (setItems[i].length === 0 && 'lightgrey') || (deleteItem > 0 && 'lightgrey')}}
                             disabled={setItems[i].length === 0}
+                            onClick={() => handleView(setName)}
                         >
                             view
                         </button>
@@ -152,6 +163,7 @@ const StudyTable = () => {
             <AddItemType
                 addItem={addItem}
                 setAddItem={setAddItem}
+                slug={slug}
             />
         </div>
         </>

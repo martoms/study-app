@@ -1,14 +1,11 @@
 /* eslint-disable react/prop-types */
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import slugify from 'slugify';
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addItems, itemType } from "../../features/generalState/generalStateSlice";
 
-const AddItemType = ({addItem, setAddItem}) => {
+const AddItemType = ({addItem, setAddItem, slug}) => {
 
-    const setName = useSelector(state => state.generalState.currentSet)
-    const slug = slugify(setName).toLocaleLowerCase();
     const dispatch = useDispatch();
 
     const handleCloseAddItem = () => {
