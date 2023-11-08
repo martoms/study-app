@@ -11,6 +11,14 @@
             font-weight: 700;
             color: $text-2;
             width: 20%;
+
+            @include md {
+                width: 10%;
+            }
+
+            @include lg {
+                width: 5%;
+            }
         }
     
         .item-preview {
@@ -23,6 +31,14 @@
         .item-type {
             width: 40%;
             color: $c-1;
+
+            @include md {
+                width: 20%;
+            }
+
+            @include lg {
+                width: 15%;
+            }
         }
     
     }

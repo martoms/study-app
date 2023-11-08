@@ -580,6 +580,12 @@ footer {
       font-weight: 700;
       color: #505050;
       width: 20%; }
+      @media (min-width: 768px) {
+        .items-table .items-table-container .item-no {
+          width: 10%; } }
+      @media (min-width: 992px) {
+        .items-table .items-table-container .item-no {
+          width: 5%; } }
     .items-table .items-table-container .item-preview {
       max-width: 50px;
       overflow: hidden;
@@ -588,3 +594,9 @@ footer {
     .items-table .items-table-container .item-type {
       width: 40%;
       color: #1D5D9B; }
+      @media (min-width: 768px) {
+        .items-table .items-table-container .item-type {
+          width: 20%; } }
+      @media (min-width: 992px) {
+        .items-table .items-table-container .item-type {
+          width: 15%; } }
