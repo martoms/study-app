@@ -6,14 +6,14 @@ import { handleCheckbox, handleMasterCheckbox } from '../components/handlers/for
 import DeleteBtn from "../components/buttons/deletebtn";
 import { useDispatch } from "react-redux";
 import { deleteItems } from "../features/studySet/studySetSlice";
+import { useParams } from "react-router-dom";
 
 const ItemsPanel = () => {
 
     const dispatch = useDispatch();
-
-    const currentSet = useSelector(state => state.generalState.currentSet);
+    const { timeStamp } = useParams();
     const addItems = useSelector(state => state.generalState.addItems)
-    const itemsData = useSelector(state => state.studySetList).filter(set => set.setName === currentSet)[0].items;
+    const itemsData = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].items;
 
     const [selection, setSelection] = useState([]);
     const deleteItem = selection.length;
@@ -21,7 +21,7 @@ const ItemsPanel = () => {
     const handleDelete = () => {
         const payload = {
             selection,
-            currentSet
+            timeStamp
         }
         dispatch(deleteItems(payload));
         setSelection([]);
@@ -63,7 +63,12 @@ const ItemsPanel = () => {
             <div className="items-table">
                 {
                     deleteItem > 0 &&
-                    <DeleteBtn deleteItem={deleteItem} handleDelete={handleDelete} selection={selection} deleteCategory={'items'} />
+                    <DeleteBtn
+                        deleteItem={deleteItem}
+                        handleDelete={handleDelete}
+                        selection={selection}
+                        deleteCategory={'items'}
+                        />
                 }
                 <div className="items-table-container">
                     <Table striped hover>

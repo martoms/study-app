@@ -533,6 +533,9 @@ footer {
   position: relative; }
   .items-table .delete {
     top: 30px; }
+    @media (min-width: 768px) {
+      .items-table .delete {
+        top: 45px; } }
   .items-table .items-table-container {
     max-height: 70vh;
     overflow-y: auto;

@@ -1,11 +1,13 @@
 /* eslint-disable react/prop-types */
 import { Modal, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const DeleteWarning = ({deleteWarning, handleCloseDeleteWarning, handleDelete, selection}) => {
 
+    const { timeStamp } = useParams();
     const whatToDelete = useSelector(state => state.generalState.whatToDelete);
-    const currentSet = useSelector(state => state.generalState.currentSet);
+    const currentSet = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0]?.setName;
 
     let itemsToDelete;
 

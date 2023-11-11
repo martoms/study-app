@@ -4,7 +4,6 @@ const storedState = JSON.parse(localStorage.getItem("generalState"));
 
 const initialState = storedState ? storedState : {
     addItems: false,
-    currentSet: '',
     itemType: '',
     whatToDelete: ''
 };
@@ -17,15 +16,6 @@ const generalStateSlice = createSlice({
             const addItems = action.payload;
 
             const updatedState = {...state, addItems};
-
-            return updatedState
-        },
-        currentSet: (state, action) => {
-            const currentSet = action.payload;
-
-            const updatedState = {...state, currentSet};
-
-            localStorage.setItem("generalState", JSON.stringify(updatedState));
 
             return updatedState
         },
@@ -50,5 +40,5 @@ const generalStateSlice = createSlice({
     }
 });
 
-export const { addItems, currentSet, itemType, whatToDelete } = generalStateSlice.actions;
+export const { addItems, itemType, whatToDelete } = generalStateSlice.actions;
 export default generalStateSlice.reducer;

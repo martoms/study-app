@@ -33,10 +33,10 @@ const studySetSlice = createSlice({
         },
         deleteItems: (state, action) => {
 
-            const { selection, currentSet } = action.payload;
+            const { selection, timeStamp } = action.payload;
 
             const updatedState = state.map(set => {
-                if (set.setName === currentSet) {
+                if (set.createdOn === Number(timeStamp)) {
 
                     const updatedSet = set.items.filter(item =>
                         !selection.includes(String(item.createdOn))
@@ -92,7 +92,7 @@ const studySetSlice = createSlice({
             const {newItems, currentSet} = action.payload;
             
             const updatedState = state.map(set => {
-                if (set.setName === currentSet) {
+                if (set.createdOn === currentSet) {
                     return {
                         ...set,
                         items: [...set.items, ...newItems]

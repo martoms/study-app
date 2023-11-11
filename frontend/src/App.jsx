@@ -10,7 +10,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={ <Home /> } />
-        <Route path='/:setName' element={ <ItemsPanel /> } />
+        <Route path='/:timeStamp' element={ <ItemsPanel /> } />
       </Routes>
     </Router>
   )

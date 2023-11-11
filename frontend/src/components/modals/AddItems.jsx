@@ -10,7 +10,7 @@ const AddItems = () => {
     const addNewItems = useSelector(state => state.generalState.addItems);
     const currentItemType = useSelector(state => state.generalState.itemType);
     const currentSet = useSelector(state => state.generalState.currentSet);
-    const studySetItems = useSelector(state => state.studySetList).filter(set => set.setName === currentSet)[0].items.length;
+    const studySetItems = useSelector(state => state.studySetList).filter(set => set.createdOn === currentSet)[0].items.length;
 
     const dispatch = useDispatch();
     const navigate = useNavigate();

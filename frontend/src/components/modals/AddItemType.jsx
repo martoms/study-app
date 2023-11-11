@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItems, itemType } from "../../features/generalState/generalStateSlice";
 
-const AddItemType = ({addItem, setAddItem, slug}) => {
+const AddItemType = ({addItem, setAddItem, currentSet}) => {
 
     const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ const AddItemType = ({addItem, setAddItem, slug}) => {
             </Modal.Header>
             <Modal.Body>
                 <ul>
-                    <Link to={`/${slug}`} target="_self" onClick={handleType}>
+                    <Link to={`/${currentSet}`} target="_self" onClick={handleType}>
                         <li className="opt-btn-1">Identification</li>
                     </Link>
                 </ul>

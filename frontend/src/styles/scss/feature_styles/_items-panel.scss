@@ -3,6 +3,10 @@
 
     .delete {
         top: 30px;
+
+        @include md {
+            top: 45px
+        }
     }
     .items-table-container {
         @include table-container;

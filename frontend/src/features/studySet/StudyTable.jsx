@@ -4,12 +4,11 @@ import useReformatDate from '../../hooks/useReformatDate';
 import { useState } from 'react';
 import DeleteBtn from '../../components/buttons/deletebtn';
 import { deleteSet } from '../../features/studySet/studySetSlice';
-import { currentSet } from '../../features/generalState/generalStateSlice';
+// import { currentSet } from '../../features/generalState/generalStateSlice';
 import RenameBtn from '../../components/buttons/RenameBtn';
 import SortBtn from '../../components/buttons/SortBtn';
 import AddItemType from '../../components/modals/AddItemType';
 import { handleCheckbox, handleMasterCheckbox } from '../../components/handlers/formHandlers';
-import slugify from 'slugify';
 import { useNavigate } from 'react-router-dom';
 
 const StudyTable = () => {
@@ -17,16 +16,17 @@ const StudyTable = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const studySet = useSelector(state => state.studySetList);
-    const selectedSet = useSelector(state => state.generalState.currentSet);
-    const slug = slugify(selectedSet).toLocaleLowerCase();
+    // const selectedSet = useSelector(state => state.generalState.currentSet);
     const { dateMonthYearShort, toMMDDYY, minuteHour } = useReformatDate();
 
     const [selection, setSelection] = useState([]);
+    const [currentSet, setCurrentSet] = useState('');
     const [addItem, setAddItem] = useState(false);
     const deleteItem = selection.length;
 
     const setNames = studySet.map(studySet => studySet.setName);
     const setItems = studySet.map(studySet => studySet.items);
+    const createdOn = studySet.map(studySet => studySet.createdOn);
     const dateCreated = studySet.map(studySet => dateMonthYearShort(studySet.createdOn));
     const shortDate = studySet.map(studySet => toMMDDYY(studySet.createdOn));
     const timeCreated = studySet.map(studySet => minuteHour(studySet.createdOn));
@@ -36,14 +36,16 @@ const StudyTable = () => {
         setSelection([]);
     };
 
-    const handleShowAddItem = (setName) => {
-        dispatch(currentSet(setName));
+    const handleShowAddItem = (createdOn) => {
+        // dispatch(currentSet(createdOn));
+        setCurrentSet(createdOn);
         setAddItem(true);
     };
 
-    const handleView = (setName) => {
-        dispatch(currentSet(setName));
-        navigate(`/${slug}`);
+    const handleView = (createdOn) => {
+        // dispatch(currentSet(selectedSet));
+        setCurrentSet(createdOn);
+        navigate(`/${createdOn}`);
     };
 
 
@@ -52,7 +54,7 @@ const StudyTable = () => {
         const targetItem = setName;
 
         return (
-            <tr key={ setName } >
+            <tr key={ createdOn[i] } >
                 <td className='setName checkbox-td'>
                     <span className='delete-checkbox'>
                         <Form.Check
@@ -94,7 +96,7 @@ const StudyTable = () => {
                             className={`view ${setItems[i].length === 0 || deleteItem === 0 && 'toggle'}`}
                             style={{backgroundColor: (setItems[i].length === 0 && 'lightgrey') || (deleteItem > 0 && 'lightgrey')}}
                             disabled={setItems[i].length === 0}
-                            onClick={() => handleView(setName)}
+                            onClick={() => handleView(createdOn[i])}
                         >
                             view
                         </button>
@@ -104,7 +106,7 @@ const StudyTable = () => {
                             className={`add ${deleteItem === 0 && 'toggle'}`}
                             style={{backgroundColor: deleteItem > 0 && 'lightgrey'}}
                             disabled={deleteItem > 0}
-                            onClick={() => handleShowAddItem(setName)}
+                            onClick={() => handleShowAddItem(createdOn[i])}
                         >
                             add
                         </button>
@@ -163,7 +165,7 @@ const StudyTable = () => {
             <AddItemType
                 addItem={addItem}
                 setAddItem={setAddItem}
-                slug={slug}
+                currentSet={currentSet}
             />
         </div>
         </>
