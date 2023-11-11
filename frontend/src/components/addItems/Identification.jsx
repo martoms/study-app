@@ -16,7 +16,7 @@ const Identification = ({currentSet, studySetItems}) => {
         answer: '',
         caseSensitive: false,
         createdOn: Date.now(),
-        itemType: 'identification'
+        itemType: 'Identification'
     }];
     const [newItems, setNewItems] = useState(initialFormState);
     const [itemCount, setItemCount] = useState(1);

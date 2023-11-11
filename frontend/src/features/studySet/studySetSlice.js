@@ -104,6 +104,29 @@ const studySetSlice = createSlice({
             localStorage.setItem("studySet", JSON.stringify(updatedState));
 
             return updatedState;
+        },
+        editSingleIdentificationItem: (state, action) => {
+            const { item, editedItem, currentSet } = action.payload;
+
+            const updatedState = state.map(set => {
+                if (set.createdOn === Number(currentSet)) {
+                    const updatedItems = set.items.map(i => {
+                        if (i.createdOn === Number(item)) {
+                            return editedItem[0]; 
+                        }
+                        return i;
+                    });
+
+                return { ...set, items: updatedItems };
+                }
+
+                return set;
+            });
+
+            // Update localStorage with the new state
+            localStorage.setItem("studySet", JSON.stringify(updatedState));
+
+            return updatedState;
         }
     }
 });
@@ -114,6 +137,7 @@ export const {
     deleteItems,
     renameSet,
     sortSet,
-    addIdentificationItems
+    addIdentificationItems,
+    editSingleIdentificationItem
 } = studySetSlice.actions;
 export default studySetSlice.reducer;

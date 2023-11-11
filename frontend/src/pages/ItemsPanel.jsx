@@ -9,6 +9,7 @@ import { deleteItems } from "../features/studySet/studySetSlice";
 import { useParams, useNavigate } from "react-router-dom";
 import AddItemsBtn from "../components/buttons/AddItemsBtn";
 import AddItemType from "../components/modals/AddItemType";
+import EditSingleItemBtn from "../components/buttons/EditSingleItemBtn";
 
 const ItemsPanel = () => {
 
@@ -58,6 +59,11 @@ const ItemsPanel = () => {
                 </td>
                 <td className="item-preview">
                     { `"${statement}"` }
+                    <EditSingleItemBtn
+                        createdOn={createdOn}
+                        itemType={itemType}
+                        itemNo={i + 1}
+                    />
                 </td>
                 <td className="item-type">
                     { itemType }

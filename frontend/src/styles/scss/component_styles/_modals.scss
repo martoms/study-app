@@ -1,4 +1,5 @@
-.add-items-modal {
+.add-items-modal,
+.edit-items-modal {
     .modal-dialog {
         .modal-content {
             @include md {
@@ -20,7 +21,8 @@
                 }
             }
 
-            .add-items-container {
+            .add-items-container,
+            .edit-items-container {
 
                 .current-set {
                     position: relative;
@@ -209,6 +211,22 @@
                             margin-bottom: 0;
                             // margin-right: 10px
                         }
+                    }
+                }
+            }
+
+            .edit-items-container {
+                textarea {
+                    height: 400px;
+                    resize: none;
+                    margin-bottom: $base-margin;
+
+                    @include md {
+                        height: 450px;
+                    }
+
+                    @include lg {
+                        height: 250px;
                     }
                 }
             }

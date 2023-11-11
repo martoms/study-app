@@ -26,10 +26,15 @@
         }
     
         .item-preview {
+            position: relative;
             max-width: 50px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
+
+            .edit-btn {
+                display: none;
+            }
         }
     
         .item-type {

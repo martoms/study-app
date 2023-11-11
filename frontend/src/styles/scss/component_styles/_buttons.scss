@@ -52,3 +52,9 @@
         width: 30px;
     }
 }
+
+.edit-btn {
+    @include toggle;
+    position: absolute;
+    right: 10px;
+}

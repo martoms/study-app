@@ -7,7 +7,7 @@ import { renameSet } from '../../features/studySet/studySetSlice';
 import { useLocation } from 'react-router-dom';
 
 const RenameBtn = ({list, targetItem}) => {
-    
+
     const [renameItem, setRenameItem] = useState(false);
     const [duplicate, setDuplicate] = useState(false);
     const [newName, setNewName] = useState('');

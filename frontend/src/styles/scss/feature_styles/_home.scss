@@ -21,6 +21,7 @@
         }
     
         .setName {
+            position: relative;
             width: 50% !important;
             vertical-align: middle;
             padding-left: $base-padding;
@@ -31,21 +32,11 @@
             span:nth-child(2) {
                 width: 10px;
             }
-    
+
             .edit-btn {
-                @include toggle;
                 display: none;
-                position: relative;
-                left: 85px;
-    
-                @include md {
-                    left: 230px
-                }
-    
-                @include lg {
-                    left: 520px
-                }
             }
+    
         };
     
         .createdOn {
@@ -54,6 +45,10 @@
             p {
                 margin: 0;
                 text-align: center
+            }
+
+            @include lg {
+                width: 10%;
             }
         };
         .items {
@@ -64,7 +59,7 @@
             color: $c-1;
     
             @include lg {
-                width: 30%;
+                width: 20%;
                 text-align: center;
             }
     

@@ -224,72 +224,131 @@ footer {
     height: 30px;
     width: 30px; }
 
+.edit-btn {
+  cursor: pointer;
+  position: absolute;
+  right: 10px; }
+  .edit-btn:active {
+    animation: pulse 0.3s ease; }
+
 @media (min-width: 768px) {
-  .add-items-modal .modal-dialog .modal-content {
+  .add-items-modal .modal-dialog .modal-content,
+  .edit-items-modal .modal-dialog .modal-content {
     border-radius: 10px;
     width: 80vw;
     height: 95vh;
     margin: 1rem auto; } }
 
-.add-items-modal .modal-dialog .modal-content .modal-title {
+.add-items-modal .modal-dialog .modal-content .modal-title,
+.edit-items-modal .modal-dialog .modal-content .modal-title {
   color: #75C2F6; }
 
-.add-items-modal .modal-dialog .modal-content .modal-body {
+.add-items-modal .modal-dialog .modal-content .modal-body,
+.edit-items-modal .modal-dialog .modal-content .modal-body {
   background-color: #e5e4e2;
   overflow: hidden; }
   @media (min-width: 992px) {
-    .add-items-modal .modal-dialog .modal-content .modal-body {
+    .add-items-modal .modal-dialog .modal-content .modal-body,
+    .edit-items-modal .modal-dialog .modal-content .modal-body {
       padding: 2rem 5rem; } }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container .current-set {
+.add-items-modal .modal-dialog .modal-content .add-items-container .current-set,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .current-set,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .current-set,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .current-set {
   position: relative; }
-  .add-items-modal .modal-dialog .modal-content .add-items-container .current-set img {
+  .add-items-modal .modal-dialog .modal-content .add-items-container .current-set img,
+  .add-items-modal .modal-dialog .modal-content .edit-items-container .current-set img,
+  .edit-items-modal .modal-dialog .modal-content .add-items-container .current-set img,
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container .current-set img {
     cursor: pointer;
     position: absolute;
     right: 0; }
-    .add-items-modal .modal-dialog .modal-content .add-items-container .current-set img:active {
+    .add-items-modal .modal-dialog .modal-content .add-items-container .current-set img:active,
+    .add-items-modal .modal-dialog .modal-content .edit-items-container .current-set img:active,
+    .edit-items-modal .modal-dialog .modal-content .add-items-container .current-set img:active,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container .current-set img:active {
       animation: pulse 0.3s ease; }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container .itemNo {
+.add-items-modal .modal-dialog .modal-content .add-items-container .itemNo,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .itemNo,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .itemNo,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .itemNo {
   font-weight: 900;
   color: #505050; }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container .navigation {
+.add-items-modal .modal-dialog .modal-content .add-items-container .navigation,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .navigation,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .navigation,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .navigation {
   position: relative; }
-  .add-items-modal .modal-dialog .modal-content .add-items-container .navigation p {
+  .add-items-modal .modal-dialog .modal-content .add-items-container .navigation p,
+  .add-items-modal .modal-dialog .modal-content .edit-items-container .navigation p,
+  .edit-items-modal .modal-dialog .modal-content .add-items-container .navigation p,
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container .navigation p {
     text-align: center;
     font-weight: 800;
     margin: -1rem 0; }
-  .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img {
+  .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img,
+  .add-items-modal .modal-dialog .modal-content .edit-items-container .navigation img,
+  .edit-items-modal .modal-dialog .modal-content .add-items-container .navigation img,
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container .navigation img {
     position: absolute;
     top: 2px;
     filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
     cursor: pointer; }
-    .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img:active {
+    .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img:active,
+    .add-items-modal .modal-dialog .modal-content .edit-items-container .navigation img:active,
+    .edit-items-modal .modal-dialog .modal-content .add-items-container .navigation img:active,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container .navigation img:active {
       animation: pulse 0.3s ease; }
-  .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="next"] {
+  .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="next"],
+  .add-items-modal .modal-dialog .modal-content .edit-items-container .navigation img[alt="next"],
+  .edit-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="next"],
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container .navigation img[alt="next"] {
     right: 100px; }
     @media (min-width: 768px) {
-      .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="next"] {
+      .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="next"],
+      .add-items-modal .modal-dialog .modal-content .edit-items-container .navigation img[alt="next"],
+      .edit-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="next"],
+      .edit-items-modal .modal-dialog .modal-content .edit-items-container .navigation img[alt="next"] {
         right: 200px; } }
     @media (min-width: 992px) {
-      .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="next"] {
+      .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="next"],
+      .add-items-modal .modal-dialog .modal-content .edit-items-container .navigation img[alt="next"],
+      .edit-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="next"],
+      .edit-items-modal .modal-dialog .modal-content .edit-items-container .navigation img[alt="next"] {
         right: 400px; } }
-  .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="previous"] {
+  .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="previous"],
+  .add-items-modal .modal-dialog .modal-content .edit-items-container .navigation img[alt="previous"],
+  .edit-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="previous"],
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container .navigation img[alt="previous"] {
     left: 100px; }
     @media (min-width: 768px) {
-      .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="previous"] {
+      .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="previous"],
+      .add-items-modal .modal-dialog .modal-content .edit-items-container .navigation img[alt="previous"],
+      .edit-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="previous"],
+      .edit-items-modal .modal-dialog .modal-content .edit-items-container .navigation img[alt="previous"] {
         left: 200px; } }
     @media (min-width: 992px) {
-      .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="previous"] {
+      .add-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="previous"],
+      .add-items-modal .modal-dialog .modal-content .edit-items-container .navigation img[alt="previous"],
+      .edit-items-modal .modal-dialog .modal-content .add-items-container .navigation img[alt="previous"],
+      .edit-items-modal .modal-dialog .modal-content .edit-items-container .navigation img[alt="previous"] {
         left: 400px; } }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container ul {
+.add-items-modal .modal-dialog .modal-content .add-items-container ul,
+.add-items-modal .modal-dialog .modal-content .edit-items-container ul,
+.edit-items-modal .modal-dialog .modal-content .add-items-container ul,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container ul {
   border: 1px solid #1D5D9B;
   padding: 1rem;
   border-radius: 10px; }
   @media (min-width: 768px) {
-    .add-items-modal .modal-dialog .modal-content .add-items-container ul {
+    .add-items-modal .modal-dialog .modal-content .add-items-container ul,
+    .add-items-modal .modal-dialog .modal-content .edit-items-container ul,
+    .edit-items-modal .modal-dialog .modal-content .add-items-container ul,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container ul {
       padding: 2rem; } }
 
 @keyframes left-out {
@@ -316,52 +375,94 @@ footer {
   100% {
     transform: translate(0%, -103.1%); } }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container .slide-left-out {
+.add-items-modal .modal-dialog .modal-content .add-items-container .slide-left-out,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .slide-left-out,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .slide-left-out,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .slide-left-out {
   animation: left-out 0.5s ease-in-out; }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container .slide-left-in {
+.add-items-modal .modal-dialog .modal-content .add-items-container .slide-left-in,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .slide-left-in,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .slide-left-in,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .slide-left-in {
   animation: left-in 0.5s ease-in-out; }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container .slide-right-out {
+.add-items-modal .modal-dialog .modal-content .add-items-container .slide-right-out,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .slide-right-out,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .slide-right-out,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .slide-right-out {
   animation: right-out 0.5s ease-in-out; }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container .slide-right-in {
+.add-items-modal .modal-dialog .modal-content .add-items-container .slide-right-in,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .slide-right-in,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .slide-right-in,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .slide-right-in {
   animation: right-in 0.5s ease-in-out; }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container label {
+.add-items-modal .modal-dialog .modal-content .add-items-container label,
+.add-items-modal .modal-dialog .modal-content .edit-items-container label,
+.edit-items-modal .modal-dialog .modal-content .add-items-container label,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container label {
   font-weight: 600;
   color: #505050; }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container .input-info {
+.add-items-modal .modal-dialog .modal-content .add-items-container .input-info,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .input-info,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .input-info,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .input-info {
   font-size: 0.85rem;
   margin-bottom: 0; }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container .statement {
+.add-items-modal .modal-dialog .modal-content .add-items-container .statement,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .statement,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .statement,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .statement {
   position: relative; }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container .answer {
+.add-items-modal .modal-dialog .modal-content .add-items-container .answer,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .answer,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .answer,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .answer {
   display: inline-block; }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container .case-sensitive {
+.add-items-modal .modal-dialog .modal-content .add-items-container .case-sensitive,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .case-sensitive,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .case-sensitive,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .case-sensitive {
   position: absolute;
   top: 0;
   right: 0; }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container .case-sensitive label {
+.add-items-modal .modal-dialog .modal-content .add-items-container .case-sensitive label,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .case-sensitive label,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .case-sensitive label,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .case-sensitive label {
   font-weight: 400; }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container textarea {
+.add-items-modal .modal-dialog .modal-content .add-items-container textarea,
+.add-items-modal .modal-dialog .modal-content .edit-items-container textarea,
+.edit-items-modal .modal-dialog .modal-content .add-items-container textarea,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container textarea {
   height: 300px;
   resize: none;
   margin-bottom: 1rem; }
   @media (min-width: 768px) {
-    .add-items-modal .modal-dialog .modal-content .add-items-container textarea {
+    .add-items-modal .modal-dialog .modal-content .add-items-container textarea,
+    .add-items-modal .modal-dialog .modal-content .edit-items-container textarea,
+    .edit-items-modal .modal-dialog .modal-content .add-items-container textarea,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container textarea {
       height: 400px; } }
   @media (min-width: 992px) {
-    .add-items-modal .modal-dialog .modal-content .add-items-container textarea {
+    .add-items-modal .modal-dialog .modal-content .add-items-container textarea,
+    .add-items-modal .modal-dialog .modal-content .edit-items-container textarea,
+    .edit-items-modal .modal-dialog .modal-content .add-items-container textarea,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container textarea {
       height: 200px; } }
 
-.add-items-modal .modal-dialog .modal-content .add-items-container .item-btns {
+.add-items-modal .modal-dialog .modal-content .add-items-container .item-btns,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .item-btns,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .item-btns,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .item-btns {
   margin: auto;
   margin-top: 2rem;
   top: 550px;
@@ -369,28 +470,63 @@ footer {
   display: flex;
   justify-content: space-between; }
   @media (min-width: 768px) {
-    .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns {
+    .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns,
+    .add-items-modal .modal-dialog .modal-content .edit-items-container .item-btns,
+    .edit-items-modal .modal-dialog .modal-content .add-items-container .item-btns,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container .item-btns {
       margin-top: 2rem; } }
   @media (min-width: 992px) {
-    .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns {
+    .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns,
+    .add-items-modal .modal-dialog .modal-content .edit-items-container .item-btns,
+    .edit-items-modal .modal-dialog .modal-content .add-items-container .item-btns,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container .item-btns {
       margin-top: 1rem;
       margin-left: auto;
       margin-right: 0;
       margin-bottom: 0;
       width: 40%; } }
-  .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button {
+  .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button,
+  .add-items-modal .modal-dialog .modal-content .edit-items-container .item-btns button,
+  .edit-items-modal .modal-dialog .modal-content .add-items-container .item-btns button,
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container .item-btns button {
     cursor: pointer;
     border-radius: 50px; }
-    .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button:active {
+    .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button:active,
+    .add-items-modal .modal-dialog .modal-content .edit-items-container .item-btns button:active,
+    .edit-items-modal .modal-dialog .modal-content .add-items-container .item-btns button:active,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container .item-btns button:active {
       animation: pulse 0.3s ease; }
     @media (min-width: 768px) {
-      .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button {
+      .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button,
+      .add-items-modal .modal-dialog .modal-content .edit-items-container .item-btns button,
+      .edit-items-modal .modal-dialog .modal-content .add-items-container .item-btns button,
+      .edit-items-modal .modal-dialog .modal-content .edit-items-container .item-btns button {
         width: 49%; } }
-  .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button:first-child {
+  .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button:first-child,
+  .add-items-modal .modal-dialog .modal-content .edit-items-container .item-btns button:first-child,
+  .edit-items-modal .modal-dialog .modal-content .add-items-container .item-btns button:first-child,
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container .item-btns button:first-child {
     margin-bottom: 1rem; }
     @media (min-width: 768px) {
-      .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button:first-child {
+      .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns button:first-child,
+      .add-items-modal .modal-dialog .modal-content .edit-items-container .item-btns button:first-child,
+      .edit-items-modal .modal-dialog .modal-content .add-items-container .item-btns button:first-child,
+      .edit-items-modal .modal-dialog .modal-content .edit-items-container .item-btns button:first-child {
         margin-bottom: 0; } }
+
+.add-items-modal .modal-dialog .modal-content .edit-items-container textarea,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container textarea {
+  height: 400px;
+  resize: none;
+  margin-bottom: 1rem; }
+  @media (min-width: 768px) {
+    .add-items-modal .modal-dialog .modal-content .edit-items-container textarea,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container textarea {
+      height: 450px; } }
+  @media (min-width: 992px) {
+    .add-items-modal .modal-dialog .modal-content .edit-items-container textarea,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container textarea {
+      height: 250px; } }
 
 .create-study-set {
   background-color: white;
@@ -452,6 +588,7 @@ footer {
       .study-table .study-table-container {
         max-height: 65vh; } }
     .study-table .study-table-container .setName {
+      position: relative;
       width: 50% !important;
       vertical-align: middle;
       padding-left: 1rem;
@@ -461,24 +598,16 @@ footer {
       .study-table .study-table-container .setName span:nth-child(2) {
         width: 10px; }
       .study-table .study-table-container .setName .edit-btn {
-        cursor: pointer;
-        display: none;
-        position: relative;
-        left: 85px; }
-        .study-table .study-table-container .setName .edit-btn:active {
-          animation: pulse 0.3s ease; }
-        @media (min-width: 768px) {
-          .study-table .study-table-container .setName .edit-btn {
-            left: 230px; } }
-        @media (min-width: 992px) {
-          .study-table .study-table-container .setName .edit-btn {
-            left: 520px; } }
+        display: none; }
     .study-table .study-table-container .createdOn {
       font-size: 0.75rem;
       vertical-align: middle; }
       .study-table .study-table-container .createdOn p {
         margin: 0;
         text-align: center; }
+      @media (min-width: 992px) {
+        .study-table .study-table-container .createdOn {
+          width: 10%; } }
     .study-table .study-table-container .items {
       text-align: center;
       vertical-align: middle;
@@ -487,7 +616,7 @@ footer {
       color: #1D5D9B; }
       @media (min-width: 992px) {
         .study-table .study-table-container .items {
-          width: 30%;
+          width: 20%;
           text-align: center; } }
       .study-table .study-table-container .items span {
         display: inline-block; }
@@ -603,10 +732,13 @@ footer {
         .items-table .items-table-container .item-no {
           width: 5%; } }
     .items-table .items-table-container .item-preview {
+      position: relative;
       max-width: 50px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis; }
+      .items-table .items-table-container .item-preview .edit-btn {
+        display: none; }
     .items-table .items-table-container .item-type {
       width: 40%;
       color: #1D5D9B; }
