@@ -70,7 +70,7 @@ const StudyTable = () => {
                     {
                         deleteItem === 0 &&
                         <RenameBtn
-                            setNames={setNames}
+                            list={setNames}
                             targetItem={targetItem}
                         />
                     }

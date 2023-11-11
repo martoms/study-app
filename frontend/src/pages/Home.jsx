@@ -1,4 +1,4 @@
-import CreateSet from "../features/studySet/CreateStudySet";
+import CreateStudySet from "../features/studySet/CreateStudySet";
 import { useSelector } from "react-redux";
 import StudyTable from "../features/studySet/StudyTable";
 
@@ -11,13 +11,13 @@ const Home = () => {
             {
                 newSet.length == 0 ?
                 <div className="initial-setup d-flex">
-                    <CreateSet />
+                    <CreateStudySet />
                 </div>
                 :
                 <div className="main-panel">
                     <StudyTable />
                     <div className="addNewSet">
-                        <CreateSet />
+                        <CreateStudySet />
                     </div>
                 </div>
             }

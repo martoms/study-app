@@ -4,28 +4,34 @@ import { useDispatch } from 'react-redux';
 import renameBtn from '../../images/edit.svg';
 import InputRename from '../modals/InputRename';
 import { renameSet } from '../../features/studySet/studySetSlice';
+import { useLocation } from 'react-router-dom';
 
-const RenameBtn = ({setNames, targetItem}) => {
+const RenameBtn = ({list, targetItem}) => {
     
     const [renameItem, setRenameItem] = useState(false);
     const [duplicate, setDuplicate] = useState(false);
     const [newName, setNewName] = useState('');
 
     const dispatch = useDispatch();
+    const location = useLocation();
+    const currentPath = location.pathname;
 
     const handleShowRenameItem = () => setRenameItem(true);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (setNames.includes(newName)) {
+        if (list.includes(newName)) {
             setDuplicate(true);
         } else {
             const names = {
                 targetItem,
                 newName
             }
-            dispatch(renameSet(names));
+            if (currentPath === '/') {
+                dispatch(renameSet(names));
+            } 
+
             setNewName('');
             setRenameItem(false);
         }

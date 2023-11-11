@@ -39,3 +39,16 @@
     background-color: white;
     color: $text-2;
 }
+
+.add-items {
+    @include toggle;
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    border: none;
+    background-color: transparent;
+    img {
+        height: 30px;
+        width: 30px;
+    }
+}

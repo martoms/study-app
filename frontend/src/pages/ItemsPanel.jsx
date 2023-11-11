@@ -7,6 +7,8 @@ import DeleteBtn from "../components/buttons/deletebtn";
 import { useDispatch } from "react-redux";
 import { deleteItems } from "../features/studySet/studySetSlice";
 import { useParams } from "react-router-dom";
+import AddItemsBtn from "../components/buttons/AddItemsBtn";
+import AddItemType from "../components/modals/AddItemType";
 
 const ItemsPanel = () => {
 
@@ -15,6 +17,7 @@ const ItemsPanel = () => {
     const addItems = useSelector(state => state.generalState.addItems)
     const itemsData = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].items;
 
+    const [addItem, setAddItem] = useState(false);
     const [selection, setSelection] = useState([]);
     const deleteItem = selection.length;
 
@@ -84,6 +87,12 @@ const ItemsPanel = () => {
                                             onChange={(e) => handleMasterCheckbox(e, setSelection)}
                                         />
                                     }
+                                    {
+                                        !deleteItem &&
+                                        <AddItemsBtn
+                                            setAddItem={setAddItem}
+                                        />
+                                    }
                                     Items
                                 </th>
                                 <th>Type</th>
@@ -95,6 +104,11 @@ const ItemsPanel = () => {
                     </Table>
                 </div>
             </div>
+            <AddItemType
+                addItem={addItem}
+                setAddItem={setAddItem}
+                currentSet={timeStamp}
+            />
             <AddItems addItems={addItems} />
         </div>
     );

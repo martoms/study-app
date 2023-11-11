@@ -108,5 +108,12 @@ const studySetSlice = createSlice({
     }
 });
 
-export const { createSet, deleteSet, deleteItems, renameSet, sortSet, addIdentificationItems } = studySetSlice.actions;
+export const {
+    createSet,
+    deleteSet,
+    deleteItems,
+    renameSet,
+    sortSet,
+    addIdentificationItems
+} = studySetSlice.actions;
 export default studySetSlice.reducer;

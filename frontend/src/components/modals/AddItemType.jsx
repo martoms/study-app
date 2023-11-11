@@ -3,16 +3,19 @@ import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItems, itemType } from "../../features/generalState/generalStateSlice";
+import { useLocation } from "react-router-dom";
 
 const AddItemType = ({addItem, setAddItem, currentSet}) => {
 
     const dispatch = useDispatch();
+    const location = useLocation().pathname;
 
     const handleCloseAddItem = () => {
         setAddItem(false);
     };
 
     const handleType = (e) => {
+        setAddItem(false);
         dispatch(addItems(true));
         dispatch(itemType(e.target.innerHTML));
     };
@@ -23,11 +26,23 @@ const AddItemType = ({addItem, setAddItem, currentSet}) => {
                 <Modal.Title>Choose Item Type</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <ul>
-                    <Link to={`/${currentSet}`} target="_self" onClick={handleType}>
-                        <li className="opt-btn-1">Identification</li>
-                    </Link>
-                </ul>
+                {
+                    location === '/' ?
+                    <ul>
+                        <Link to={`/${currentSet}`} target="_self" onClick={handleType}>
+                            <li className="opt-btn-1">Identification</li>
+                        </Link>
+                    </ul>
+                    :
+                    <ul>
+                        <li
+                            className="opt-btn-1"
+                            onClick={handleType}
+                        >
+                            Identification
+                        </li>
+                    </ul>
+                }
             </Modal.Body>
             <Modal.Footer>
                 <Button

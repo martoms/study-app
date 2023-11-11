@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addIdentificationItems } from '../../features/studySet/studySetSlice';
 import next from '../../images/next.svg';
 import previous from '../../images/previous.svg';
@@ -20,6 +20,8 @@ const Identification = ({currentSet, studySetItems, handleCloseAddItems}) => {
     const [newItems, setNewItems] = useState(initialFormState);
     const [itemCount, setItemCount] = useState(1);
     const [currentItem, setCurrentItem] = useState(itemCount - 1);
+    const currentSetName = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(currentSet))[0].setName;
+
     // const [slideLeft, setSlideLeft] = useState(false);
     // const [slideRight, setSlideRight] = useState(false);
 
@@ -156,7 +158,7 @@ const Identification = ({currentSet, studySetItems, handleCloseAddItems}) => {
                     itemCount > 1 && <img src={deleteBtn} alt="delete" title="Delete current item" onClick={handleDelete} />
                 }
                 <span className="itemNo">{`Item #${studySetItems + newItems.length + currentItem + 1} `}</span>
-                <span>{ `(${currentSet})` } </span>
+                <span>{ `(${currentSetName})` } </span>
             </div><hr />
             <div className="navigation">
                 <img src={previous} alt="previous" title="Go to previous item" onClick={handleNav} />

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import set from '../../images/set.svg';
 import InputSetName from '../../components/modals/InputSetName';
 
-const CreateSet = () => {
+const CreateStudySet = () => {
 
     const [createNewSet, setCreateNewSet] = useState(false);
     const handleShowCreateSet = () => setCreateNewSet(true);
@@ -24,4 +24,4 @@ const CreateSet = () => {
     );
 }
  
-export default CreateSet;
+export default CreateStudySet;
