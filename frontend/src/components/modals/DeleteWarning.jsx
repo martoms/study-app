@@ -21,8 +21,9 @@ const DeleteWarning = ({deleteWarning, handleCloseDeleteWarning, handleDelete, s
         })
     }
 
+
     return ( 
-        <Modal show={deleteWarning} onHide={handleCloseDeleteWarning} centered>
+        <Modal show={deleteWarning} onHide={handleCloseDeleteWarning} centered >
             <Modal.Header closeButton>
                 <Modal.Title>Warning!</Modal.Title>
             </Modal.Header>
@@ -49,13 +50,14 @@ const DeleteWarning = ({deleteWarning, handleCloseDeleteWarning, handleDelete, s
                     type='button'
                     variant="secondary"
                     onClick={handleCloseDeleteWarning}
+                    style={{marginRight: "5px"}}
                 >
                     Cancel
                 </Button>
                 <Button
-                    type='button'
+                    type='submit'
                     variant="primary"
-                    onClick={() => handleDelete()}
+                    onClick={handleDelete}
                 >
                     OK
                 </Button>

@@ -3,11 +3,12 @@ import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addIdentificationItems } from '../../features/studySet/studySetSlice';
+import { addItems } from "../../features/generalState/generalStateSlice";
 import next from '../../images/next.svg';
 import previous from '../../images/previous.svg';
 import deleteBtn from '../../images/delete.svg';
 
-const Identification = ({currentSet, studySetItems, handleCloseAddItems}) => {
+const Identification = ({currentSet, studySetItems}) => {
 
     const dispatch = useDispatch();
     const initialFormState = [{
@@ -54,7 +55,8 @@ const Identification = ({currentSet, studySetItems, handleCloseAddItems}) => {
         setNewItems(initialFormState);
         setItemCount(1);
         setCurrentItem(itemCount);
-        handleCloseAddItems();
+        dispatch(addItems(false));
+        // dispatch(itemType(''));
     };
 
     const handleAddMore = () => {
@@ -151,13 +153,14 @@ const Identification = ({currentSet, studySetItems, handleCloseAddItems}) => {
 
     // console.log('slideRight', slideRight)
     // console.log('slideLeft', slideLeft)
+
     return ( 
         <div className="add-items-container">
             <div className="current-set">
                 {
                     itemCount > 1 && <img src={deleteBtn} alt="delete" title="Delete current item" onClick={handleDelete} />
                 }
-                <span className="itemNo">{`Item #${studySetItems + newItems.length + currentItem + 1} `}</span>
+                <span className="itemNo">{`Item #${studySetItems + newItems.length + currentItem} `}</span>
                 <span>{ `(${currentSetName})` } </span>
             </div><hr />
             <div className="navigation">

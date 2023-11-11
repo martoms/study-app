@@ -4,16 +4,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addItems, itemType } from '../../features/generalState/generalStateSlice';
 import { useNavigate } from 'react-router-dom';
 import Identification from '../addItems/Identification';
+import { useParams } from 'react-router-dom';
 
 const AddItems = () => {
-  
-    const addNewItems = useSelector(state => state.generalState.addItems);
-    const currentItemType = useSelector(state => state.generalState.itemType);
-    const currentSet = useSelector(state => state.generalState.currentSet);
-    const studySetItems = useSelector(state => state.studySetList).filter(set => set.createdOn === currentSet)[0].items.length;
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { timeStamp } = useParams();
+  
+    const addNewItems = useSelector(state => state.generalState.addItems);
+    const currentItemType = useSelector(state => state.generalState.itemType);
+    const studySetItems = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].items.length;
 
     const handleCloseAddItems = () => {
         dispatch(addItems(false));
@@ -39,9 +40,8 @@ const AddItems = () => {
                 {
                     currentItemType === 'Identification' &&
                     <Identification
-                        currentSet={currentSet}
+                        currentSet={timeStamp}
                         studySetItems={studySetItems}
-                        handleCloseAddItems={handleCloseAddItems}
                     />
                 }
             </Modal.Body>

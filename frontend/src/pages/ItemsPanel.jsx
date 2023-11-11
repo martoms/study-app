@@ -6,13 +6,14 @@ import { handleCheckbox, handleMasterCheckbox } from '../components/handlers/for
 import DeleteBtn from "../components/buttons/deletebtn";
 import { useDispatch } from "react-redux";
 import { deleteItems } from "../features/studySet/studySetSlice";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import AddItemsBtn from "../components/buttons/AddItemsBtn";
 import AddItemType from "../components/modals/AddItemType";
 
 const ItemsPanel = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { timeStamp } = useParams();
     const addItems = useSelector(state => state.generalState.addItems)
     const itemsData = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].items;
@@ -28,6 +29,10 @@ const ItemsPanel = () => {
         }
         dispatch(deleteItems(payload));
         setSelection([]);
+
+        if (itemsData.length === selection.length) {
+            navigate('/');
+        }
     };
 
     const itemsList = itemsData.map((item, i) => {

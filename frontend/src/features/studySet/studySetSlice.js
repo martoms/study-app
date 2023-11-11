@@ -92,7 +92,7 @@ const studySetSlice = createSlice({
             const {newItems, currentSet} = action.payload;
             
             const updatedState = state.map(set => {
-                if (set.createdOn === currentSet) {
+                if (set.createdOn === Number(currentSet)) {
                     return {
                         ...set,
                         items: [...set.items, ...newItems]
