@@ -88,18 +88,14 @@ const Identification = ({currentSet, studySetItems}) => {
             else {
                 // setSlideLeft(true);
                 // setSlideRight(false);
-                setTimeout(() => {
-                    setCurrentItem(currentItem + 1);
-                }, 500)
+                setCurrentItem(currentItem + 1);
             }
         } else {
             if (currentItem + 1 === 1) return false
             else {
                 // setSlideRight(true);
                 // setSlideLeft(false);
-                setTimeout(() => {
-                    setCurrentItem(currentItem - 1);
-                }, 500)
+                setCurrentItem(currentItem - 1);
             }
         }
     };

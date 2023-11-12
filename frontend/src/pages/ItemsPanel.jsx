@@ -10,6 +10,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import AddItemsBtn from "../components/buttons/AddItemsBtn";
 import AddItemType from "../components/modals/AddItemType";
 import EditSingleItemBtn from "../components/buttons/EditSingleItemBtn";
+import EditMultipleItemsBtn from "../components/buttons/EditMultipleItemsBtn";
 
 const ItemsPanel = () => {
 
@@ -59,11 +60,15 @@ const ItemsPanel = () => {
                 </td>
                 <td className="item-preview">
                     { `"${statement}"` }
-                    <EditSingleItemBtn
-                        createdOn={createdOn}
-                        itemType={itemType}
-                        itemNo={i + 1}
-                    />
+                    {
+                        deleteItem === 0 &&
+                        <EditSingleItemBtn
+                            createdOn={createdOn}
+                            itemType={itemType}
+                            itemNo={i + 1}
+                        />
+                    }
+                    
                 </td>
                 <td className="item-type">
                     { itemType }
@@ -77,12 +82,18 @@ const ItemsPanel = () => {
             <div className="items-table">
                 {
                     deleteItem > 0 &&
+                    <>
                     <DeleteBtn
                         deleteItem={deleteItem}
                         handleDelete={handleDelete}
                         selection={selection}
                         deleteCategory={'items'}
-                        />
+                    />
+                    <EditMultipleItemsBtn
+                        selection={selection}
+                        setSelection={setSelection}
+                    />
+                    </>
                 }
                 <div className="items-table-container">
                     <Table striped hover>

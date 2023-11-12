@@ -59,7 +59,7 @@ const DeleteWarning = ({deleteWarning, handleCloseDeleteWarning, handleDelete, s
                     variant="primary"
                     onClick={handleDelete}
                 >
-                    OK
+                    Proceed
                 </Button>
             </Modal.Footer>
         </Modal>

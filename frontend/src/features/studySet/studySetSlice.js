@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { compose, createSlice } from "@reduxjs/toolkit";
 
 const storedState = JSON.parse(localStorage.getItem("studySet"));
 const initialState = storedState ? storedState : [];
@@ -106,27 +106,53 @@ const studySetSlice = createSlice({
             return updatedState;
         },
         editSingleIdentificationItem: (state, action) => {
-            const { item, editedItem, currentSet } = action.payload;
+            const { item, editedItemObj, currentSet } = action.payload;
 
             const updatedState = state.map(set => {
                 if (set.createdOn === Number(currentSet)) {
                     const updatedItems = set.items.map(i => {
                         if (i.createdOn === Number(item)) {
-                            return editedItem[0]; 
+                            return editedItemObj; 
                         }
                         return i;
                     });
 
-                return { ...set, items: updatedItems };
+                    return { ...set, items: updatedItems };
                 }
 
                 return set;
             });
 
-            // Update localStorage with the new state
             localStorage.setItem("studySet", JSON.stringify(updatedState));
 
             return updatedState;
+        },
+        editMultipleIdentificationItem: (state, action) => {
+            const {
+                selection,
+                updatedItems,
+                currentSet
+            } = action.payload;
+
+            const updatedState = state.map(set => {
+                if (set.createdOn === Number(currentSet)) {
+                    const updatedItemsData = set.items.map(i => {
+                        for (let j = 0; j < selection.length; j++) {
+                            if (i.createdOn === selection[j]) {
+                                return updatedItems[j];
+                            }
+                        }
+                        return i;
+                    });
+                    return {...set, items: updatedItemsData}
+                }
+                return set;
+            });
+
+            localStorage.setItem("studySet", JSON.stringify(updatedState));
+
+            return updatedState;
+
         }
     }
 });
@@ -138,6 +164,7 @@ export const {
     renameSet,
     sortSet,
     addIdentificationItems,
-    editSingleIdentificationItem
+    editSingleIdentificationItem,
+    editMultipleIdentificationItem
 } = studySetSlice.actions;
 export default studySetSlice.reducer;

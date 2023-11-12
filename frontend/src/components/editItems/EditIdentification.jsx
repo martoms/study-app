@@ -32,9 +32,10 @@ const EditIdentification = ({currentSet, studySetItems, itemNo, item, setEditIte
 
     const handleSaveItem = (e) => {
         e.preventDefault();
+        const editedItemObj = editedItem[0]
         const updatedSet = {
             item,
-            editedItem,
+            editedItemObj,
             currentSet
         }
         dispatch(editSingleIdentificationItem(updatedSet));
@@ -85,9 +86,9 @@ const EditIdentification = ({currentSet, studySetItems, itemNo, item, setEditIte
                             </Form.Group>
                         </li> 
                     </ul>
-                    <div className="row item-btns">
+                    <div className="row item-btns mx-0 w-100">
                         <Button
-                            className="col-md-6"
+                            className="edit-save w-25 mx-auto"
                             type='submit'
                             variant="primary"
                             onClick={handleSaveItem}

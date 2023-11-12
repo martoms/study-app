@@ -231,6 +231,11 @@ footer {
   .edit-btn:active {
     animation: pulse 0.3s ease; }
 
+.edit-multiple-btn {
+  position: absolute;
+  right: 30px;
+  top: 30px; }
+
 @media (min-width: 768px) {
   .add-items-modal .modal-dialog .modal-content,
   .edit-items-modal .modal-dialog .modal-content {
