@@ -69,7 +69,7 @@ const Identification = ({currentSet, studySetItems}) => {
             answer: '',
             caseSensitive: false,
             createdOn: Date.now(),
-            itemType: 'identification'
+            itemType: 'Identification'
         };
 
         setNewItems(updatedItems);

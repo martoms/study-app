@@ -11,6 +11,7 @@ import AddItemsBtn from "../components/buttons/AddItemsBtn";
 import AddItemType from "../components/modals/AddItemType";
 import EditSingleItemBtn from "../components/buttons/EditSingleItemBtn";
 import EditMultipleItemsBtn from "../components/buttons/EditMultipleItemsBtn";
+import StudyBtn from "../components/buttons/StudyBtn";
 
 const ItemsPanel = () => {
 
@@ -125,6 +126,9 @@ const ItemsPanel = () => {
                         </tbody>
                     </Table>
                 </div>
+            </div>
+            <div className="items-panel-study">
+                <StudyBtn />
             </div>
             <AddItemType
                 addItem={addItem}
