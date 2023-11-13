@@ -1,7 +1,5 @@
 .create-study-set {
-    @include btn-hover-1(white);
-    background-color: white;
-    color: $text-2;
+    @include main-center-btn;
 }
 
 .study-table {

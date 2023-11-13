@@ -22,11 +22,18 @@
     }
 };
 
+@mixin main-center-btn {
+    @include btn-hover-1(white);
+    background-color: white;
+    color: $text-2;
+}
+
 .center-btn {
     @include btn;
     margin: auto;
     margin-top: $base-margin * 5;
 }
+
 
 .opt-btn-1 {
     @include btn;

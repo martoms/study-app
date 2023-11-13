@@ -12,6 +12,7 @@ import AddItemType from "../components/modals/AddItemType";
 import EditSingleItemBtn from "../components/buttons/EditSingleItemBtn";
 import EditMultipleItemsBtn from "../components/buttons/EditMultipleItemsBtn";
 import StudyBtn from "../components/buttons/StudyBtn";
+import { studyMode } from "../features/generalState/generalStateSlice";
 
 const ItemsPanel = () => {
 
@@ -36,6 +37,15 @@ const ItemsPanel = () => {
         if (itemsData.length === selection.length) {
             navigate('/');
         }
+    };
+
+    const handleStudyMode = (e) => {
+        const mode = e.target.value;
+        const study = {
+            timeStamp,
+            mode
+        };
+        dispatch(studyMode(study));
     };
 
     const itemsList = itemsData.map((item, i) => {
@@ -81,6 +91,21 @@ const ItemsPanel = () => {
     return ( 
         <div className="main-container">
             <div className="items-table">
+                {
+                    deleteItem < 1 &&
+                    <div className="study-mode">
+                        <Form>
+                            <Form.Group>
+                                <Form.Label>Study Mode:</Form.Label>
+                                <Form.Select onChange={handleStudyMode}>
+                                    <option value="ordered">ordered</option>
+                                    <option value="reversed">reversed</option>
+                                    <option value="random">random</option>
+                                </Form.Select>
+                            </Form.Group>
+                        </Form>
+                    </div>
+                }
                 {
                     deleteItem > 0 &&
                     <>

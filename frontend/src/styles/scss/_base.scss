@@ -135,10 +135,6 @@ input {
         color: $text-2;
     }
 
-    @include md {
-        top: -45px;
-    }
-
     @include lg {
         top: -40px;
     }

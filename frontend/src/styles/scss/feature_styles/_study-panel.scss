@@ -1,0 +1,6 @@
+a {
+    margin: auto;
+    .study-btn {
+        @include main-center-btn;
+    }
+}

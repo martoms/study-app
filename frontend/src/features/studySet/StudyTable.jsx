@@ -16,7 +16,6 @@ const StudyTable = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const studySet = useSelector(state => state.studySetList);
-    // const selectedSet = useSelector(state => state.generalState.currentSet);
     const { dateMonthYearShort, toMMDDYY, minuteHour } = useReformatDate();
 
     const [selection, setSelection] = useState([]);
@@ -37,13 +36,11 @@ const StudyTable = () => {
     };
 
     const handleShowAddItem = (createdOn) => {
-        // dispatch(currentSet(createdOn));
         setCurrentSet(createdOn);
         setAddItem(true);
     };
 
     const handleView = (createdOn) => {
-        // dispatch(currentSet(selectedSet));
         setCurrentSet(createdOn);
         navigate(`/${createdOn}`);
     };

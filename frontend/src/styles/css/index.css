@@ -71,9 +71,6 @@ input {
     animation: pulse 0.3s ease; }
   .delete p {
     color: #505050; }
-  @media (min-width: 768px) {
-    .delete {
-      top: -45px; } }
   @media (min-width: 992px) {
     .delete {
       top: -40px; } }
@@ -768,3 +765,24 @@ footer {
   .items-panel-study button {
     margin-top: 0;
     width: 212.45px; }
+
+.study-mode {
+  position: absolute;
+  top: 20px; }
+  .study-mode label {
+    margin-right: 1rem;
+    font-weight: 700;
+    color: #505050; }
+  .study-mode select {
+    display: inline-block;
+    width: 150px; }
+
+a {
+  margin: auto; }
+  a .study-btn {
+    background-color: white;
+    color: #505050; }
+    a .study-btn:hover {
+      background-color: #fafafa;
+      filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
+      color: #505050; }

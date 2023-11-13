@@ -71,3 +71,18 @@
         width: 212.45px;
     }
 }
+
+.study-mode {
+    position: absolute;
+    top: 20px;
+
+    label {
+        margin-right: $base-margin;
+        font-weight: 700;
+        color: $text-2;
+    }
+    select {
+        display: inline-block;
+        width: 150px;
+    }
+}
