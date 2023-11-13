@@ -8,7 +8,7 @@ import { deleteSet } from '../../features/studySet/studySetSlice';
 import RenameBtn from '../../components/buttons/RenameBtn';
 import SortBtn from '../../components/buttons/SortBtn';
 import AddItemType from '../../components/modals/AddItemType';
-import { handleCheckbox, handleMasterCheckbox } from '../../components/handlers/formHandlers';
+import { handleCheckbox, handleMasterCheckbox } from '../../handlers/formHandlers';
 import { useNavigate } from 'react-router-dom';
 
 const StudyTable = () => {

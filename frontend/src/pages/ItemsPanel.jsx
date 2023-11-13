@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Table, Form } from "react-bootstrap";
-import { useSelector } from "react-redux";
 import AddItems from "../components/modals/AddItems";
-import { handleCheckbox, handleMasterCheckbox } from '../components/handlers/formHandlers';
+import { handleCheckbox, handleMasterCheckbox } from '../handlers/formHandlers';
 import DeleteBtn from "../components/buttons/deletebtn";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteItems } from "../features/studySet/studySetSlice";
 import { useParams, useNavigate } from "react-router-dom";
 import AddItemsBtn from "../components/buttons/AddItemsBtn";
@@ -25,6 +24,8 @@ const ItemsPanel = () => {
     const [addItem, setAddItem] = useState(false);
     const [selection, setSelection] = useState([]);
     const deleteItem = selection.length;
+
+    const currentStudyMode = useSelector(state => state.generalState.studyModes)?.filter(set => set.timeStamp === timeStamp)[0]?.mode;
 
     const handleDelete = () => {
         const payload = {
@@ -97,7 +98,7 @@ const ItemsPanel = () => {
                         <Form>
                             <Form.Group>
                                 <Form.Label>Study Mode:</Form.Label>
-                                <Form.Select onChange={handleStudyMode}>
+                                <Form.Select value={currentStudyMode} onChange={handleStudyMode}>
                                     <option value="ordered">ordered</option>
                                     <option value="reversed">reversed</option>
                                     <option value="random">random</option>
