@@ -10,6 +10,9 @@ const StudyPanel = () => {
     let items = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].items;
 
     const [currentItem, setCurrentItem] = useState(1);
+    const [score, setScore] = useState(0);
+
+    console.log(score)
 
     let questionsAndAnswers = items.map(item => {
         const {
@@ -26,6 +29,10 @@ const StudyPanel = () => {
                         statement={statement}
                         answer={answer}
                         caseSensitive={caseSensitive}
+                        score={score}
+                        setScore={setScore}
+                        currentItem={currentItem}
+                        setCurrentItem={setCurrentItem}
                     />
                 }
             </>

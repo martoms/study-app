@@ -4,7 +4,15 @@ import { Form, Button } from "react-bootstrap";
 import correct from '../../images/correct.svg';
 import wrong from '../../images/wrong.svg';
 
-const IdentificationQuestions = ({statement, answer, caseSensitive}) => {
+const IdentificationQuestions = ({
+    statement,
+    answer,
+    caseSensitive,
+    score,
+    setScore,
+    currentItem,
+    setCurrentItem
+}) => {
 
     const [next, setNext] = useState(false);
     const [userAnswer, setUserAnswer] = useState('');
@@ -22,6 +30,15 @@ const IdentificationQuestions = ({statement, answer, caseSensitive}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (caseSensitive) {
+            if (answers.includes(userAnswer)) {
+                setScore(score + 1)
+            }
+        } else {
+            if (insensitive.includes(userAnswer.toLowerCase())) {
+                setScore(score + 1)
+            }
+        }
         setShowCorrectAns(true);
         setNext(true);
     };
@@ -32,6 +49,7 @@ const IdentificationQuestions = ({statement, answer, caseSensitive}) => {
             setShowCorrectAns(false);
             setUserAnswer('');
             setNext(false);
+            setCurrentItem(currentItem + 1);
         }, 1)
     }
 
