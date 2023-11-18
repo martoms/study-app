@@ -1,4 +1,4 @@
-import { compose, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const storedState = JSON.parse(localStorage.getItem("studySet"));
 const initialState = storedState ? storedState : [];
@@ -16,7 +16,6 @@ const studySetSlice = createSlice({
 
             const updatedState = [...state, newSet];
 
-            // Save the updated state to local storage
             localStorage.setItem("studySet", JSON.stringify(updatedState));
 
             return updatedState;

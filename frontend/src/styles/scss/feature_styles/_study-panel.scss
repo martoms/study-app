@@ -32,4 +32,83 @@ a {
         font-weight: 700;
         color: $text-2;
     }
+
+    .final-answer {
+        position: relative;
+        background-color: white;
+        color: $text-2;
+        padding: 6px 12px;
+        border-radius: $b-radius-1;
+
+        .answer {
+            max-width: 92%;
+            overflow-x: auto;
+        }
+
+        img {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            height: 25px;
+            width: auto;
+        }
+
+        
+    }
+
+    .final-answer.correct {
+        outline: 5px solid rgba(119, 255, 119, 0.5);
+    }
+
+    .final-answer.wrong {
+        outline: 5px solid rgba(255, 119, 119, 0.5);
+    }
+
+    .correct-answer {
+        margin-top: $base-margin;
+        position: relative;
+        p {
+            margin-bottom: $base-margin / 2;
+        }
+
+        .case-sensitive {
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: $text-2;
+        }
+
+        .display-answers {
+            display: flex;
+            column-gap: 5px;
+            overflow-x: auto;
+            padding: $base-padding;
+
+            span {
+                background-color: white;
+                padding: ($base-padding / 3) $base-padding;
+                border-radius: $b-radius-1;
+                border: 1px solid $text-2;
+                text-wrap: nowrap;
+            }
+        }
+
+        hr {
+            margin-top: 0;
+        }
+    }
+
+    .buttons {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: $base-margin * 2;
+        display: flex;
+        justify-content: center;
+
+        button {
+            font-weight: 500;
+            width: 50%;
+        }
+    }
 }
