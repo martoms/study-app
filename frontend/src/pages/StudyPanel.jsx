@@ -9,8 +9,6 @@ const StudyPanel = () => {
     const studyMode = useSelector(state => state.generalState.studyModes)?.filter(set => set.timeStamp === timeStamp)[0]?.mode;
     let items = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].items;
 
-    console.log(items)
-
     const [currentItem, setCurrentItem] = useState(1);
 
     let questionsAndAnswers = items.map(item => {

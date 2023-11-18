@@ -109,7 +109,8 @@ input {
   background-color: #faf7e6; }
   .navbar a {
     font-weight: 800;
-    color: #75C2F6; }
+    color: #75C2F6;
+    margin-left: 0; }
 
 .feature-container {
   height: calc(100vh - 269px - 56px);
@@ -798,3 +799,14 @@ a {
   margin: auto; }
   .current-item p {
     margin: 0; }
+
+.question-and-answer .statement {
+  filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  height: 50vh;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #505050; }

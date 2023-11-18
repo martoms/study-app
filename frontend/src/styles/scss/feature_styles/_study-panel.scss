@@ -19,3 +19,17 @@ a {
         margin: 0;
     }
 }
+
+.question-and-answer {
+    .statement {
+        @include dropshadow-1;
+        background-color: white;
+        padding: $base-padding;
+        border-radius: $b-radius-1;
+        height: 50vh;
+        margin-bottom: $base-margin;
+        font-size: $font-r-5;
+        font-weight: 700;
+        color: $text-2;
+    }
+}

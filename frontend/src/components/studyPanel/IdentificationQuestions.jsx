@@ -3,6 +3,8 @@
 import { Form } from "react-bootstrap";
 
 const IdentificationQuestions = ({statement, answer, caseSensitive}) => {
+
+    console.log(statement)
     
     return ( 
         <div className="question-and-answer identification-questions">
@@ -11,7 +13,9 @@ const IdentificationQuestions = ({statement, answer, caseSensitive}) => {
             </div>
             <div className="user-answer">
                 <Form>
-                    <Form.Control />
+                    <Form.Control
+                        placeholder="Answer..."
+                    />
                 </Form>
             </div>
         </div>
