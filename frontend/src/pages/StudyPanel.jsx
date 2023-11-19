@@ -7,6 +7,8 @@ import { addStudyData } from "../features/studySet/studySetSlice";
 import IdentificationQuestions from "../components/studyPanel/IdentificationQuestions";
 import { useStopwatch } from 'react-timer-hook';
 import StudySummary from "../components/studyPanel/StudySummary";
+import exit from '../images/exit.svg';
+import ExitWarning from "../components/modals/ExitWarning";
 
 const StudyPanel = () => {
 
@@ -18,6 +20,7 @@ const StudyPanel = () => {
     const [currentItem, setCurrentItem] = useState(1);
     const [score, setScore] = useState(0);
     const [showStudySummary, setShowStudySummary] = useState(false);
+    const [showExitWarning, setShowExitWarning] = useState(false);
     const [elapsedTime, setElapsedTime] = useState({
         hours: 0,
         minutes: 0,
@@ -27,6 +30,9 @@ const StudyPanel = () => {
     const updateElapsedTime = () => {
         setElapsedTime({ hours, minutes, seconds })
     };
+
+    const handleCloseExitWarning = () => setShowExitWarning(false);
+    const handleShowExitWarning = () => setShowExitWarning(true);
 
     const handleComplete = () => {
         const studyData = {
@@ -119,6 +125,10 @@ const StudyPanel = () => {
                     <span className="minutes">{ String(elapsedTime.minutes).length === 1 ? `0${elapsedTime.minutes}` : elapsedTime.minutes }</span>
                     <span className="seconds">{ String(elapsedTime.seconds).length === 1 ? `0${elapsedTime.seconds}` : elapsedTime.seconds }</span>
                 </div>
+                <div className="exit" onClick={handleShowExitWarning}>
+                    <img src={exit} alt="exit" />
+                    Exit
+                </div>
                 { questionsAndAnswers[currentItem - 1] }
                 </>
                 :
@@ -126,6 +136,10 @@ const StudyPanel = () => {
                     
                 />
             }
+            <ExitWarning
+                showExitWarning={showExitWarning}
+                handleCloseExitWarning={handleCloseExitWarning}
+            />
         </div>
     );
 }

@@ -41,6 +41,18 @@ div.timer {
     }
 }
 
+.exit {
+    @include toggle;
+    position: absolute;
+    top: 40px;
+    font-weight: 600;
+    color: $text-2;
+    img {
+        height: 20px;
+        margin-right: $base-margin / 3;
+    }
+}
+
 .question-and-answer {
     .statement {
         @include dropshadow-1;
