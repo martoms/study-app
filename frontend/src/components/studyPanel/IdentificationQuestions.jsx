@@ -5,13 +5,15 @@ import correct from '../../images/correct.svg';
 import wrong from '../../images/wrong.svg';
 
 const IdentificationQuestions = ({
+    items,
     statement,
     answer,
     caseSensitive,
     score,
     setScore,
     currentItem,
-    setCurrentItem
+    setCurrentItem,
+    handleComplete
 }) => {
 
     const [next, setNext] = useState(false);
@@ -51,7 +53,7 @@ const IdentificationQuestions = ({
             setNext(false);
             setCurrentItem(currentItem + 1);
         }, 1)
-    }
+    };
 
     return ( 
         <div className="question-and-answer identification-questions">
@@ -113,6 +115,16 @@ const IdentificationQuestions = ({
                     }
                     <div className="buttons">
                         {
+
+                            next && currentItem === items.length ?
+                            <Button
+                                type="button"
+                                className="complete"
+                                onClick={handleComplete}
+                            >
+                            Complete
+                            </Button>
+                            :
                             next ?
                             <Button
                                 type="button"

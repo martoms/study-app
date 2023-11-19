@@ -20,6 +20,27 @@ a {
     }
 }
 
+div.timer {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: -20px;
+    text-align: end;
+    font-weight: 600;
+    color: $text-2;
+
+    .hours::after {
+        content: ':';
+    }
+    
+    .minutes::after {
+        content: ':';
+    }
+
+    .hours, .minutes, .seconds {
+        font-family: 'Roboto Mono', monospace;
+    }
+}
+
 .question-and-answer {
     .statement {
         @include dropshadow-1;
@@ -83,6 +104,7 @@ a {
             column-gap: 5px;
             overflow-x: auto;
             padding: $base-padding;
+            padding-left: 0;
 
             span {
                 background-color: white;

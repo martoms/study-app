@@ -2,15 +2,57 @@
 /* eslint-disable no-case-declarations */
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addStudyData } from "../features/studySet/studySetSlice";
 import IdentificationQuestions from "../components/studyPanel/IdentificationQuestions";
+import { useStopwatch } from 'react-timer-hook';
+import StudySummary from "../components/studyPanel/StudySummary";
 
 const StudyPanel = () => {
 
     const { timeStamp } = useParams();
+    const dispatch = useDispatch();
     const studyMode = useSelector(state => state.generalState.studyModes)?.filter(set => set.timeStamp === timeStamp)[0]?.mode;
     let studyItems = [...useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].items];
     const [items, setItems] = useState([]);
+    const [currentItem, setCurrentItem] = useState(1);
+    const [score, setScore] = useState(0);
+    const [showStudySummary, setShowStudySummary] = useState(false);
+    const [elapsedTime, setElapsedTime] = useState({
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+    });
+
+    const updateElapsedTime = () => {
+        setElapsedTime({ hours, minutes, seconds })
+    };
+
+    const handleComplete = () => {
+        const studyData = {
+            timeStamp,
+            date: Date.now(),
+            elapsedTime,
+            items: items.length,
+            score
+        }
+        pause();
+        setShowStudySummary(true);
+        dispatch(addStudyData(studyData));
+    };
+
+    const {
+        totalSeconds,
+        seconds,
+        minutes,
+        hours,
+        isRunning,
+        pause,
+    } = useStopwatch({ autoStart: true });
+
+    useEffect(() => {
+        updateElapsedTime();
+    }, [totalSeconds, isRunning])
 
     useEffect(() => {
         switch (studyMode) {
@@ -19,12 +61,12 @@ const StudyPanel = () => {
                 setItems(reversedItems)
                 break;
             case 'random':
-                let randomItems = [...studyItems]; // Create a copy of the original array
+                let randomItems = [...studyItems];
                 for (let i = 0; i < studyItems.length; i++) {
                     let randomIndex = Math.floor(Math.random() * randomItems.length);
                     let randomItem = randomItems[randomIndex];
-                    randomItems.splice(randomIndex, 1); // Remove the selected item from the copy
-                    studyItems[i] = randomItem; // Assign the selected item to the original array
+                    randomItems.splice(randomIndex, 1); 
+                    studyItems[i] = randomItem;
                 }
                 setItems(studyItems)
                 break;
@@ -32,9 +74,6 @@ const StudyPanel = () => {
                 setItems(studyItems);
         }
     }, [])
-
-    const [currentItem, setCurrentItem] = useState(1);
-    const [score, setScore] = useState(0);
 
     let questionsAndAnswers = items?.map(item => {
         const {
@@ -48,6 +87,7 @@ const StudyPanel = () => {
                 {
                     itemType === 'Identification' &&
                     <IdentificationQuestions
+                        items={items}
                         statement={statement}
                         answer={answer}
                         caseSensitive={caseSensitive}
@@ -55,6 +95,7 @@ const StudyPanel = () => {
                         setScore={setScore}
                         currentItem={currentItem}
                         setCurrentItem={setCurrentItem}
+                        handleComplete={handleComplete}
                     />
                 }
             </>
@@ -63,11 +104,28 @@ const StudyPanel = () => {
 
     return ( 
         <div className="main-container">
-            <div className="current-item">
-                <p>Question</p>
-                <p>{`${currentItem} of ${items.length}`}</p>
-            </div>
-            { questionsAndAnswers[currentItem - 1] }
+            {
+                !showStudySummary ?
+                <>
+                <div className="current-item">
+                    <p>Question</p>
+                    <p>{`${currentItem} of ${items.length}`}</p>
+                </div>
+                <div className="timer">
+                    {
+                        hours !== 0 &&
+                        <span className="hours">{ String(elapsedTime.hours).length === 1 ? `0${elapsedTime.hours}` : elapsedTime.hours }</span>
+                    }
+                    <span className="minutes">{ String(elapsedTime.minutes).length === 1 ? `0${elapsedTime.minutes}` : elapsedTime.minutes }</span>
+                    <span className="seconds">{ String(elapsedTime.seconds).length === 1 ? `0${elapsedTime.seconds}` : elapsedTime.seconds }</span>
+                </div>
+                { questionsAndAnswers[currentItem - 1] }
+                </>
+                :
+                <StudySummary
+                    
+                />
+            }
         </div>
     );
 }
