@@ -895,3 +895,56 @@ div.timer {
   .question-and-answer .buttons button {
     font-weight: 500;
     width: 50%; }
+
+.summary {
+  text-align: center; }
+  .summary h1 {
+    color: #F4D160;
+    margin-bottom: 0; }
+  .summary h2 {
+    color: #505050;
+    font-size: 1rem; }
+  .summary .result {
+    position: relative;
+    margin-top: 4rem; }
+  .summary .result.high .percent {
+    color: #10ff00;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1), 0 0 20px rgba(119, 255, 119, 0.5), 0 0 50px rgba(119, 255, 119, 0.5); }
+  .summary .result.low .percent {
+    color: #ff0000;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 119, 119, 0.5), 0 0 50px rgba(255, 119, 119, 0.5); }
+  .summary .result.mid .percent {
+    color: #ffe100;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 225, 0, 0.5), 0 0 50px rgba(255, 225, 0, 0.5); }
+  .summary .percent {
+    filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
+    font-weight: 800;
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    padding: 4rem 2rem;
+    border-radius: 50%;
+    margin: auto; }
+  .summary .percent span:first-child {
+    font-size: 3rem; }
+  .summary .score {
+    position: relative;
+    bottom: 60px;
+    line-height: 1rem; }
+    .summary .score p {
+      margin: 0;
+      color: #505050;
+      font-weight: 600; }
+  .summary .elapsed-time {
+    margin-top: 2rem; }
+    .summary .elapsed-time p {
+      color: #505050;
+      margin-bottom: 0; }
+    .summary .elapsed-time span {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1D5D9B; }
+  .summary button {
+    position: relative;
+    bottom: -30vh;
+    width: 100px; }

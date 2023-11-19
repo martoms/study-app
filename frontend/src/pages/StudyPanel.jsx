@@ -133,7 +133,9 @@ const StudyPanel = () => {
                 </>
                 :
                 <StudySummary
-                    
+                    items={items.length}
+                    score={score}
+                    elapsedTime={elapsedTime}
                 />
             }
             <ExitWarning

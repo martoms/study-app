@@ -90,11 +90,11 @@ div.timer {
     }
 
     .final-answer.correct {
-        outline: 5px solid rgba(119, 255, 119, 0.5);
+        outline: 5px solid $correct-outline;
     }
 
     .final-answer.wrong {
-        outline: 5px solid rgba(255, 119, 119, 0.5);
+        outline: 5px solid $wrong-outline;
     }
 
     .correct-answer {
@@ -144,5 +144,90 @@ div.timer {
             font-weight: 500;
             width: 50%;
         }
+    }
+}
+
+.summary {
+    text-align: center;
+    h1 {
+        color: $c-3;
+        margin-bottom: 0;
+    }
+
+    h2 {
+        color: $text-2;
+        font-size: $font-r-1;
+    }
+
+    .result {
+        position: relative;
+        margin-top: $base-margin * 4;
+    }
+
+    .result.high {
+        .percent {
+            color: $correct;
+            box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1), 0 0 20px $correct-outline, 0 0 50px $correct-outline;
+        }
+    }
+
+    .result.low {
+        .percent {
+            color: $wrong;
+            box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1), 0 0 20px $wrong-outline, 0 0 50px $wrong-outline;
+        }
+    }
+
+    .result.mid {
+        .percent {
+            color: $mid;
+            box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1), 0 0 20px $mid-outline, 0 0 50px $mid-outline;
+        }
+    }
+
+    .percent {
+        @include dropshadow-1;
+        font-weight: 800;
+        background-color: white;
+        width: 200px;
+        height: 200px;
+        padding: 4rem 2rem;
+        border-radius: 50%;
+        margin: auto;
+    }
+    .percent span:first-child {
+        font-size: 3rem;
+    }
+
+    .score {
+        position: relative;
+        bottom: 60px;
+        line-height: 1rem;
+        p {
+            margin: 0;
+            color: $text-2;
+            font-weight: 600;
+        }
+    }
+
+    .elapsed-time {
+        margin-top: $base-margin * 2;
+
+        p {
+            color: $text-2;
+            margin-bottom: 0;
+        }
+
+        span {
+            font-size: $font-r-5;
+            font-weight: 800;
+            color: $c-1;
+        }
+    }
+
+    button {
+        position: relative;
+        bottom: -30vh;
+        width: 100px;
     }
 }
