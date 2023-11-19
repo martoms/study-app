@@ -156,7 +156,7 @@ const Identification = ({currentSet, studySetItems}) => {
                 {
                     itemCount > 1 && <img src={deleteBtn} alt="delete" title="Delete current item" onClick={handleDelete} />
                 }
-                <span className="itemNo">{`Item #${studySetItems + newItems.length + currentItem} `}</span>
+                <span className="itemNo">{`Item #${studySetItems + currentItem + 1} `}</span>
                 <span>{ `(${currentSetName})` } </span>
             </div><hr />
             <div className="navigation">
