@@ -95,6 +95,20 @@ input {
 .main-container {
   background-color: #faf7e6;
   min-height: calc(100vh - 56px); }
+  .main-container h1.setName {
+    padding: 0 2rem;
+    margin-bottom: 0;
+    color: #1D5D9B;
+    font-size: 1.2rem; }
+    @media (min-width: 768px) {
+      .main-container h1.setName {
+        padding: 0 3rem; } }
+    @media (min-width: 992px) {
+      .main-container h1.setName {
+        padding: 0 5rem; } }
+    .main-container h1.setName + hr {
+      width: 90%;
+      margin: 5px auto; }
   .main-container > div {
     padding: 2rem; }
   @media (min-width: 768px) {
@@ -234,6 +248,12 @@ footer {
   position: absolute;
   right: 30px;
   top: 30px; }
+  @media (min-width: 768px) {
+    .edit-multiple-btn {
+      right: 50px; } }
+  @media (min-width: 992px) {
+    .edit-multiple-btn {
+      right: 160px; } }
 
 @media (min-width: 768px) {
   .add-items-modal .modal-dialog .modal-content,
@@ -543,11 +563,14 @@ footer {
 .study-table {
   position: relative; }
   .study-table .study-table-container {
-    max-height: 70vh;
+    max-height: 65vh;
     overflow-y: auto;
     overflow-x: hidden;
     border-radius: 10px;
     margin-top: 2rem; }
+    @media (min-width: 992px) {
+      .study-table .study-table-container {
+        max-height: 57vh !important; } }
     .study-table .study-table-container thead {
       position: sticky;
       top: 0;
@@ -689,15 +712,24 @@ footer {
     right: 30px; }
     .items-table .stat-button:active {
       animation: pulse 0.3s ease; }
+    @media (min-width: 768px) {
+      .items-table .stat-button {
+        right: 50px; } }
+    @media (min-width: 992px) {
+      .items-table .stat-button {
+        right: 170px; } }
     .items-table .stat-button img {
       height: 30px;
       width: auto; }
   .items-table .items-table-container {
-    max-height: 70vh;
+    max-height: 65vh;
     overflow-y: auto;
     overflow-x: hidden;
     border-radius: 10px;
     margin-top: 2rem; }
+    @media (min-width: 992px) {
+      .items-table .items-table-container {
+        max-height: 57vh !important; } }
     .items-table .items-table-container thead {
       position: sticky;
       top: 0;
@@ -807,7 +839,14 @@ a {
   border-radius: 10px;
   padding: 5px !important;
   width: 30%;
-  margin: auto; }
+  margin: auto;
+  margin-top: 1rem; }
+  @media (min-width: 768px) {
+    .current-item {
+      width: 20%; } }
+  @media (min-width: 992px) {
+    .current-item {
+      width: 10%; } }
   .current-item p {
     margin: 0; }
 
@@ -828,7 +867,7 @@ div.timer {
 .exit {
   cursor: pointer;
   position: absolute;
-  top: 40px;
+  top: 90px;
   font-weight: 600;
   color: #505050; }
   .exit:active {
@@ -849,10 +888,10 @@ div.timer {
   color: #505050; }
   @media (min-width: 768px) {
     .question-and-answer .statement {
-      height: 60vh; } }
+      height: 55vh; } }
   @media (min-width: 992px) {
     .question-and-answer .statement {
-      height: 45vh; } }
+      height: 40vh; } }
 
 .question-and-answer form .form-group {
   display: flex;
@@ -1000,8 +1039,8 @@ div.timer {
       color: #1D5D9B; }
   .summary button {
     position: relative;
-    bottom: -30vh;
+    bottom: -25vh;
     width: 100px; }
     @media (min-width: 992px) {
       .summary button {
-        bottom: -20vh; } }
+        bottom: -15vh; } }

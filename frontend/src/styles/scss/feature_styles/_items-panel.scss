@@ -13,6 +13,14 @@
         position: absolute;
         top: 20px;
         right: 30px;
+
+        @include md {
+            right: 50px;
+        }
+
+        @include lg {
+            right: 170px;
+        }
         
         img {
             height: 30px;

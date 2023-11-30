@@ -164,6 +164,27 @@ input {
 
 // Basic Layout
 .main-container {
+
+    h1.setName {
+        padding: 0 ($base-padding * 2);
+        margin-bottom: 0;
+        color: $c-1;
+        font-size: $font-r-3;
+
+        @include md {
+            padding: 0 ($base-padding * 3);
+        }
+
+        @include lg {
+            padding: 0 ($base-padding * 5);
+        }
+
+        & + hr {
+            width: 90%;
+            margin: 5px auto;
+        }
+    }
+
     background-color: $bg-1;
     min-height: calc(100vh - 56px);
 

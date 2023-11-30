@@ -70,4 +70,12 @@
     position: absolute;
     right: 30px;
     top: 30px;
+
+    @include md {
+        right: 50px;
+    }
+
+    @include lg {
+        right: 160px;
+    }
 }

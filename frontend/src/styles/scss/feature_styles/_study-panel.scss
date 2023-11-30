@@ -14,6 +14,15 @@ a {
     padding: 5px !important;
     width: 30%;
     margin: auto;
+    margin-top: $base-margin;
+
+    @include md {
+        width: 20%;
+    }
+
+    @include lg {
+        width: 10%;
+    }
 
     p {
         margin: 0;
@@ -44,7 +53,7 @@ div.timer {
 .exit {
     @include toggle;
     position: absolute;
-    top: 40px;
+    top: 90px;
     font-weight: 600;
     color: $text-2;
     img {
@@ -66,11 +75,11 @@ div.timer {
         color: $text-2;
 
         @include md {
-            height: 60vh;
+            height: 55vh;
         }
 
         @include lg {
-            height: 45vh;
+            height: 40vh;
         }
     }
 
@@ -277,11 +286,11 @@ div.timer {
 
     button {
         position: relative;
-        bottom: -30vh;
+        bottom: -25vh;
         width: 100px;
 
         @include lg {
-            bottom: -20vh;
+            bottom: -15vh;
         }
     }
 }

@@ -20,6 +20,7 @@ const ItemsPanel = () => {
     const navigate = useNavigate();
     const { timeStamp } = useParams();
     const addItems = useSelector(state => state.generalState.addItems)
+    const setName = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].setName;
     const itemsData = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].items;
 
     const [addItem, setAddItem] = useState(false);
@@ -92,6 +93,7 @@ const ItemsPanel = () => {
 
     return ( 
         <div className="main-container">
+            <h1 className="setName">{ setName }</h1><hr />
             <div className="items-table">
                 {
                     deleteItem < 1 &&

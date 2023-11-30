@@ -15,6 +15,7 @@ const StudyPanel = () => {
     const { timeStamp } = useParams();
     const dispatch = useDispatch();
     const studyMode = useSelector(state => state.generalState.studyModes)?.filter(set => set.timeStamp === timeStamp)[0]?.mode;
+    let setName = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].setName;
     let studyItems = [...useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].items];
     const [items, setItems] = useState([]);
     const [currentItem, setCurrentItem] = useState(1);
@@ -110,6 +111,7 @@ const StudyPanel = () => {
 
     return ( 
         <div className="main-container">
+            <h1 className="setName">{ setName }</h1><hr />
             {
                 !showStudySummary ?
                 <>

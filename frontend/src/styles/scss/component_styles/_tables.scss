@@ -1,9 +1,13 @@
 @mixin table-container {
-    max-height: 70vh;
+    max-height: 65vh;
     overflow-y: auto;
     overflow-x: hidden;
     border-radius: $b-radius-1;
     margin-top: $base-margin * 2;
+
+    @include lg {
+        max-height: 57vh !important;
+    }
 
     thead {
         position: sticky;
