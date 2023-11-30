@@ -64,85 +64,132 @@ div.timer {
         font-size: $font-r-5;
         font-weight: 700;
         color: $text-2;
-    }
 
-    .final-answer {
-        position: relative;
-        background-color: white;
-        color: $text-2;
-        padding: 6px 12px;
-        border-radius: $b-radius-1;
-
-        .answer {
-            max-width: 92%;
-            overflow-x: auto;
+        @include md {
+            height: 60vh;
         }
 
-        img {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            height: 25px;
-            width: auto;
+        @include lg {
+            height: 45vh;
         }
-
-        
     }
 
-    .final-answer.correct {
-        outline: 5px solid $correct-outline;
-    }
-
-    .final-answer.wrong {
-        outline: 5px solid $wrong-outline;
-    }
-
-    .correct-answer {
-        margin-top: $base-margin;
-        position: relative;
-        p {
-            margin-bottom: $base-margin / 2;
-        }
-
-        .case-sensitive {
-            position: absolute;
-            right: 0;
-            top: 0;
-            color: $text-2;
-        }
-
-        .display-answers {
+    form {
+        .form-group {
             display: flex;
-            column-gap: 5px;
-            overflow-x: auto;
-            padding: $base-padding;
-            padding-left: 0;
+            justify-content: space-between;
+            input {
+                @include md {
+                    width: 83%;
+                }
+            }
 
-            span {
-                background-color: white;
-                padding: ($base-padding / 3) $base-padding;
-                border-radius: $b-radius-1;
-                border: 1px solid $text-2;
-                text-wrap: nowrap;
+            button {
+                @include md {
+                    width: 16%;
+                }
             }
         }
 
-        hr {
-            margin-top: 0;
+        .final-answer {
+            @include md {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            @mixin final-answer {
+                position: relative;
+                background-color: white;
+                color: $text-2;
+                padding: 6px 12px;
+                border-radius: $b-radius-1;
+
+                @include md {
+                    display: inline-block;
+                    width: 83%;
+                }
+            }
+
+            .answer {
+                max-width: 92%;
+                overflow-x: auto;
+            }
+    
+            img {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                height: 25px;
+                width: auto;
+            }
+
+            .correct {
+                @include final-answer;
+                outline: 5px solid $correct-outline;
+            }
+
+            .wrong {
+                @include final-answer;
+                outline: 5px solid $wrong-outline;
+            }
+
+            button {
+                display: none;
+                @include md {
+                    display: inline-block;
+                    width: 16%;
+                }
+            }
+            
         }
-    }
-
-    .buttons {
-        position: absolute;
-        width: 100%;
-        left: 0;
-        bottom: $base-margin * 2;
-        display: flex;
-        justify-content: center;
-
-        button {
-            font-weight: 500;
-            width: 50%;
+    
+        .correct-answer {
+            margin-top: $base-margin;
+            position: relative;
+            p {
+                margin-bottom: $base-margin / 2;
+            }
+    
+            .case-sensitive {
+                position: absolute;
+                right: 0;
+                top: 0;
+                color: $text-2;
+            }
+    
+            .display-answers {
+                display: flex;
+                column-gap: 5px;
+                overflow-x: auto;
+                padding: $base-padding;
+                padding-left: 0;
+    
+                span {
+                    background-color: white;
+                    padding: ($base-padding / 3) $base-padding;
+                    border-radius: $b-radius-1;
+                    border: 1px solid $text-2;
+                    text-wrap: nowrap;
+                }
+            }
+    
+            hr {
+                margin-top: 0;
+            }
+        }
+    
+        .buttons {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: $base-margin * 2;
+            display: flex;
+            justify-content: center;
+    
+            button {
+                font-weight: 500;
+                width: 50%;
+            }
         }
     }
 }
@@ -152,6 +199,10 @@ div.timer {
     h1 {
         color: $c-3;
         margin-bottom: 0;
+
+        @include lg {
+            margin-bottom: $base-margin / 2;
+        }
     }
 
     h2 {
@@ -229,5 +280,9 @@ div.timer {
         position: relative;
         bottom: -30vh;
         width: 100px;
+
+        @include lg {
+            bottom: -20vh;
+        }
     }
 }

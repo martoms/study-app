@@ -64,32 +64,65 @@ const IdentificationQuestions = ({
                 <Form onSubmit={handleSubmit}>
                     {
                         !showCorrectAns ?
-                        <Form.Control
-                            value={userAnswer}
-                            placeholder="Answer..."
-                            onChange={(e) => setUserAnswer(e.target.value)}
-                            autoFocus
-                        />
+                        <Form.Group className="form-group">
+                            <Form.Control
+                                className="input-answer d-md-inline-block"
+                                value={userAnswer}
+                                placeholder="Answer..."
+                                onChange={(e) => setUserAnswer(e.target.value)}
+                                autoFocus
+                            />
+                            <Button
+                                type="submit"
+                                className="submit-answer d-none d-md-inline-block"
+                                onClick={handleSubmit}
+                                disabled={!userAnswer}
+                            >
+                            Submit
+                            </Button>
+                        </Form.Group>
                         :
-                        (
-                            caseSensitive ?
-                            answers.includes(userAnswer.trim())
-                            :
-                            insensitive.includes(userAnswer.trim().toLocaleLowerCase())
-                        )
-                        ?
-                        <div className="final-answer correct">
-                            <div className="answer">
-                                {userAnswer}
-                            </div>
-                            <img src={correct} alt="correct" />
-                        </div>
-                        :
-                        <div className="final-answer wrong">
-                            <div className="answer">
-                                {userAnswer}
-                            </div>
-                            <img src={wrong} alt="wrong" />
+                        <div className="final-answer">
+                            {
+                                (
+                                    caseSensitive ?
+                                    answers.includes(userAnswer.trim())
+                                    :
+                                    insensitive.includes(userAnswer.trim().toLocaleLowerCase())
+                                )
+                                ?
+                                <div className="correct">
+                                    <div className="answer">
+                                        {userAnswer}
+                                    </div>
+                                    <img src={correct} alt="correct" />
+                                </div>
+                                :
+                                <div className="wrong">
+                                    <div className="answer">
+                                        {userAnswer}
+                                    </div>
+                                    <img src={wrong} alt="wrong" />
+                                </div>
+                            }
+                            {
+                                next && currentItem === items.length ?
+                                <Button
+                                    type="button"
+                                    className="complete"
+                                    onClick={handleComplete}
+                                >
+                                Complete
+                                </Button>
+                                :
+                                <Button
+                                    type="button"
+                                    className="next-answer"
+                                    onClick={handleNext}
+                                >
+                                Next
+                                </Button>
+                            }
                         </div>
                     }
                     {
@@ -113,9 +146,8 @@ const IdentificationQuestions = ({
                             </div>
                         </div>
                     }
-                    <div className="buttons">
+                    <div className="buttons d-md-none">
                         {
-
                             next && currentItem === items.length ?
                             <Button
                                 type="button"

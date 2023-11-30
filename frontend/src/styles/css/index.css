@@ -837,62 +837,103 @@ div.timer {
   font-size: 1.4rem;
   font-weight: 700;
   color: #505050; }
+  @media (min-width: 768px) {
+    .question-and-answer .statement {
+      height: 60vh; } }
+  @media (min-width: 992px) {
+    .question-and-answer .statement {
+      height: 45vh; } }
 
-.question-and-answer .final-answer {
+.question-and-answer form .form-group {
+  display: flex;
+  justify-content: space-between; }
+  @media (min-width: 768px) {
+    .question-and-answer form .form-group input {
+      width: 83%; } }
+  @media (min-width: 768px) {
+    .question-and-answer form .form-group button {
+      width: 16%; } }
+
+@media (min-width: 768px) {
+  .question-and-answer form .final-answer {
+    display: flex;
+    justify-content: space-between; } }
+
+.question-and-answer form .final-answer .answer {
+  max-width: 92%;
+  overflow-x: auto; }
+
+.question-and-answer form .final-answer img {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 25px;
+  width: auto; }
+
+.question-and-answer form .final-answer .correct {
   position: relative;
   background-color: white;
   color: #505050;
   padding: 6px 12px;
-  border-radius: 10px; }
-  .question-and-answer .final-answer .answer {
-    max-width: 92%;
-    overflow-x: auto; }
-  .question-and-answer .final-answer img {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    height: 25px;
-    width: auto; }
-
-.question-and-answer .final-answer.correct {
+  border-radius: 10px;
   outline: 5px solid rgba(119, 255, 119, 0.5); }
+  @media (min-width: 768px) {
+    .question-and-answer form .final-answer .correct {
+      display: inline-block;
+      width: 83%; } }
 
-.question-and-answer .final-answer.wrong {
+.question-and-answer form .final-answer .wrong {
+  position: relative;
+  background-color: white;
+  color: #505050;
+  padding: 6px 12px;
+  border-radius: 10px;
   outline: 5px solid rgba(255, 119, 119, 0.5); }
+  @media (min-width: 768px) {
+    .question-and-answer form .final-answer .wrong {
+      display: inline-block;
+      width: 83%; } }
 
-.question-and-answer .correct-answer {
+.question-and-answer form .final-answer button {
+  display: none; }
+  @media (min-width: 768px) {
+    .question-and-answer form .final-answer button {
+      display: inline-block;
+      width: 16%; } }
+
+.question-and-answer form .correct-answer {
   margin-top: 1rem;
   position: relative; }
-  .question-and-answer .correct-answer p {
+  .question-and-answer form .correct-answer p {
     margin-bottom: 0.5rem; }
-  .question-and-answer .correct-answer .case-sensitive {
+  .question-and-answer form .correct-answer .case-sensitive {
     position: absolute;
     right: 0;
     top: 0;
     color: #505050; }
-  .question-and-answer .correct-answer .display-answers {
+  .question-and-answer form .correct-answer .display-answers {
     display: flex;
     column-gap: 5px;
     overflow-x: auto;
     padding: 1rem;
     padding-left: 0; }
-    .question-and-answer .correct-answer .display-answers span {
+    .question-and-answer form .correct-answer .display-answers span {
       background-color: white;
       padding: 0.33333rem 1rem;
       border-radius: 10px;
       border: 1px solid #505050;
       text-wrap: nowrap; }
-  .question-and-answer .correct-answer hr {
+  .question-and-answer form .correct-answer hr {
     margin-top: 0; }
 
-.question-and-answer .buttons {
+.question-and-answer form .buttons {
   position: absolute;
   width: 100%;
   left: 0;
   bottom: 2rem;
   display: flex;
   justify-content: center; }
-  .question-and-answer .buttons button {
+  .question-and-answer form .buttons button {
     font-weight: 500;
     width: 50%; }
 
@@ -901,6 +942,9 @@ div.timer {
   .summary h1 {
     color: #F4D160;
     margin-bottom: 0; }
+    @media (min-width: 992px) {
+      .summary h1 {
+        margin-bottom: 0.5rem; } }
   .summary h2 {
     color: #505050;
     font-size: 1rem; }
@@ -948,3 +992,6 @@ div.timer {
     position: relative;
     bottom: -30vh;
     width: 100px; }
+    @media (min-width: 992px) {
+      .summary button {
+        bottom: -20vh; } }
