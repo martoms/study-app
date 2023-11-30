@@ -40,10 +40,7 @@ const StudyTable = () => {
         setAddItem(true);
     };
 
-    const handleView = (createdOn) => {
-        setCurrentSet(createdOn);
-        navigate(`/${createdOn}`);
-    };
+    const handleView = (createdOn) => navigate(`/${createdOn}`);
 
 
     const studyData = setNames.map((setName, i) => {
@@ -112,6 +109,7 @@ const StudyTable = () => {
                             className={`study ${setItems[i].length === 0 || deleteItem === 0 && 'toggle'}`}
                             style={{backgroundColor: (setItems[i].length === 0 && 'lightgrey') || (deleteItem > 0 && 'lightgrey')}}
                             disabled={(setItems[i].length === 0) || deleteItem > 0}
+                            onClick={() => navigate(`/${createdOn[i]}/study`)}
                         >
                             study
                         </button>

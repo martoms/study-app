@@ -36,16 +36,18 @@ const StudyPanel = () => {
     const handleShowExitWarning = () => setShowExitWarning(true);
 
     const handleComplete = () => {
-        const studyData = {
+        const data = {
             timeStamp,
-            date: Date.now(),
-            elapsedTime,
-            items: items.length,
-            score
+            studyData: {
+                date: Date.now(),
+                elapsedTime,
+                items: items.length,
+                score
+            }
         }
         pause();
         setShowStudySummary(true);
-        dispatch(addStudyData(studyData));
+        dispatch(addStudyData(data));
     };
 
     const {

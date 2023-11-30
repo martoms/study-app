@@ -105,8 +105,7 @@ const studySetSlice = createSlice({
             return updatedState;
         },
         addStudyData: (state, action) => {
-            const studyData = action.payload;
-            const timeStamp = studyData.timeStamp;
+            const { studyData, timeStamp } = action.payload;
 
             const updatedState = state.map(set => {
                 if (set.createdOn === Number(timeStamp)) {
