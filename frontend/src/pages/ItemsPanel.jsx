@@ -12,6 +12,7 @@ import EditSingleItemBtn from "../components/buttons/EditSingleItemBtn";
 import EditMultipleItemsBtn from "../components/buttons/EditMultipleItemsBtn";
 import StudyBtn from "../components/buttons/StudyBtn";
 import { studyMode } from "../features/generalState/generalStateSlice";
+import StatBtn from "../components/buttons/StatBtn";
 
 const ItemsPanel = () => {
 
@@ -121,6 +122,10 @@ const ItemsPanel = () => {
                         setSelection={setSelection}
                     />
                     </>
+                }
+                {
+                    deleteItem === 0 && 
+                    <StatBtn />
                 }
                 <div className="items-table-container">
                     <Table striped hover>

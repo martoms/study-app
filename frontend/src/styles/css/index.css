@@ -682,6 +682,16 @@ footer {
     @media (min-width: 768px) {
       .items-table .delete {
         top: 45px; } }
+  .items-table .stat-button {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 30px; }
+    .items-table .stat-button:active {
+      animation: pulse 0.3s ease; }
+    .items-table .stat-button img {
+      height: 30px;
+      width: auto; }
   .items-table .items-table-container {
     max-height: 70vh;
     overflow-y: auto;

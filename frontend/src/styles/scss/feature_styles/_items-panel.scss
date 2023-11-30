@@ -8,6 +8,17 @@
             top: 45px
         }
     }
+    .stat-button {
+        @include toggle;
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        
+        img {
+            height: 30px;
+            width: auto;
+        }
+    }
     .items-table-container {
         @include table-container;
     
