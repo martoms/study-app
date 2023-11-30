@@ -1044,3 +1044,8 @@ div.timer {
     @media (min-width: 992px) {
       .summary button {
         bottom: -15vh; } }
+
+.chart-container {
+  padding-left: 0 !important; }
+  .chart-container .chart {
+    height: 50vh !important; }
