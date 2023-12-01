@@ -5,6 +5,30 @@ h2.stat {
     color: $text-2;
 }
 
+.exit.stat {
+    top: 80px;
+}
+
+.magnify {
+    position: absolute;
+    right: 20px;
+    top: 120px;
+
+    img {
+        @include toggle;
+        height: 20px;
+    }
+
+    img.more {
+        margin-left: $base-margin;
+    }
+
+    img.disable {
+        cursor: default;
+        opacity: 0.5;
+    }
+}
+
 .chart-container {
     padding-left: 0 !important;
     overflow-x: scroll;

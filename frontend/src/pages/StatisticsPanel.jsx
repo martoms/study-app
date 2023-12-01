@@ -1,29 +1,54 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-// import { PureComponent } from 'react';
+import { useNavigate } from "react-router-dom";
 import useReformatDate from "../hooks/useReformatDate";
 import { Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart } from 'recharts';
+import exit from '../images/exit.svg';
+import more from '../images/magnify-more.svg';
+import less from '../images/magnify-less.svg';
 
 const StatisticsPanel = () => {
 
     const { timeStamp } = useParams();
+    const navigate = useNavigate();
     const setName = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].setName;
     const studyData = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].studyData;
     const { toMMDDYY, minuteHour } = useReformatDate();
+    const [chartWidth, setChartWidth] = useState(100);
+    const [disableMore, setDisableMore] = useState(false);
+    const [disableLess, setDisableLess] = useState(true);
 
     const studyStat = studyData.map(data => ({
         ...data,
         date: toMMDDYY(data.date),
         time: minuteHour(data.date)
-      }));
-    console.log(studyStat)
+    }));
+
+    const handleMagnifyMore = () => {
+        if(chartWidth < 200) {
+            setChartWidth(chartWidth + 10);
+            setDisableLess(false);
+        } else {
+            setDisableMore(true);
+            setDisableLess(false);
+        }
+    };
+
+    const handleMagnifyLess = () => {
+        if(chartWidth > 100) {
+            setChartWidth(chartWidth - 10);
+            setDisableMore(false);
+        } else {
+            setDisableLess(true);
+            setDisableMore(false);
+        }
+    };
 
     const CustomTooltip = ({ active, payload, label }) => {
 
-
     if (active && payload && payload.length) {
-
         const time = payload[0].payload.time;
         const hours = payload[0].payload.elapsedTime.hours;
         const minutes = payload[0].payload.elapsedTime.minutes;
@@ -42,7 +67,6 @@ const StatisticsPanel = () => {
                         <span className="minutes">{ minutes !== 0 ? minutes === 1 ? `${minutes} mins, and ` : `${minutes} mins, and ` : ''}</span>
                         <span className="seconds">{ seconds !== 0 ? seconds === 1 ? `${seconds} sec` : `${seconds} secs` : ''}</span>
                     </p>
-                    {console.log(payload)}
                 </div>
             );
         }
@@ -55,10 +79,18 @@ const StatisticsPanel = () => {
         <div className="main-container">
             <h1 className="setName">{ setName }</h1><hr />
             <h2 className="stat">Study Data</h2>
+            <div className="exit stat" onClick={() => navigate(`/${timeStamp}`)}>
+                <img src={exit} alt="exit" />
+                Exit
+            </div>
+            <div className="magnify">
+                <img className={`less ${disableLess && 'disable'}`} src={less} alt="less" onClick={handleMagnifyLess} />
+                <img className={`more ${disableMore && 'disable'}`} src={more} alt="more" onClick={handleMagnifyMore} />
+            </div>
             <div className="chart-container">
                 <ResponsiveContainer
                  className='chart'
-                 width={`${100}%`}
+                 width={`${chartWidth}%`}
                  >
                     <BarChart
                         width={500}
