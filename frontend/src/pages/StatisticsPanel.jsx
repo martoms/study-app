@@ -20,7 +20,9 @@ const StatisticsPanel = () => {
     const [disableMore, setDisableMore] = useState(false);
     const [disableLess, setDisableLess] = useState(true);
 
-    const studyStat = studyData.map(data => ({
+    console.log(studyData)
+
+    const studyStat = studyData?.map(data => ({
         ...data,
         date: toMMDDYY(data.date),
         time: minuteHour(data.date)
@@ -83,36 +85,43 @@ const StatisticsPanel = () => {
                 <img src={exit} alt="exit" />
                 Exit
             </div>
-            <div className="magnify">
-                <img className={`less ${disableLess && 'disable'}`} src={less} alt="less" onClick={handleMagnifyLess} />
-                <img className={`more ${disableMore && 'disable'}`} src={more} alt="more" onClick={handleMagnifyMore} />
-            </div>
-            <div className="chart-container">
-                <ResponsiveContainer
-                 className='chart'
-                 width={`${chartWidth}%`}
-                 >
-                    <BarChart
-                        width={500}
-                        height={300}
-                        data={studyStat}
-                        margin={{
-                            top: 20,
-                            right: 30,
-                            left: 20,
-                            bottom: 5,
-                        }}
+            {
+                studyData ?
+                <>
+                <div className="magnify">
+                    <img className={`less ${disableLess && 'disable'}`} src={less} alt="less" onClick={handleMagnifyLess} />
+                    <img className={`more ${disableMore && 'disable'}`} src={more} alt="more" onClick={handleMagnifyMore} />
+                </div>
+                <div className="chart-container">
+                    <ResponsiveContainer
+                    className='chart'
+                    width={`${chartWidth}%`}
                     >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="date" />
-                        <YAxis />
-                        <Tooltip content={<CustomTooltip />} />
-                        <Legend />
-                        <Bar dataKey="items" stackId="a" fill="#8884d8" />
-                        <Bar dataKey="score" stackId="b" fill="#82ca9d" />
-                    </BarChart>
-                </ResponsiveContainer>
-            </div>
+                        <BarChart
+                            width={500}
+                            height={300}
+                            data={studyStat}
+                            margin={{
+                                top: 20,
+                                right: 30,
+                                left: 20,
+                                bottom: 5,
+                            }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="date" />
+                            <YAxis />
+                            <Tooltip content={<CustomTooltip />} />
+                            <Legend />
+                            <Bar dataKey="items" stackId="a" fill="#8884d8" />
+                            <Bar dataKey="score" stackId="b" fill="#82ca9d" />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </div>
+                </>
+                :
+                <p className="no-data">No Data yet</p>
+            }
         </div>
     );
 }

@@ -1084,3 +1084,8 @@ h2.stat {
         font-weight: 600; }
       .chart-container .chart .custom-tooltip p {
         margin-bottom: 0; }
+
+.no-data {
+  text-align: center;
+  margin-top: 20rem;
+  color: #505050; }
