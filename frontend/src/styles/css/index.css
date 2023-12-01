@@ -1045,7 +1045,24 @@ div.timer {
       .summary button {
         bottom: -15vh; } }
 
+h2.stat {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: #505050; }
+
 .chart-container {
-  padding-left: 0 !important; }
+  padding-left: 0 !important;
+  overflow-x: scroll; }
   .chart-container .chart {
     height: 50vh !important; }
+    .chart-container .chart .recharts-legend-wrapper {
+      margin-left: 2rem; }
+    .chart-container .chart .custom-tooltip {
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 1rem;
+      border-radius: 10px; }
+      .chart-container .chart .custom-tooltip .date, .chart-container .chart .custom-tooltip .time {
+        font-weight: 600; }
+      .chart-container .chart .custom-tooltip p {
+        margin-bottom: 0; }
