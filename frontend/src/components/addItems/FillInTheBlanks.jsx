@@ -22,16 +22,29 @@ const FillInTheBlanks = ({currentSet, studySetItems}) => {
     const [itemCount, setItemCount] = useState(1);
     const [currentItem, setCurrentItem] = useState(itemCount - 1);
     const currentSetName = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(currentSet))[0].setName;
+    const [blanks, setBlanks] = useState(0);
+
+    // console.log([...Array(blanks)])
 
     const handleForm = (e, i) => {
         const { name, value, type, checked } = e.target;
         const updatedItems = [...newItems];
-        
+
         if (type === 'checkbox') {
             updatedItems[i] = {
                 ...updatedItems[i],
                 [name]: checked,
             };
+        } else if (type === 'textarea') {
+            updatedItems[i] = {
+                ...updatedItems[i],
+                [name]: value,
+            };
+
+            if (value.match(/BLANK/g)) {
+                const blanksNo = value.match(/BLANK/g)?.length;
+                setBlanks(blanksNo)
+            }
         } else {
             updatedItems[i] = {
                 ...updatedItems[i],
@@ -104,13 +117,13 @@ const FillInTheBlanks = ({currentSet, studySetItems}) => {
             <li key={i}>
                 <Form.Group className="statement">
                     <Form.Label>Statement</Form.Label>
-                    <p className="input-info">{ `Write as many "BLANK" to create a blank item(s).` }</p>
+                    <p className="input-info">{ `Write as many "BLANK" to create blank item(s).` }</p>
                     <Form.Control
+                        className="fill-in-the-blanks"
                         name="statement"
                         value={newItems[i - 1]?.statement}
                         as="textarea"
                         onChange={(e) => handleForm(e, (i-1))}
-                        autoFocus={true}
                     />
                 </Form.Group>
                 <Form.Group className="statement">
@@ -125,11 +138,24 @@ const FillInTheBlanks = ({currentSet, studySetItems}) => {
                         checked={newItems[i - 1]?.caseSensitive}
                     />
                     <p className="input-info">{ `Use a comma (",") to separate alternative answers.` }</p>
-                    <Form.Control
-                        name="answer"
-                        value={newItems[i - 1]?.answer}
-                        onChange={(e) => handleForm(e, (i-1))}
-                    />
+                    {/* { answers } */}
+                    <div className="multiple-answers">
+                    {
+                        blanks ?
+                        [...Array(blanks)].map((_, j) => (
+                            <div className="blank-input" key={j}>
+                                <span>{j + 1}</span>
+                                <Form.Control
+                                    name="answer"
+                                    value={newItems[i]?.answer}
+                                    onChange={(e) => handleForm(e, i)}
+                                />
+                            </div>
+                        ))
+                        :
+                        <></>
+                    }
+                    </div>
                 </Form.Group>
             </li>
         )

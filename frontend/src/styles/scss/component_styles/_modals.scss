@@ -153,6 +153,28 @@
                 .statement {
                     position: relative;
                 }
+                .multiple-answers {
+                    height: 150px;
+                    overflow-y: scroll !important;
+                    .blank-input {
+                        display: flex;
+                        margin-bottom: $base-margin;
+    
+                        span {
+                            display: inline-block;
+                            padding: 10px;
+                            border-radius: $b-radius-1 0 0 $b-radius-1;
+                            width: 40px;
+                            font-weight: 800;
+                            background-color: $bg-1;
+                            color: $text-2;
+                        }
+                        input {
+                            border-radius: 0 $b-radius-1 $b-radius-1 0;     
+                            border-width: 0;                   
+                        }
+                    }
+                }
                 .answer {
                     display: inline-block;
                 }
@@ -174,6 +196,10 @@
                     }
 
                     @include lg {
+                        height: 200px;
+                    }
+
+                    &.fill-in-the-blanks {
                         height: 200px;
                     }
                 }

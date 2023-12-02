@@ -444,6 +444,36 @@ footer {
 .edit-items-modal .modal-dialog .modal-content .edit-items-container .statement {
   position: relative; }
 
+.add-items-modal .modal-dialog .modal-content .add-items-container .multiple-answers,
+.add-items-modal .modal-dialog .modal-content .edit-items-container .multiple-answers,
+.edit-items-modal .modal-dialog .modal-content .add-items-container .multiple-answers,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container .multiple-answers {
+  height: 150px;
+  overflow-y: scroll !important; }
+  .add-items-modal .modal-dialog .modal-content .add-items-container .multiple-answers .blank-input,
+  .add-items-modal .modal-dialog .modal-content .edit-items-container .multiple-answers .blank-input,
+  .edit-items-modal .modal-dialog .modal-content .add-items-container .multiple-answers .blank-input,
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container .multiple-answers .blank-input {
+    display: flex;
+    margin-bottom: 1rem; }
+    .add-items-modal .modal-dialog .modal-content .add-items-container .multiple-answers .blank-input span,
+    .add-items-modal .modal-dialog .modal-content .edit-items-container .multiple-answers .blank-input span,
+    .edit-items-modal .modal-dialog .modal-content .add-items-container .multiple-answers .blank-input span,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container .multiple-answers .blank-input span {
+      display: inline-block;
+      padding: 10px;
+      border-radius: 10px 0 0 10px;
+      width: 40px;
+      font-weight: 800;
+      background-color: #faf7e6;
+      color: #505050; }
+    .add-items-modal .modal-dialog .modal-content .add-items-container .multiple-answers .blank-input input,
+    .add-items-modal .modal-dialog .modal-content .edit-items-container .multiple-answers .blank-input input,
+    .edit-items-modal .modal-dialog .modal-content .add-items-container .multiple-answers .blank-input input,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container .multiple-answers .blank-input input {
+      border-radius: 0 10px 10px 0;
+      border-width: 0; }
+
 .add-items-modal .modal-dialog .modal-content .add-items-container .answer,
 .add-items-modal .modal-dialog .modal-content .edit-items-container .answer,
 .edit-items-modal .modal-dialog .modal-content .add-items-container .answer,
@@ -483,6 +513,11 @@ footer {
     .edit-items-modal .modal-dialog .modal-content .add-items-container textarea,
     .edit-items-modal .modal-dialog .modal-content .edit-items-container textarea {
       height: 200px; } }
+  .add-items-modal .modal-dialog .modal-content .add-items-container textarea.fill-in-the-blanks,
+  .add-items-modal .modal-dialog .modal-content .edit-items-container textarea.fill-in-the-blanks,
+  .edit-items-modal .modal-dialog .modal-content .add-items-container textarea.fill-in-the-blanks,
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container textarea.fill-in-the-blanks {
+    height: 200px; }
 
 .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns,
 .add-items-modal .modal-dialog .modal-content .edit-items-container .item-btns,
