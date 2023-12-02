@@ -31,7 +31,7 @@ const StudyPanel = () => {
     const updateElapsedTime = () => {
         setElapsedTime({ hours, minutes, seconds })
     };
-
+    
     const handleCloseExitWarning = () => setShowExitWarning(false);
     const handleShowExitWarning = () => setShowExitWarning(true);
 
@@ -60,6 +60,7 @@ const StudyPanel = () => {
     } = useStopwatch({ autoStart: true });
 
     useEffect(() => {
+        
         updateElapsedTime();
     }, [totalSeconds, isRunning])
 
@@ -129,7 +130,7 @@ const StudyPanel = () => {
                     <span className="minutes">{ String(elapsedTime.minutes).length === 1 ? `0${elapsedTime.minutes}` : elapsedTime.minutes }</span>
                     <span className="seconds">{ String(elapsedTime.seconds).length === 1 ? `0${elapsedTime.seconds}` : elapsedTime.seconds }</span>
                 </div>
-                <div className="exit" onClick={handleShowExitWarning}>
+                <div className="exit" onClick={handleShowExitWarning} >
                     <img src={exit} alt="exit" />
                     Exit
                 </div>

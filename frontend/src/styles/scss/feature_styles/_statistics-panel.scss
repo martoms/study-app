@@ -7,6 +7,11 @@ h2.stat {
 
 .exit.stat {
     top: 80px;
+
+    @include lg {
+        right: -60px;
+        top: 10px;
+    }
 }
 
 .magnify {
@@ -14,25 +19,45 @@ h2.stat {
     right: 20px;
     top: 120px;
 
-    img {
+    @include lg {
+        right: 30px;
+        top: 100px
+    }
+
+    span {
         @include toggle;
-        height: 20px;
-    }
+        padding: 10px;
 
-    img.more {
-        margin-left: $base-margin;
-    }
+        &:hover {
+            @include boxshadow;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: $b-radius-1;
+        }
 
-    img.disable {
-        cursor: default;
-        opacity: 0.5;
-        animation: none;
+        &.disable {
+            cursor: default;
+            opacity: 0.5;
+            animation: none;
+    
+            &:hover {
+                background-color: transparent;
+                box-shadow: none;
+            }
+        }
+
+        img {
+            height: 20px;
+        }
     }
 }
 
 .chart-container {
     padding-left: 0 !important;
-    overflow-x: scroll;
+    overflow-x: auto;
+
+    @include lg {
+        padding: 20px 160px 0 110px !important;
+    }
 
     .chart {
         height: 60vh !important;
@@ -60,7 +85,7 @@ h2.stat {
 
 .save-chart {
     display: flex;
-    justify-content: center;
+    justify-content: center
 }
 
 .no-data {

@@ -1053,26 +1053,44 @@ h2.stat {
 
 .exit.stat {
   top: 80px; }
+  @media (min-width: 992px) {
+    .exit.stat {
+      right: -60px;
+      top: 10px; } }
 
 .magnify {
   position: absolute;
   right: 20px;
   top: 120px; }
-  .magnify img {
+  @media (min-width: 992px) {
+    .magnify {
+      right: 30px;
+      top: 100px; } }
+  .magnify span {
     cursor: pointer;
-    height: 20px; }
-    .magnify img:active {
+    padding: 10px; }
+    .magnify span:active {
       animation: pulse 0.3s ease; }
-  .magnify img.more {
-    margin-left: 1rem; }
-  .magnify img.disable {
-    cursor: default;
-    opacity: 0.5;
-    animation: none; }
+    .magnify span:hover {
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 10px; }
+    .magnify span.disable {
+      cursor: default;
+      opacity: 0.5;
+      animation: none; }
+      .magnify span.disable:hover {
+        background-color: transparent;
+        box-shadow: none; }
+    .magnify span img {
+      height: 20px; }
 
 .chart-container {
   padding-left: 0 !important;
-  overflow-x: scroll; }
+  overflow-x: auto; }
+  @media (min-width: 992px) {
+    .chart-container {
+      padding: 20px 160px 0 110px !important; } }
   .chart-container .chart {
     height: 60vh !important; }
     .chart-container .chart .recharts-legend-wrapper {

@@ -64,9 +64,8 @@ const StatisticsPanel = () => {
               console.error('Error capturing chart:', error);
             });
         }
-      };
-      
-
+    };
+    
     useEffect(() => {
         if (chartWidth === 100) setDisableLess(true);
         if (chartWidth === 200) setDisableMore(true);
@@ -113,8 +112,12 @@ const StatisticsPanel = () => {
                 studyData ?
                 <>
                 <div className="magnify">
-                    <img className={`less ${disableLess && 'disable'}`} src={less} alt="less" onClick={handleMagnifyLess} />
-                    <img className={`more ${disableMore && 'disable'}`} src={more} alt="more" onClick={handleMagnifyMore} />
+                    <span className={disableLess ? 'disable' : ''}>
+                        <img className='less' src={less} alt="less" onClick={handleMagnifyLess} />
+                    </span>
+                    <span className={disableMore ? 'disable' : ''}>
+                        <img className='more' src={more} alt="more" onClick={handleMagnifyMore} />
+                    </span>
                 </div>
                 <div className="chart-container">
                     <ResponsiveContainer
@@ -143,10 +146,7 @@ const StatisticsPanel = () => {
                     </ResponsiveContainer>
                 </div>
                 <div className="save-chart">
-                    <Button
-                        className="as-img"
-                        onClick={saveAsImage}
-                    >
+                    <Button onClick={saveAsImage}>
                         Save as Image
                     </Button>
                 </div>

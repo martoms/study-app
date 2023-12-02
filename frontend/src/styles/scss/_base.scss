@@ -327,6 +327,10 @@ footer {
     filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
 }
 
+@mixin boxshadow {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 @mixin boxshadow-1 {
     box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1);
 }

@@ -119,7 +119,7 @@ const Identification = ({currentSet, studySetItems}) => {
                         value={newItems[i - 1]?.statement}
                         as="textarea"
                         onChange={(e) => handleForm(e, (i-1))}
-                        
+                        autoFocus={true}
                     />
                 </Form.Group>
                 <Form.Group className="statement">
