@@ -30,16 +30,25 @@ const AddItemType = ({addItem, setAddItem, currentSet}) => {
                     location === '/' ?
                     <ul>
                         <Link to={`/${currentSet}`} target="_self" onClick={handleType}>
-                            <li className="opt-btn-1">Identification</li>
+                            <li className="opt-btn">Identification</li>
+                        </Link>
+                        <Link to={`/${currentSet}`} target="_self" onClick={handleType}>
+                            <li className="opt-btn">Fill in the Blanks</li>
                         </Link>
                     </ul>
                     :
                     <ul>
                         <li
-                            className="opt-btn-1"
+                            className="opt-btn"
                             onClick={handleType}
                         >
                             Identification
+                        </li>
+                        <li
+                            className="opt-btn"
+                            onClick={handleType}
+                        >
+                            Fill in the Blanks
                         </li>
                     </ul>
                 }

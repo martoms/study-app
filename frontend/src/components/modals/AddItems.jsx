@@ -5,6 +5,7 @@ import { addItems, itemType } from '../../features/generalState/generalStateSlic
 import { useNavigate } from 'react-router-dom';
 import Identification from '../addItems/Identification';
 import { useParams } from 'react-router-dom';
+import FillInTheBlanks from '../addItems/FillInTheBlanks';
 
 const AddItems = () => {
 
@@ -40,6 +41,13 @@ const AddItems = () => {
                 {
                     currentItemType === 'Identification' &&
                     <Identification
+                        currentSet={timeStamp}
+                        studySetItems={studySetItems}
+                    />
+                }
+                {
+                    currentItemType === 'Fill in the Blanks' &&
+                    <FillInTheBlanks
                         currentSet={timeStamp}
                         studySetItems={studySetItems}
                     />
