@@ -26,6 +26,7 @@ h2.stat {
     img.disable {
         cursor: default;
         opacity: 0.5;
+        animation: none;
     }
 }
 
@@ -34,7 +35,7 @@ h2.stat {
     overflow-x: scroll;
 
     .chart {
-        height: 50vh !important;
+        height: 60vh !important;
 
         .recharts-legend-wrapper {
             margin-left: $base-margin * 2;
@@ -55,6 +56,11 @@ h2.stat {
         }
     }
 
+}
+
+.save-chart {
+    display: flex;
+    justify-content: center;
 }
 
 .no-data {

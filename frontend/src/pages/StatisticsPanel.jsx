@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,8 @@ import { Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 import exit from '../images/exit.svg';
 import more from '../images/magnify-more.svg';
 import less from '../images/magnify-less.svg';
+import html2canvas from 'html2canvas';
+import { Button } from "react-bootstrap";
 
 const StatisticsPanel = () => {
 
@@ -15,12 +17,10 @@ const StatisticsPanel = () => {
     const navigate = useNavigate();
     const setName = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].setName;
     const studyData = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].studyData;
-    const { toMMDDYY, minuteHour } = useReformatDate();
+    const { dateMonthYearShort, toMMDDYY, minuteHour } = useReformatDate();
     const [chartWidth, setChartWidth] = useState(100);
     const [disableMore, setDisableMore] = useState(false);
     const [disableLess, setDisableLess] = useState(true);
-
-    console.log(studyData)
 
     const studyStat = studyData?.map(data => ({
         ...data,
@@ -47,6 +47,30 @@ const StatisticsPanel = () => {
             setDisableMore(false);
         }
     };
+
+    const saveAsImage = () => {
+        const chartContainer = document.querySelector('.chart');
+        const date = `${dateMonthYearShort(new Date)}-${minuteHour(new Date)}`
+        if (chartContainer) {
+          html2canvas(chartContainer)
+            .then((canvas) => {
+              const image = canvas.toDataURL('image/png');
+              const link = document.createElement('a');
+              link.href = image;
+              link.download = `${setName}-${date}-study-data.png`;
+              link.click();
+            })
+            .catch((error) => {
+              console.error('Error capturing chart:', error);
+            });
+        }
+      };
+      
+
+    useEffect(() => {
+        if (chartWidth === 100) setDisableLess(true);
+        if (chartWidth === 200) setDisableMore(true);
+    }, [chartWidth])
 
     const CustomTooltip = ({ active, payload, label }) => {
 
@@ -94,8 +118,8 @@ const StatisticsPanel = () => {
                 </div>
                 <div className="chart-container">
                     <ResponsiveContainer
-                    className='chart'
-                    width={`${chartWidth}%`}
+                        className='chart'
+                        width={`${chartWidth}%`}
                     >
                         <BarChart
                             width={500}
@@ -117,6 +141,14 @@ const StatisticsPanel = () => {
                             <Bar dataKey="score" stackId="b" fill="#82ca9d" />
                         </BarChart>
                     </ResponsiveContainer>
+                </div>
+                <div className="save-chart">
+                    <Button
+                        className="as-img"
+                        onClick={saveAsImage}
+                    >
+                        Save as Image
+                    </Button>
                 </div>
                 </>
                 :

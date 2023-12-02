@@ -1067,13 +1067,14 @@ h2.stat {
     margin-left: 1rem; }
   .magnify img.disable {
     cursor: default;
-    opacity: 0.5; }
+    opacity: 0.5;
+    animation: none; }
 
 .chart-container {
   padding-left: 0 !important;
   overflow-x: scroll; }
   .chart-container .chart {
-    height: 50vh !important; }
+    height: 60vh !important; }
     .chart-container .chart .recharts-legend-wrapper {
       margin-left: 2rem; }
     .chart-container .chart .custom-tooltip {
@@ -1084,6 +1085,10 @@ h2.stat {
         font-weight: 600; }
       .chart-container .chart .custom-tooltip p {
         margin-bottom: 0; }
+
+.save-chart {
+  display: flex;
+  justify-content: center; }
 
 .no-data {
   text-align: center;
