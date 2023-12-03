@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import EditIdentification from '../editItems/EditIdentification';
+import EditFillInTheBlanks from '../editItems/EditFillInTheBlanks';
 
 const EditItems = ({editItems, setEditItems, itemNo, item, itemType}) => {
 
@@ -33,6 +34,16 @@ const EditItems = ({editItems, setEditItems, itemNo, item, itemType}) => {
                 {
                     itemType === 'Identification' &&
                     <EditIdentification
+                        currentSet={timeStamp}
+                        studySetItems={studySetItems}
+                        itemNo={itemNo}
+                        item={item}
+                        setEditItems={setEditItems}
+                    />
+                }
+                {
+                    itemType === 'Fill in the Blanks' &&
+                    <EditFillInTheBlanks
                         currentSet={timeStamp}
                         studySetItems={studySetItems}
                         itemNo={itemNo}

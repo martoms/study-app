@@ -366,6 +366,7 @@ footer {
 .add-items-modal .modal-dialog .modal-content .edit-items-container ul,
 .edit-items-modal .modal-dialog .modal-content .add-items-container ul,
 .edit-items-modal .modal-dialog .modal-content .edit-items-container ul {
+  height: 500px;
   border: 1px solid #1D5D9B;
   padding: 1rem;
   border-radius: 10px; }
@@ -374,7 +375,30 @@ footer {
     .add-items-modal .modal-dialog .modal-content .edit-items-container ul,
     .edit-items-modal .modal-dialog .modal-content .add-items-container ul,
     .edit-items-modal .modal-dialog .modal-content .edit-items-container ul {
+      height: 60vh;
       padding: 2rem; } }
+  @media (min-width: 992px) {
+    .add-items-modal .modal-dialog .modal-content .add-items-container ul,
+    .add-items-modal .modal-dialog .modal-content .edit-items-container ul,
+    .edit-items-modal .modal-dialog .modal-content .add-items-container ul,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container ul {
+      height: 54vh; } }
+
+@media (min-width: 992px) {
+  .add-items-modal .modal-dialog .modal-content .add-items-container .fill-in-the-blanks li,
+  .add-items-modal .modal-dialog .modal-content .edit-items-container .fill-in-the-blanks li,
+  .edit-items-modal .modal-dialog .modal-content .add-items-container .fill-in-the-blanks li,
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container .fill-in-the-blanks li {
+    display: flex;
+    justify-content: space-between; } }
+
+@media (min-width: 992px) {
+  .add-items-modal .modal-dialog .modal-content .add-items-container .fill-in-the-blanks li .statement,
+  .add-items-modal .modal-dialog .modal-content .edit-items-container .fill-in-the-blanks li .statement,
+  .edit-items-modal .modal-dialog .modal-content .add-items-container .fill-in-the-blanks li .statement,
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container .fill-in-the-blanks li .statement {
+    display: inline-block !important;
+    width: 49%; } }
 
 @keyframes left-out {
   0% {
@@ -473,6 +497,12 @@ footer {
     .edit-items-modal .modal-dialog .modal-content .edit-items-container .multiple-answers .blank-input input {
       border-radius: 0 10px 10px 0;
       border-width: 0; }
+  @media (min-width: 992px) {
+    .add-items-modal .modal-dialog .modal-content .add-items-container .multiple-answers,
+    .add-items-modal .modal-dialog .modal-content .edit-items-container .multiple-answers,
+    .edit-items-modal .modal-dialog .modal-content .add-items-container .multiple-answers,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container .multiple-answers {
+      height: 40vh; } }
 
 .add-items-modal .modal-dialog .modal-content .add-items-container .answer,
 .add-items-modal .modal-dialog .modal-content .edit-items-container .answer,
@@ -518,6 +548,12 @@ footer {
   .edit-items-modal .modal-dialog .modal-content .add-items-container textarea.fill-in-the-blanks,
   .edit-items-modal .modal-dialog .modal-content .edit-items-container textarea.fill-in-the-blanks {
     height: 200px; }
+    @media (min-width: 992px) {
+      .add-items-modal .modal-dialog .modal-content .add-items-container textarea.fill-in-the-blanks,
+      .add-items-modal .modal-dialog .modal-content .edit-items-container textarea.fill-in-the-blanks,
+      .edit-items-modal .modal-dialog .modal-content .add-items-container textarea.fill-in-the-blanks,
+      .edit-items-modal .modal-dialog .modal-content .edit-items-container textarea.fill-in-the-blanks {
+        height: 40vh; } }
 
 .add-items-modal .modal-dialog .modal-content .add-items-container .item-btns,
 .add-items-modal .modal-dialog .modal-content .edit-items-container .item-btns,
@@ -573,6 +609,38 @@ footer {
       .edit-items-modal .modal-dialog .modal-content .add-items-container .item-btns button:first-child,
       .edit-items-modal .modal-dialog .modal-content .edit-items-container .item-btns button:first-child {
         margin-bottom: 0; } }
+
+@media (min-width: 992px) {
+  .add-items-modal .modal-dialog .modal-content .edit-items-container .fill-in-the-blanks textarea,
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container .fill-in-the-blanks textarea {
+    height: 42vh !important; } }
+
+@media (min-width: 992px) {
+  .add-items-modal .modal-dialog .modal-content .edit-items-container .fill-in-the-blanks .multiple-answers,
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container .fill-in-the-blanks .multiple-answers {
+    height: 42vh !important; } }
+
+.add-items-modal .modal-dialog .modal-content .edit-items-container ul,
+.edit-items-modal .modal-dialog .modal-content .edit-items-container ul {
+  height: 590px; }
+  .add-items-modal .modal-dialog .modal-content .edit-items-container ul.fill-in-the-blanks textarea,
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container ul.fill-in-the-blanks textarea {
+    height: 200px; }
+  .add-items-modal .modal-dialog .modal-content .edit-items-container ul.fill-in-the-blanks .multiple-answers,
+  .edit-items-modal .modal-dialog .modal-content .edit-items-container ul.fill-in-the-blanks .multiple-answers {
+    height: 230px; }
+    @media (min-width: 768px) {
+      .add-items-modal .modal-dialog .modal-content .edit-items-container ul.fill-in-the-blanks .multiple-answers,
+      .edit-items-modal .modal-dialog .modal-content .edit-items-container ul.fill-in-the-blanks .multiple-answers {
+        height: 28vh; } }
+  @media (min-width: 768px) {
+    .add-items-modal .modal-dialog .modal-content .edit-items-container ul,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container ul {
+      height: 65vh; } }
+  @media (min-width: 992px) {
+    .add-items-modal .modal-dialog .modal-content .edit-items-container ul,
+    .edit-items-modal .modal-dialog .modal-content .edit-items-container ul {
+      height: 57vh; } }
 
 .add-items-modal .modal-dialog .modal-content .edit-items-container textarea,
 .edit-items-modal .modal-dialog .modal-content .edit-items-container textarea {

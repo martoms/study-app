@@ -77,12 +77,32 @@
                 }
                 
                 ul {
+                    height: 500px;
                     border: 1px solid $c-1;
                     padding: $base-padding;
                     border-radius: $b-radius-1;
 
                     @include md {
+                        height: 60vh;
                         padding: $base-padding * 2;
+                    }
+
+                    @include lg {
+                        height: 54vh;
+                    }
+                }
+
+                .fill-in-the-blanks li {
+                    @include lg {
+                        display: flex;
+                        justify-content: space-between;
+                    }
+
+                    .statement {
+                        @include lg {
+                            display: inline-block !important;
+                            width: 49%;
+                        }
                     }
                 }
 
@@ -174,6 +194,10 @@
                             border-width: 0;                   
                         }
                     }
+
+                    @include lg {
+                        height: 40vh;
+                    }
                 }
                 .answer {
                     display: inline-block;
@@ -201,6 +225,10 @@
 
                     &.fill-in-the-blanks {
                         height: 200px;
+
+                        @include lg {
+                            height: 40vh;
+                        }
                     }
                 }
 
@@ -242,6 +270,47 @@
             }
 
             .edit-items-container {
+
+                .fill-in-the-blanks {
+                    textarea {
+                        @include lg {
+                            height: 42vh !important
+                        }
+                    }
+
+                    .multiple-answers {
+                        @include lg {
+                            height: 42vh !important
+                        }
+                    }
+                }
+
+                ul {
+                    height: 590px;
+
+                    &.fill-in-the-blanks {
+                        textarea {
+                            height: 200px;
+                        }
+
+                        .multiple-answers {
+                            height: 230px;
+
+                            @include md {
+                                height: 28vh;
+                            }
+                        }
+                    }
+
+                    @include md {
+                        height: 65vh;
+                    }
+
+                    @include lg {
+                        height: 57vh;
+                    }
+                }
+
                 textarea {
                     height: 400px;
                     resize: none;
@@ -254,6 +323,12 @@
                     @include lg {
                         height: 250px;
                     }
+
+                    // &.fill-in-the-blanks {
+                    //     @include lg {
+                    //         height: 60vh !important
+                    //     }
+                    // }
                 }
             }
         }

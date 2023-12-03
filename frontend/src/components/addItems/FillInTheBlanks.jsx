@@ -13,20 +13,18 @@ const FillInTheBlanks = ({currentSet, studySetItems}) => {
     const dispatch = useDispatch();
     const initialFormState = [{
         statement: '',
-        answer: '',
+        blanks: [],
         caseSensitive: false,
         createdOn: Date.now(),
-        itemType: 'Identification'
+        itemType: 'Fill in the Blanks'
     }];
     const [newItems, setNewItems] = useState(initialFormState);
     const [itemCount, setItemCount] = useState(1);
     const [currentItem, setCurrentItem] = useState(itemCount - 1);
     const currentSetName = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(currentSet))[0].setName;
-    const [blanks, setBlanks] = useState(0);
+    const blankItems = newItems[currentItem]?.blanks;
 
-    // console.log([...Array(blanks)])
-
-    const handleForm = (e, i) => {
+    const handleForm = (e, i, j) => {
         const { name, value, type, checked } = e.target;
         const updatedItems = [...newItems];
 
@@ -36,19 +34,24 @@ const FillInTheBlanks = ({currentSet, studySetItems}) => {
                 [name]: checked,
             };
         } else if (type === 'textarea') {
-            updatedItems[i] = {
-                ...updatedItems[i],
-                [name]: value,
-            };
+            const matchedBlanks = (value.match(/BLANK/g) || []).length;
 
-            if (value.match(/BLANK/g)) {
-                const blanksNo = value.match(/BLANK/g)?.length;
-                setBlanks(blanksNo)
-            }
-        } else {
             updatedItems[i] = {
                 ...updatedItems[i],
                 [name]: value,
+                blanks: Array.from({ length: matchedBlanks }, (_, index) => {
+                    return updatedItems[i]?.blanks?.[index] || '';
+                }),
+            };
+        } else if (type === 'text') {
+            updatedItems[i] = {
+                ...updatedItems[i],
+                blanks: updatedItems[i].blanks.map((blank, index) => {
+                    if (index === j) {
+                        return value;
+                    }
+                    return blank;
+                }),
             };
         }
 
@@ -75,10 +78,10 @@ const FillInTheBlanks = ({currentSet, studySetItems}) => {
         updatedItems[itemCount] = {
             ...updatedItems[itemCount],
             statement: '',
-            answer: '',
+            blanks: [],
             caseSensitive: false,
             createdOn: Date.now(),
-            itemType: 'Identification'
+            itemType: 'Fill in the Blanks'
         };
 
         setNewItems(updatedItems);
@@ -138,31 +141,30 @@ const FillInTheBlanks = ({currentSet, studySetItems}) => {
                         checked={newItems[i - 1]?.caseSensitive}
                     />
                     <p className="input-info">{ `Use a comma (",") to separate alternative answers.` }</p>
-                    {/* { answers } */}
-                    <div className="multiple-answers">
                     {
-                        blanks ?
-                        [...Array(blanks)].map((_, j) => (
-                            <div className="blank-input" key={j}>
-                                <span>{j + 1}</span>
-                                <Form.Control
-                                    name="answer"
-                                    value={newItems[i]?.answer}
-                                    onChange={(e) => handleForm(e, i)}
-                                />
-                            </div>
-                        ))
+                        newItems[currentItem]?.blanks.length ?
+                        <div className="multiple-answers">
+                            {blankItems.map((blank, j) => (
+                                <div className="blank-input" key={j}>
+                                    <span>{j + 1}</span>
+                                    <Form.Control
+                                        name={`answer-${j}`}
+                                        value={blank}
+                                        onChange={(e) => handleForm(e, (i - 1), j)}
+                                    />
+                                </div>
+                            ))}
+                        </div>
                         :
                         <></>
                     }
-                    </div>
                 </Form.Group>
             </li>
         )
     }
 
     const statementInput = newItems[newItems.length - 1].statement.length;
-    const answerInput = newItems[newItems.length - 1].answer.length;
+    const answerInput = newItems[newItems.length - 1].blanks.every((blank) => blank.length > 0);
 
     return ( 
         <div className="add-items-container">
@@ -182,7 +184,7 @@ const FillInTheBlanks = ({currentSet, studySetItems}) => {
             </div><hr />
             <div className="items-container">
                 <Form>
-                    <ul>
+                    <ul className="fill-in-the-blanks">
                         { items[currentItem] }   
                     </ul>
                     <div className="row item-btns">
@@ -191,7 +193,7 @@ const FillInTheBlanks = ({currentSet, studySetItems}) => {
                             type='button'
                             variant="light"
                             onClick={handleAddMore}
-                            disabled={!statementInput || !answerInput}
+                            disabled={!statementInput || !answerInput || !newItems[currentItem].blanks.length}
                         >
                             Add More
                         </Button>
@@ -200,7 +202,7 @@ const FillInTheBlanks = ({currentSet, studySetItems}) => {
                             type='submit'
                             variant="primary"
                             onClick={handleSaveItems}
-                            disabled={!statementInput || !answerInput}
+                            disabled={!statementInput || !answerInput || !newItems[currentItem].blanks.length}
                         >
                             Save
                         </Button>
