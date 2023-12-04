@@ -9,6 +9,7 @@ import { useStopwatch } from 'react-timer-hook';
 import StudySummary from "../components/studyPanel/StudySummary";
 import exit from '../images/exit.svg';
 import ExitWarning from "../components/modals/ExitWarning";
+import FillInTheBlanksQuestions from "../components/studyPanel/FillInTheBlanksQuestions";
 
 const StudyPanel = () => {
 
@@ -27,6 +28,13 @@ const StudyPanel = () => {
         minutes: 0,
         seconds: 0
     });
+
+    let actualItems = 0;
+
+    for (let i = 0; i <= items.length; i++) {
+        if (items[i]?.answer) actualItems++;
+        if (items[i]?.blanks) actualItems += items[i].blanks.length;
+    }
 
     const updateElapsedTime = () => {
         setElapsedTime({ hours, minutes, seconds })
@@ -90,6 +98,7 @@ const StudyPanel = () => {
             itemType,
             statement,
             answer,
+            blanks,
             caseSensitive
         } = item;
         return (
@@ -100,6 +109,20 @@ const StudyPanel = () => {
                         items={items}
                         statement={statement}
                         answer={answer}
+                        caseSensitive={caseSensitive}
+                        score={score}
+                        setScore={setScore}
+                        currentItem={currentItem}
+                        setCurrentItem={setCurrentItem}
+                        handleComplete={handleComplete}
+                    />
+                }
+                {
+                    itemType === 'Fill in the Blanks' &&
+                    <FillInTheBlanksQuestions
+                        items={items}
+                        statement={statement}
+                        blanks={blanks}
                         caseSensitive={caseSensitive}
                         score={score}
                         setScore={setScore}
@@ -138,7 +161,7 @@ const StudyPanel = () => {
                 </>
                 :
                 <StudySummary
-                    items={items.length}
+                    items={actualItems}
                     score={score}
                     elapsedTime={elapsedTime}
                 />

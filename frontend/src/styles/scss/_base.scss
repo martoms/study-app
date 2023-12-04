@@ -133,7 +133,7 @@ input {
     font-weight: 700;
 
     p {
-        color: $text-2;
+        color: $text-3;
     }
 
     @include lg {
@@ -159,7 +159,7 @@ input {
 }
 
 .delete-warning-txt {
-    color: $text-2;
+    color: $text-3;
 }
 
 // Basic Layout

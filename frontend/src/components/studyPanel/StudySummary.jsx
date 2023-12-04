@@ -31,7 +31,7 @@ const StudySummary = ({items, score, elapsedTime}) => {
             <div className="elapsed-time">
                 <p>finished in</p>
                 <span className="days">{ hours !== 0 ? hours === 1 ? `${hours} hr, ` : `${hours} hrs, ` : ''}</span>
-                <span className="minutes">{ minutes !== 0 ? minutes === 1 ? `${minutes} mins, and ` : `${minutes} mins, and ` : ''}</span>
+                <span className="minutes">{ minutes !== 0 ? minutes === 1 ? `${minutes} min and ` : `${minutes} mins and ` : ''}</span>
                 <span className="seconds">{ seconds !== 0 ? seconds === 1 ? `${seconds} sec` : `${seconds} secs` : ''}</span>
             </div>
             <Button

@@ -1013,6 +1013,7 @@ div.timer {
 
 .question-and-answer .statement {
   filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.1));
+  overflow-y: auto;
   background-color: white;
   padding: 1rem;
   border-radius: 10px;
@@ -1100,6 +1101,7 @@ div.timer {
     column-gap: 5px;
     overflow-x: auto;
     padding: 1rem;
+    padding-top: 0;
     padding-left: 0; }
     .question-and-answer form .correct-answer .display-answers span {
       background-color: white;
@@ -1107,6 +1109,33 @@ div.timer {
       border-radius: 10px;
       border: 1px solid #505050;
       text-wrap: nowrap; }
+    .question-and-answer form .correct-answer .display-answers.fill-in-the-blanks {
+      display: block;
+      padding: 1rem;
+      padding-top: 0;
+      padding-left: 0;
+      height: 20vh;
+      overflow-x: hidden; }
+      .question-and-answer form .correct-answer .display-answers.fill-in-the-blanks > div {
+        margin: 1rem;
+        display: flex;
+        overflow-x: auto; }
+        .question-and-answer form .correct-answer .display-answers.fill-in-the-blanks > div span:first-child {
+          display: flex;
+          align-content: center;
+          justify-content: center;
+          font-weight: 800;
+          border-radius: 50%;
+          text-align: center;
+          vertical-align: middle;
+          height: 40px;
+          width: 40px;
+          margin-right: 1rem;
+          border: none;
+          background-color: #FBEEAC;
+          color: #646464; }
+        .question-and-answer form .correct-answer .display-answers.fill-in-the-blanks > div span {
+          margin-right: 1rem; }
   .question-and-answer form .correct-answer hr {
     margin-top: 0; }
 
@@ -1120,6 +1149,39 @@ div.timer {
   .question-and-answer form .buttons button {
     font-weight: 500;
     width: 50%; }
+
+.question-and-answer.fill-in-the-blanks-questions form .statement {
+  height: 40vh; }
+  .question-and-answer.fill-in-the-blanks-questions form .statement input {
+    border: none;
+    outline: 2px solid #505050 !important;
+    width: 150px;
+    margin: 5px;
+    padding: 5px;
+    color: #505050; }
+    .question-and-answer.fill-in-the-blanks-questions form .statement input:focus {
+      border: none !important;
+      outline: 5px solid #75C2F6 !important; }
+  .question-and-answer.fill-in-the-blanks-questions form .statement span {
+    color: #1D5D9B;
+    padding: 0 10px; }
+    .question-and-answer.fill-in-the-blanks-questions form .statement span::after {
+      content: '';
+      display: inline-block;
+      background-size: contain;
+      height: 20px;
+      width: 20px;
+      margin-left: 5px; }
+    .question-and-answer.fill-in-the-blanks-questions form .statement span.correct {
+      border: solid #10ff00;
+      border-width: 0 0 3px 0; }
+      .question-and-answer.fill-in-the-blanks-questions form .statement span.correct::after {
+        background-image: url("/images/correct.svg"); }
+    .question-and-answer.fill-in-the-blanks-questions form .statement span.wrong {
+      border: solid #ff0000;
+      border-width: 0 0 3px 0; }
+      .question-and-answer.fill-in-the-blanks-questions form .statement span.wrong::after {
+        background-image: url("/images/wrong.svg"); }
 
 .summary {
   text-align: center; }
