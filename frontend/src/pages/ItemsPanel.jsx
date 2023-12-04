@@ -52,11 +52,13 @@ const ItemsPanel = () => {
     };
 
     const itemsList = itemsData.map((item, i) => {
-        const {
+        // console.log(item)
+        let {
             createdOn,
             itemType,
             statement,
         } = item
+
         return (
             <tr key={ createdOn }>
                 <td className="item-no checkbox-td">
@@ -73,7 +75,12 @@ const ItemsPanel = () => {
                     </span>
                 </td>
                 <td className="item-preview">
-                    { `"${statement}"` }
+                    { 
+                        itemType === 'Fill in the Blanks' ?
+                        `"${statement.replaceAll('BLANK', '______')}"`
+                        :
+                        `"${statement}"`
+                    }
                     {
                         deleteItem === 0 &&
                         <EditSingleItemBtn

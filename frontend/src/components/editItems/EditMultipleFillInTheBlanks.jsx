@@ -5,7 +5,7 @@ import { editMultipleIdentificationItem } from '../../features/studySet/studySet
 import next from '../../images/next.svg';
 import previous from '../../images/previous.svg';
 
-const EditMultipleIdentification = ({
+const EditMultipleFillInTheBlanks = ({
     updatedItems,
     setUpdatedItems,
     currentSet,
@@ -21,8 +21,9 @@ const EditMultipleIdentification = ({
     const currentItemData = studySetItems.filter(item => item.createdOn === Number(selection[currentItem]))[0];
     const itemNo = studySetItems.indexOf(currentItemData) + 1
     const currentSetName = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(currentSet))[0].setName;
+    const blankItems = updatedItems[currentItem]?.blanks;
 
-    const handleForm = (e, i) => {
+    const handleForm = (e, i, j) => {
         const { name, value, type, checked } = e.target;
         const payload = [...updatedItems];
         
@@ -31,10 +32,25 @@ const EditMultipleIdentification = ({
                 ...payload[i],
                 [name]: checked,
             };
-        } else {
+        } else if (type === 'textarea') {
+            const matchedBlanks = (value.match(/BLANK/g) || []).length;
+
             payload[i] = {
                 ...payload[i],
                 [name]: value,
+                blanks: Array.from({ length: matchedBlanks }, (_, index) => {
+                    return payload[i]?.blanks?.[index] || '';
+                }),
+            };
+        } else if (type === 'text') {
+            payload[i] = {
+                ...payload[i],
+                blanks: payload[i].blanks.map((blank, index) => {
+                    if (index === j) { 
+                        return value;
+                    }
+                    return blank;
+                }),
             };
         }
 
@@ -78,9 +94,10 @@ const EditMultipleIdentification = ({
             <li key={i}>
                 <Form.Group className="statement">
                     <Form.Label>Statement</Form.Label>
+                    <p className="input-info">{ `Write as many "BLANK" to create blank item(s).` }</p>
                     <Form.Control
                         name="statement"
-                        value={updatedItems[currentItem].statement}
+                        value={updatedItems[currentItem]?.statement}
                         as="textarea"
                         onChange={(e) => handleForm(e, currentItem)}
                         
@@ -95,21 +112,33 @@ const EditMultipleIdentification = ({
                         label='Case Sensitive'
                         id={`case-sensitive-${i}`}
                         onChange={(e) => handleForm(e, currentItem)}
-                        checked={updatedItems[currentItem].caseSensitive}
+                        checked={updatedItems[currentItem]?.caseSensitive}
                     />
                     <p className="input-info">{ `Use a comma (",") to separate alternative answers.` }</p>
-                    <Form.Control
-                        name="answer"
-                        value={updatedItems[currentItem].answer}
-                        onChange={(e) => handleForm(e, currentItem)}
-                    />
+                    {
+                        updatedItems[currentItem]?.blanks.length ?
+                        <div className="multiple-answers">
+                            {blankItems.map((blank, j) => (
+                                <div className="blank-input" key={j}>
+                                    <span>{j + 1}</span>
+                                    <Form.Control
+                                        name={`answer-${j}`}
+                                        value={blank}
+                                        onChange={(e) => handleForm(e, i, j)}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        :
+                        <></>
+                    }
                 </Form.Group>
             </li>
         )
     }
 
-    const statementInput = updatedItems[currentItem].statement.length;
-    const answerInput = updatedItems[currentItem].answer?.length;
+    const statementInput = updatedItems[currentItem]?.statement.length;
+    const answerInput = updatedItems[currentItem]?.blanks.every((blank) => blank.length > 0);
 
 
     return ( 
@@ -127,7 +156,7 @@ const EditMultipleIdentification = ({
             </div><hr />
             <div className="items-container">
                 <Form>
-                    <ul>
+                    <ul className="fill-in-the-blanks">
                         { items[currentItem] }   
                     </ul>
                     <div className="row item-btns">
@@ -147,4 +176,4 @@ const EditMultipleIdentification = ({
     );
 }
  
-export default EditMultipleIdentification;
+export default EditMultipleFillInTheBlanks;

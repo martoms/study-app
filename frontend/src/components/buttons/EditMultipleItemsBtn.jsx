@@ -18,12 +18,15 @@ const EditMultipleItemsBtn = ({selection, setSelection}) => {
             <span className='edit-multiple-btn toggle' onClick={handleShowEditItems} >
                 <img src={edit} alt="rename" title='rename' />
             </span>
-            <EditMultipleItems
-                editItems={editItems}
-                setEditItems={setEditItems}
-                selection={selection}
-                setSelection={setSelection}
-            />
+            {
+                editItems &&
+                <EditMultipleItems
+                    editItems={editItems}
+                    setEditItems={setEditItems}
+                    selection={selection}
+                    setSelection={setSelection}
+                />
+            }
         </>
     );
 }

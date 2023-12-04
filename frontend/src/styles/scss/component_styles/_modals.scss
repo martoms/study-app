@@ -195,6 +195,10 @@
                         }
                     }
 
+                    @include md {
+                        height: 42vh;
+                    }
+
                     @include lg {
                         height: 40vh;
                     }
@@ -249,7 +253,7 @@
                         margin-left: auto;
                         margin-right: 0;
                         margin-bottom: 0;
-                        width: 40%
+                        width: 40%;
                     }
 
                     button {
@@ -258,12 +262,14 @@
                         @include md {
                             width: 49%;
                         }
+                        @include lg {
+                            margin-left: auto;
+                        }
                     }
                     button:first-child {
                         margin-bottom: $base-margin;
                         @include md {
                             margin-bottom: 0;
-                            // margin-right: 10px
                         }
                     }
                 }
@@ -271,26 +277,12 @@
 
             .edit-items-container {
 
-                .fill-in-the-blanks {
-                    textarea {
-                        @include lg {
-                            height: 42vh !important
-                        }
-                    }
-
-                    .multiple-answers {
-                        @include lg {
-                            height: 42vh !important
-                        }
-                    }
-                }
-
                 ul {
-                    height: 590px;
+                    height: 63vh;
 
                     &.fill-in-the-blanks {
                         textarea {
-                            height: 200px;
+                            height: 190px;
                         }
 
                         .multiple-answers {
@@ -303,32 +295,58 @@
                     }
 
                     @include md {
-                        height: 65vh;
+                        height: 62vh;
                     }
 
                     @include lg {
-                        height: 57vh;
+                        height: 55vh;
                     }
                 }
 
                 textarea {
-                    height: 400px;
+                    height: 390px;
                     resize: none;
                     margin-bottom: $base-margin;
 
                     @include md {
-                        height: 450px;
+                        height: 430px;
                     }
 
                     @include lg {
                         height: 250px;
                     }
+                }
 
-                    // &.fill-in-the-blanks {
-                    //     @include lg {
-                    //         height: 60vh !important
-                    //     }
-                    // }
+                .fill-in-the-blanks {
+                    
+                    textarea {
+                        @include md {
+                            height: 23vh !important;
+                        }
+
+                        @include lg {
+                            height: 42vh !important
+                        }
+                    }
+
+                    .multiple-answers {
+                        @include md {
+                            height: 22vh !important;
+                        }
+
+                        @include lg {
+                            height: 42vh !important
+                        }
+                    }
+                }
+                
+                button {
+                    margin-left: auto;
+                    margin-right: auto;
+
+                    @include lg {
+                        margin-right: 0;
+                    }
                 }
             }
         }

@@ -83,20 +83,20 @@ const EditFillInTheBlanks = ({currentSet, studySetItems, itemNo, item, setEditIt
                                     
                                 />
                             </Form.Group>
-                            {
-                                editedItem[0]?.blanks.length ?
-                                <Form.Group className="statement">
-                                    <Form.Label className="answer">Answer</Form.Label>
-                                    <Form.Check
-                                        className="case-sensitive"
-                                        name="caseSensitive"
-                                        type='checkbox'
-                                        label='Case Sensitive'
-                                        id={`case-sensitive-${0}`}
-                                        onChange={(e) => handleForm(e)}
-                                        checked={editedItem[0]?.caseSensitive}
-                                    />
-                                    <p className="input-info">{ `Use a comma (",") to separate alternative answers.` }</p>
+                            <Form.Group className="statement">
+                                <Form.Label className="answer">Answer</Form.Label>
+                                <Form.Check
+                                    className="case-sensitive"
+                                    name="caseSensitive"
+                                    type='checkbox'
+                                    label='Case Sensitive'
+                                    id={`case-sensitive-${0}`}
+                                    onChange={(e) => handleForm(e)}
+                                    checked={editedItem[0]?.caseSensitive}
+                                />
+                                <p className="input-info">{ `Use a comma (",") to separate alternative answers.` }</p>
+                                {
+                                    editedItem[0]?.blanks.length ?
                                     <div className="multiple-answers">
                                         {blankItems.map((blank, i) => (
                                             <div className="blank-input" key={i}>
@@ -109,10 +109,10 @@ const EditFillInTheBlanks = ({currentSet, studySetItems, itemNo, item, setEditIt
                                             </div>
                                         ))}
                                     </div>
-                                </Form.Group>
-                                :
-                                <></>
-                            }
+                                    :
+                                    <></>
+                                }
+                            </Form.Group>
                         </li> 
                     </ul>
                     <div className="row item-btns mx-0 w-100">
