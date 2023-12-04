@@ -215,6 +215,10 @@ div.timer {
                             margin-right: $base-margin;
                         }
                     }
+
+                    @include lg {
+                        height: 26vh;
+                    }
                 }
             }
     
@@ -245,7 +249,7 @@ div.timer {
                 input {
                     border: none;
                     outline: 2px solid $text-3 !important;
-                    width: 150px;
+                    width: 140px;
                     margin: 5px;
                     padding: 5px;
                     color: $text-3;
@@ -284,6 +288,17 @@ div.timer {
                             background-image: url('/images/wrong.svg');
                         }
                     }
+                }
+
+                @include lg {
+                    height: 25vh;
+                }
+            }
+
+            button {
+                @include md {
+                    display: block !important;
+                    margin-left: auto;
                 }
             }
         }

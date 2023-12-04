@@ -1136,6 +1136,9 @@ div.timer {
           color: #646464; }
         .question-and-answer form .correct-answer .display-answers.fill-in-the-blanks > div span {
           margin-right: 1rem; }
+      @media (min-width: 992px) {
+        .question-and-answer form .correct-answer .display-answers.fill-in-the-blanks {
+          height: 26vh; } }
   .question-and-answer form .correct-answer hr {
     margin-top: 0; }
 
@@ -1155,7 +1158,7 @@ div.timer {
   .question-and-answer.fill-in-the-blanks-questions form .statement input {
     border: none;
     outline: 2px solid #505050 !important;
-    width: 150px;
+    width: 140px;
     margin: 5px;
     padding: 5px;
     color: #505050; }
@@ -1182,6 +1185,14 @@ div.timer {
       border-width: 0 0 3px 0; }
       .question-and-answer.fill-in-the-blanks-questions form .statement span.wrong::after {
         background-image: url("/images/wrong.svg"); }
+  @media (min-width: 992px) {
+    .question-and-answer.fill-in-the-blanks-questions form .statement {
+      height: 25vh; } }
+
+@media (min-width: 768px) {
+  .question-and-answer.fill-in-the-blanks-questions form button {
+    display: block !important;
+    margin-left: auto; } }
 
 .summary {
   text-align: center; }

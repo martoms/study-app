@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
-import correct from '../../images/correct.svg';
-import wrong from '../../images/wrong.svg';
 
 const FillInTheBlanksQuestions = ({
     items,
@@ -91,6 +89,9 @@ const FillInTheBlanksQuestions = ({
         }, 1)
     };
 
+    // console.log(userAnswer)
+
+
     return ( 
         <div className="question-and-answer fill-in-the-blanks-questions">
             <div className="user-answer">
@@ -104,35 +105,13 @@ const FillInTheBlanksQuestions = ({
                             type="button"
                             className="submit-answer d-none d-md-inline-block"
                             onClick={handleSubmit}
-                            disabled={!userAnswer}
+                            disabled={userAnswer.some(answer => answer === '')}
                         >
                         Submit
                         </Button>
                         </>
                         :
                         <div className="final-answer">
-                            {/* {
-                                (
-                                    caseSensitive ?
-                                    answers.includes(userAnswer.trim())
-                                    :
-                                    insensitive.includes(userAnswer.trim().toLocaleLowerCase())
-                                )
-                                ?
-                                <div className="correct">
-                                    <div className="answer">
-                                        {userAnswer}
-                                    </div>
-                                    <img src={correct} alt="correct" />
-                                </div>
-                                :
-                                <div className="wrong">
-                                    <div className="answer">
-                                        {userAnswer}
-                                    </div>
-                                    <img src={wrong} alt="wrong" />
-                                </div>
-                            } */}
                             {
                                 next && currentItem === items.length ?
                                 <Button
@@ -146,7 +125,7 @@ const FillInTheBlanksQuestions = ({
                                 <Button
                                     type="button"
                                     className="next-answer"
-                                    // onClick={handleNext}
+                                    onClick={handleNext}
                                 >
                                 Next
                                 </Button>
