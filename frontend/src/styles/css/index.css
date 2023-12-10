@@ -126,6 +126,15 @@ input {
     font-weight: 800;
     color: #75C2F6;
     margin-left: 0; }
+  .navbar .sign-in {
+    margin-left: auto; }
+  .navbar .account {
+    margin-left: auto; }
+    .navbar .account img {
+      border-radius: 50%;
+      height: 30px;
+      width: auto;
+      margin-right: 5px; }
 
 .feature-container {
   height: calc(100vh - 269px - 56px);
@@ -473,7 +482,7 @@ footer {
 .edit-items-modal .modal-dialog .modal-content .add-items-container .multiple-answers,
 .edit-items-modal .modal-dialog .modal-content .edit-items-container .multiple-answers {
   height: 150px;
-  overflow-y: scroll !important; }
+  overflow-y: auto !important; }
   .add-items-modal .modal-dialog .modal-content .add-items-container .multiple-answers .blank-input,
   .add-items-modal .modal-dialog .modal-content .edit-items-container .multiple-answers .blank-input,
   .edit-items-modal .modal-dialog .modal-content .add-items-container .multiple-answers .blank-input,

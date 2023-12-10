@@ -216,6 +216,26 @@ input {
         color: $c-2;
         margin-left: 0
     }
+
+    @mixin profile {
+        margin-left: auto;
+    }
+
+    .sign-in {
+        @include profile;
+    }
+
+    .account {
+        @include profile;
+
+        img {
+            border-radius: 50%;
+            height: 30px;
+            width: auto;
+            margin-right: 5px
+        }
+    }
+    
 };
 
 @mixin feature-container {

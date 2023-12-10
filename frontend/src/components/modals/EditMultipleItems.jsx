@@ -14,8 +14,9 @@ const EditMultipleItems = ({editItems, setEditItems, selection, setSelection}) =
     const studySetItems = useSelector(state => state.studySetList).filter(set => set.createdOn === Number(timeStamp))[0].items;
     // this is to keep the order of selection according to the array, instead of the user selection
     selection = studySetItems.filter(item => selection.includes(String(item.createdOn))).map(item => item.createdOn);
-    const itemTypes = studySetItems.map(item => item.itemType);
+    // const itemTypes = studySetItems.map(item => item.itemType);
     let intialFormState = studySetItems.filter(item => selection.includes(item.createdOn));
+    const itemTypes = intialFormState.map(item => item.itemType);
     const [updatedItems, setUpdatedItems] = useState(intialFormState);
 
     const [currentItem, setCurrentItem] = useState(0);
@@ -24,6 +25,7 @@ const EditMultipleItems = ({editItems, setEditItems, selection, setSelection}) =
         setEditItems(false);
     };
 
+    // console.log('intialFormState', intialFormState)
 
     return (
         <Modal

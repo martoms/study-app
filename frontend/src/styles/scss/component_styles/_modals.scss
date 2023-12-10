@@ -175,7 +175,7 @@
                 }
                 .multiple-answers {
                     height: 150px;
-                    overflow-y: scroll !important;
+                    overflow-y: auto !important;
                     .blank-input {
                         display: flex;
                         margin-bottom: $base-margin;
