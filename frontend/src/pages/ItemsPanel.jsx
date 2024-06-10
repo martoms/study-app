@@ -99,7 +99,7 @@ const ItemsPanel = () => {
     })
 
     return ( 
-        <div className="main-container">
+        <div className="main-container items-panel">
             <h1 className="setName">{ setName }</h1><hr />
             <div className="items-table">
                 {

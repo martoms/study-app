@@ -136,7 +136,7 @@ const StudyPanel = () => {
     })
 
     return ( 
-        <div className="main-container">
+        <div className="main-container study-panel">
             <h1 className="setName">{ setName }</h1><hr />
             {
                 !showStudySummary ?

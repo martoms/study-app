@@ -53,7 +53,7 @@ div.timer {
 .exit {
     @include toggle;
     position: absolute;
-    top: 90px;
+    top: 70px;
     font-weight: 600;
     color: $text-3;
     img {

@@ -831,16 +831,19 @@ footer {
             width: auto;
             background-color: transparent; } }
 
-.main-panel .addNewSet {
-  position: absolute;
-  width: 100%;
-  height: 65px;
-  left: 0;
-  bottom: 3rem;
-  display: flex;
-  justify-self: center; }
-  .main-panel .addNewSet button {
-    margin-top: 0; }
+.main-container {
+  position: relative; }
+  .main-container .addNewSet {
+    position: absolute;
+    bottom: 80px;
+    width: 100%;
+    height: 65px;
+    left: 0;
+    bottom: 3rem;
+    display: flex;
+    justify-self: center; }
+    .main-container .addNewSet button {
+      margin-top: 0; }
 
 .items-table {
   position: relative; }
@@ -1011,7 +1014,7 @@ div.timer {
 .exit {
   cursor: pointer;
   position: absolute;
-  top: 90px;
+  top: 70px;
   font-weight: 600;
   color: #505050; }
   .exit:active {

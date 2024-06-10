@@ -119,13 +119,22 @@
     }
 }
 
-.main-panel {
+// .home {
+//     position: relative;
+//     background-color: red;
+// }
+
+.main-container {
+
+    position: relative;
 
     .addNewSet {
         position: absolute;
+        bottom: 80px;
         width: 100%;
         height: 65px;
         left: 0;
+        // left: calc(50vw - 110px);
         bottom: $base-margin * 3;
         display: flex;
         justify-self: center;

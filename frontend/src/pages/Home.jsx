@@ -7,7 +7,7 @@ const Home = () => {
     const newSet = useSelector(state => state.studySetList);
     
     return ( 
-        <div className="main-container">
+        <div className="main-container home">
             {
                 newSet.length == 0 ?
                 <div className="initial-setup d-flex">
