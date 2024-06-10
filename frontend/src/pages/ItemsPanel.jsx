@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Table, Form } from "react-bootstrap";
 import AddItems from "../components/modals/AddItems";
 import { handleCheckbox, handleMasterCheckbox } from '../handlers/formHandlers';
-import DeleteBtn from "../components/buttons/deletebtn";
+import DeleteBtn from "../components/buttons/Deletebtn";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteItems } from "../features/studySet/studySetSlice";
 import { useParams, useNavigate } from "react-router-dom";
