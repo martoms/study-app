@@ -2,7 +2,7 @@ import { Table, Form } from 'react-bootstrap';
 import { useSelector, useDispatch } from "react-redux";
 import useReformatDate from '../../hooks/useReformatDate';
 import { useState } from 'react';
-import DeleteBtn from '../../components/buttons/deletebtn';
+import DeleteBtn from '../../components/buttons/Deletebtn';
 import { deleteSet } from '../../features/studySet/studySetSlice';
 // import { currentSet } from '../../features/generalState/generalStateSlice';
 import RenameBtn from '../../components/buttons/RenameBtn';
