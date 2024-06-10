@@ -15,7 +15,7 @@
 
             .modal-body {
                 background-color: $bg-5;
-                overflow: hidden;
+                overflow-y: auto;
                 @include lg {
                     padding: 2rem 5rem;
                 }

@@ -280,7 +280,7 @@ footer {
 .add-items-modal .modal-dialog .modal-content .modal-body,
 .edit-items-modal .modal-dialog .modal-content .modal-body {
   background-color: #e5e4e2;
-  overflow: hidden; }
+  overflow-y: auto; }
   @media (min-width: 992px) {
     .add-items-modal .modal-dialog .modal-content .modal-body,
     .edit-items-modal .modal-dialog .modal-content .modal-body {
