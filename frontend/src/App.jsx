@@ -15,7 +15,6 @@ function App() {
         <Route path='/:timeStamp' element={ <ItemsPanel /> } />
         <Route path='/:timeStamp/study' element={ <StudyPanel/> } />
         <Route path='/:timeStamp/statistics' element={ <StatisticsPanel/> } />
-
       </Routes>
     </Router>
   )

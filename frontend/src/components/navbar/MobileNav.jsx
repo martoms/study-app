@@ -2,19 +2,16 @@ import { useState, useEffect } from 'react';
 import { Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
-// import { googleLogout } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
-
 
 const MobileNav = () => {
 
     const [email, setEmail] = useState(null);
     const [picture, setPicture] = useState('');
 
-    const handleLogOut = () => {
-        console.log('logout');
-        localStorage.clear('googleAuth');
-    }
+    const handleLogout = () => {
+        localStorage.removeItem('googleAuth');
+    };
 
     useEffect(() => {
         const googleCredential = JSON.parse(localStorage.getItem("googleAuth"));
@@ -41,7 +38,7 @@ const MobileNav = () => {
             </div>
             {
                 email ?
-                <div className="account" onClick={handleLogOut}>
+                <div className="account" onClick={handleLogout}>
                     <img src={picture} alt="profile image" />
                     { email }
                 </div>
